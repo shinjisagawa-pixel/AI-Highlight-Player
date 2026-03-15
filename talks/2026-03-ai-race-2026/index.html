@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The State of the AI Race in 2026 — Highlight Player</title>
+  <style>
+    :root{--bg:#0b1220;--panel:#0f1a33;--text:#e8eefc;--muted:#a9b7d6;--hl:#ffe08a;--hlText:#1b1b1b;--bd:rgba(255,255,255,.12);--accent:#7aa2ff}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:linear-gradient(180deg,var(--bg),#070b14);color:var(--text)}
+    header{position:sticky;top:0;background:rgba(11,18,32,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--bd);z-index:10}
+    .wrap{max-width:980px;margin:0 auto;padding:14px 12px}
+    h1{margin:0 0 6px;font-size:16px}
+    .sub{margin:0;color:var(--muted);font-size:12px;line-height:1.4}
+    .player{margin-top:10px;padding:12px;background:rgba(15,26,51,.8);border:1px solid var(--bd);border-radius:14px}
+    audio{width:100%}
+    .controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+    .chip{display:inline-flex;gap:6px;align-items:center;padding:6px 10px;border:1px solid var(--bd);border-radius:999px;background:rgba(255,255,255,.03);color:var(--muted);font-size:12px}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    select,button{background:rgba(255,255,255,.05);color:var(--text);border:1px solid var(--bd);border-radius:10px;padding:6px 10px;font-size:12px}
+    button{cursor:pointer}
+    .panel{margin-top:12px;background:rgba(15,26,51,.7);border:1px solid var(--bd);border-radius:14px;overflow:hidden}
+    .panel h2{margin:0;padding:12px;font-size:13px;color:var(--muted);border-bottom:1px solid rgba(255,255,255,.08)}
+    .lines{max-height:62vh;overflow:auto;padding:10px;scroll-behavior:smooth}
+    .line{display:flex;gap:10px;padding:10px;border-radius:12px;border:1px solid transparent}
+    .line:hover{background:rgba(255,255,255,.03)}
+    .t{min-width:70px;color:var(--muted);font-variant-numeric:tabular-nums;font-size:12px}
+    .txt{flex:1;line-height:1.35;font-size:14px}
+    .current{background:var(--hl);color:var(--hlText);border-color:rgba(0,0,0,.12)}
+    .current .t{color:rgba(0,0,0,.62)}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>The State of the AI Race in 2026 — Highlighted Transcript Player</h1>
+    <p class="sub">Line-level highlighting synced to narration audio. Tap a line to jump.</p>
+
+    <div class="player">
+      <audio id="audio" controls preload="metadata">
+        <source src="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.275d40d9.mp3" type="audio/mpeg">
+      </audio>
+
+      <div class="controls">
+        <span class="chip">Audio: <a href="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.275d40d9.mp3" target="_blank" rel="noreferrer">Source</a></span>
+        <span class="chip">Timing: <a href="https://www.genspark.ai/api/files/s/axfe0qXT" target="_blank" rel="noreferrer">Source</a></span>
+
+        <label class="chip">Speed
+          <select id="speed">
+            <option value="0.8">0.8×</option>
+            <option value="0.9">0.9×</option>
+            <option value="1" selected>1.0×</option>
+            <option value="1.1">1.1×</option>
+            <option value="1.25">1.25×</option>
+          </select>
+        </label>
+
+        <button id="follow">Auto-follow: ON</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="panel">
+    <h2>Transcript</h2>
+    <div class="lines" id="lines"></div>
+  </section>
+</main>
+
+<script>
+  // Line-level segments from transcription of the narration audio.
+  const segments = [
+    {s:0.12,e:6.01,t:"Slide 1 — Title: The State of the AI Race in 2026."},
+    {s:7.38,e:9.20,t:"Good morning, everyone."},
+    {s:9.26,e:17.34,t:"If we look back just three years ago, the artificial intelligence landscape was completely controlled by a single company."},
+    {s:17.38,e:21.86,t:"But today, in 2026, that era is over."},
+    {s:21.87,e:33.06,t:"We are currently watching a massive high-stakes race between the Big Four tech giants: OpenAI, Google, Microsoft, and Anthropic."},
+    {s:33.12,e:37.34,t:"Today, I want to share the current state of this AI race."},
+    {s:37.40,e:50.46,t:"We will look at the real data behind these companies, and most importantly, I will share the exact strategy your business needs to survive and succeed in this new environment."},
+
+    {s:50.56,e:54.96,t:"Slide 2 — The end of the chatbot era."},
+    {s:55.00,e:59.93,t:"Before we look at the companies, we must understand a major shift in the industry."},
+    {s:59.93,e:63.16,t:"The chatbot era is officially dead."},
+    {s:63.20,e:67.35,t:"Until recently, we treated AI like a smart search engine."},
+    {s:67.38,e:70.19,t:"We typed a prompt, and it gave us text."},
+    {s:70.22,e:73.98,t:"Today, we have entered the agentic era."},
+    {s:74.02,e:75.52,t:"What does this mean?"},
+    {s:75.58,e:80.36,t:"It means modern AI systems are now autonomous agents."},
+    {s:80.40,e:82.62,t:"They do not just answer questions."},
+    {s:82.63,e:90.32,t:"They actively execute complex multi-step business workflows across your desktop and spreadsheets."},
+    {s:90.33,e:95.62,t:"The potential winner of this AI race will not be the one with the smartest model."},
+    {s:95.68,e:101.17,t:"It will be the one that integrates most effectively with your daily business data."},
+
+    {s:101.26,e:105.96,t:"Slide 3 — OpenAI and Google: The titans of scale."},
+    {s:107.10,e:114.32,t:"Let's look at the actual numbers, starting with the consumer and ecosystem giants: OpenAI and Google."},
+    {s:114.38,e:118.48,t:"OpenAI is the undisputed leader in consumer adoption."},
+    {s:118.52,e:124.00,t:"They currently have an incredible 900 million weekly active users."},
+    {s:124.01,e:129.14,t:"They are generating an annualized revenue of 25 billion dollars."},
+    {s:129.16,e:134.70,t:"Their latest model, GPT-5.4, is exceptionally powerful."},
+    {s:134.76,e:141.48,t:"In blind tests against human experts, it wins or ties 83 percent of the time."},
+    {s:141.54,e:147.24,t:"On the other hand, we have Google—the ultimate full-stack multimodal leader."},
+    {s:147.28,e:154.46,t:"Google boasts 750 million monthly active users and 8 million paid enterprise seats."},
+    {s:154.47,e:158.08,t:"They are the only major provider with native video input."},
+    {s:158.14,e:169.94,t:"Because their AI, Gemini, is deeply integrated into Google Workspace and YouTube, their year-over-year generative AI revenue has grown by 400 percent."},
+
+    {s:170.00,e:176.68,t:"Slide 4 — Microsoft and Anthropic: Enterprise and technical leaders."},
+    {s:176.72,e:180.10,t:"Now, let's examine Microsoft and Anthropic."},
+    {s:180.12,e:183.99,t:"Microsoft is what we call the enterprise control plane."},
+    {s:183.99,e:191.94,t:"They have 15 million paid Copilot seats, and they have a massive 90 percent penetration in the Fortune 500."},
+    {s:192.01,e:202.82,t:"Microsoft's biggest advantage is that their AI is built directly into the software you already use by default—like Word, Excel, and Teams."},
+    {s:202.86,e:205.20,t:"Finally, we have Anthropic."},
+    {s:205.21,e:207.58,t:"They are the premium technical choice."},
+    {s:207.64,e:216.52,t:"Despite having fewer users than OpenAI, they have a reported 20 billion dollars in annual recurring revenue."},
+    {s:216.53,e:220.06,t:"They are dominating the coding and developer space."},
+    {s:220.14,e:235.36,t:"For example, their AI coding tool, Claude Code, is responsible for 4 percent of all GitHub commits, and it generates 2.5 billion dollars in annual revenue all on its own."},
+
+    {s:236.20,e:240.70,t:"Slide 5 — The winning strategy for your business."},
+    {s:240.76,e:246.86,t:"So, with these four giants fighting for dominance, what should your company do?"},
+    {s:246.92,e:251.72,t:"The answer is simple: you must stop buying from just one vendor."},
+    {s:251.76,e:259.19,t:"Relying on a single AI platform is a huge risk because these models change rapidly without warning."},
+    {s:259.22,e:265.70,t:"The most successful companies in 2026 are using a modular deployment strategy."},
+    {s:265.72,e:271.92,t:"This means you match the specific AI platform to your specific business problem."},
+    {s:271.96,e:289.90,t:"For instance, you should use OpenAI for broad everyday tasks, use Anthropic for deep technical coding, use Google for large-scale multimodal data, and use Microsoft for strict security and governance."},
+
+    {s:290.00,e:293.30,t:"Slide 6 — Conclusion."},
+    {s:293.36,e:298.94,t:"To conclude, the AI landscape in 2026 is not a monopoly."},
+    {s:299.00,e:301.47,t:"It is a diverse ecosystem."},
+    {s:301.47,e:306.20,t:"The true winner of the AI race isn't just one tech company."},
+    {s:306.26,e:310.80,t:"It is the business that learns how to use all of them effectively."},
+    {s:310.82,e:322.68,t:"By redesigning your workflows for agentic AI and mixing providers based on their unique strengths, you can build a resilient and highly profitable organization."},
+    {s:322.74,e:324.38,t:"Thank you very much for your time."}
+  ];
+
+  const audio = document.getElementById("audio");
+  const linesEl = document.getElementById("lines");
+  const speed = document.getElementById("speed");
+  const followBtn = document.getElementById("follow");
+  let follow = true, current = -1;
+
+  const fmt = (sec)=> `${Math.floor(sec/60)}:${String(Math.floor(sec%60)).padStart(2,"0")}`;
+
+  segments.forEach((seg,i)=>{
+    const row=document.createElement("div");
+    row.className="line";
+    row.dataset.i=i;
+    row.innerHTML=`<div class="t">${fmt(seg.s)}</div><div class="txt">${seg.t}</div>`;
+    row.onclick=()=>{ audio.currentTime = seg.s + 0.01; audio.play().catch(()=>{}); };
+    linesEl.appendChild(row);
+  });
+
+  speed.onchange=()=> audio.playbackRate = Number(speed.value);
+
+  followBtn.onclick=()=>{
+    follow=!follow;
+    followBtn.textContent=`Auto-follow: ${follow?"ON":"OFF"}`;
+  };
+
+  function findIndex(t){
+    for(let i=0;i<segments.length;i++){ if(t>=segments[i].s && t<segments[i].e) return i; }
+    for(let i=segments.length-1;i>=0;i--){ if(t>=segments[i].s) return i; }
+    return 0;
+  }
+
+  function setCurrent(i){
+    if(i===current) return;
+    const prev=linesEl.querySelector(".current");
+    if(prev) prev.classList.remove("current");
+    current=i;
+    const cur=linesEl.querySelector(`.line[data-i="${i}"]`);
+    if(cur){
+      cur.classList.add("current");
+      if(follow){
+        linesEl.scrollTo({top: Math.max(0, cur.offsetTop - linesEl.clientHeight*0.35), behavior:"smooth"});
+      }
+    }
+  }
+
+  audio.addEventListener("timeupdate", ()=> setCurrent(findIndex(audio.currentTime)));
+  audio.addEventListener("loadedmetadata", ()=> setCurrent(findIndex(0)));
+</script>
+</body>
+</html>
