@@ -11,7 +11,8 @@ Audio + transcript player with **line-level highlighting** (mobile-friendly).
 | # | Title | URL |
 |---:|---|---|
 | 1 | 7 Quiet AI Features | https://shinjisagawa-pixel.github.io/AI-Highlight-Player/talks/2026-03-quiet-ai-features/ |
-| 2 | The State of the AI Race in 2026 | https://shinjisagawa-pixel.github.io/AI-Highlight-Player/talks/2026-03-ai-race-2026/ |
+| 2 | Harvey Agent Builder: From Steps to Outcomes | https://shinjisagawa-pixel.github.io/AI-Highlight-Player/talks/2026-03-harvey-agent-builder/ |
+| 3 | The State of the AI Race in 2026 | https://shinjisagawa-pixel.github.io/AI-Highlight-Player/talks/2026-03-ai-race-2026/ |
       <!-- TALKS_TABLE_END -->
 
 
