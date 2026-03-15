@@ -33,4 +33,141 @@
 <body>
 <header>
   <div class="wrap">
-    <h1>Harvey Agent Builder: From Steps to Outcomes — Highlighted Transcript Player<span class="cursor">█</span>
+    <h1>Harvey Agent Builder: From Steps to Outcomes — Highlighted Transcript Player</h1>
+    <p class="sub">Line-level highlighting synced to narration audio. Tap a line to jump.</p>
+
+    <div class="player">
+      <audio id="audio" controls preload="metadata">
+        <source src="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.e0436b32.mp3" type="audio/mpeg">
+      </audio>
+
+      <div class="controls">
+        <span class="chip">Audio: <a href="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.e0436b32.mp3" target="_blank" rel="noreferrer">Source</a></span>
+        <span class="chip">Timing: <a href="https://www.genspark.ai/api/files/s/XtEXTN3I" target="_blank" rel="noreferrer">Source</a></span>
+
+        <label class="chip">Speed
+          <select id="speed">
+            <option value="0.8">0.8×</option>
+            <option value="0.9">0.9×</option>
+            <option value="1" selected>1.0×</option>
+            <option value="1.1">1.1×</option>
+            <option value="1.25">1.25×</option>
+          </select>
+        </label>
+
+        <button id="follow">Auto-follow: ON</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="panel">
+    <h2>Transcript</h2>
+    <div class="lines" id="lines"></div>
+  </section>
+</main>
+
+<script>
+  // Line-level segments from transcription of the narration audio.
+  const segments = [
+    {s:0.06,e:3.04,t:"Slide 1 — Introduction."},
+    {s:3.10,e:4.62,t:"Welcome, everyone."},
+    {s:4.66,e:4.93,t:"Today,"},
+    {s:5.02,e:12.36,t:"I want to introduce a major step forward in how professionals handle complex multi-step tasks."},
+    {s:12.42,e:13.36,t:"Our platform,"},
+    {s:13.40,e:22.70,t:"Harvey, is already designed to help teams analyze documents, ask complex questions, and draft materials much faster."},
+    {s:22.76,e:36.46,t:"However, as the capabilities of artificial intelligence evolve, organizations need tools that adapt to their specific internal processes rather than forcing the organization to adapt to the tool."},
+    {s:36.52,e:45.78,t:"That is why we are introducing Agent Builder, a new solution to build smarter AI agents for complex professional work."},
+
+    {s:45.86,e:49.78,t:"Slide 2 — The current scale of AI."},
+    {s:49.84,e:57.64,t:"To understand why this is so important, we first need to look at how critical AI agents are to professionals right now."},
+    {s:57.68,e:60.22,t:"The numbers speak for themselves."},
+    {s:60.30,e:71.59,t:"Every single day, our platform receives over four hundred thousand agentic queries to complete everyday tasks like contract reviews and document editing."},
+    {s:71.96,e:79.44,t:"Users have already created more than four hundred and forty-five thousand reports using our deep analysis tool."},
+    {s:79.52,e:90.52,t:"Furthermore, teams use these AI agents to extract over twenty million terms in review tables, which significantly streamlines document reviews."},
+    {s:90.60,e:98.06,t:"Finally, teams have already built over twenty-five thousand custom workflows to automate their recurring tasks."},
+
+    {s:99.22,e:102.08,t:"Slide 3 — Introducing Agent Builder."},
+    {s:102.84,e:109.54,t:"Because of this massive demand, we are evolving our existing Workflow Builder into Agent Builder."},
+    {s:109.62,e:119.78,t:"Agent Builder allows you to easily create custom AI agents tailored to your specific team, practice area, or internal company processes."},
+    {s:119.82,e:126.46,t:"You can embed your own templates, so the AI understands exactly how your team prefers to produce work."},
+    {s:126.52,e:132.60,t:"The best part is that these agents can handle complex multi-step tasks more efficiently."},
+    {s:132.88,e:146.38,t:"Instead of giving the AI rigid, exhaustive instructions for every single step, the agent can grasp your overall goal, infer what is needed, and find the most direct path to a useful outcome."},
+    {s:146.42,e:158.08,t:"For example, it can search through documents, build review tables for material risks, and immediately create a risk summary, all in one coherent process."},
+
+    {s:158.12,e:161.92,t:"Slide 4 — Real-world business impact."},
+    {s:162.00,e:169.70,t:"Once built, these agents are reusable and can be shared with others, helping everyone get through new tasks much faster."},
+    {s:169.74,e:172.92,t:"We are already seeing incredible results from our customers."},
+    {s:173.22,e:182.15,t:"For instance, the team at GSK Stockmann built their own workflows to speed up due diligence reviews, which are typically very time-consuming."},
+    {s:182.20,e:187.36,t:"Another great example is Ashhurst, who built specific workflows for their teams."},
+    {s:187.42,e:192.50,t:"In their experience, they save hours of work just on producing lease summaries."},
+    {s:192.52,e:202.48,t:"By making manual work more effortless, professionals can shift their time towards setting strategy and focusing on important client relationships."},
+
+    {s:202.78,e:206.37,t:"Slide 5 — Control and future capabilities."},
+    {s:206.40,e:212.38,t:"Of course, when dealing with complex business tasks, you might ask about control and accuracy."},
+    {s:213.52,e:219.30,t:"We believe that more autonomous work requires more deliberate oversight."},
+    {s:219.36,e:225.88,t:"That is why Agent Builder is designed with human-in-the-loop checkpoints as a core feature."},
+    {s:225.96,e:232.34,t:"As the AI moves through a task, it will flag important decisions and ask for your input."},
+    {s:232.38,e:242.49,t:"For example, if it is updating company policies based on new regulations, it will ask you to confirm the approach before directly editing the documents."},
+    {s:242.49,e:245.96,t:"This ensures you always stay in control."},
+    {s:245.97,e:252.45,t:"Looking ahead, we will also introduce the ability to schedule agents to run in the background."},
+    {s:252.45,e:263.20,t:"This means your agents can automatically monitor contract expiration dates or run regular compliance checks without you needing to manually step in."},
+
+    {s:263.24,e:263.92,t:"Slide 6 — Conclusion."},
+    {s:265.02,e:266.04,t:"In conclusion,"},
+    {s:266.14,e:272.72,t:"Agent Builder gives your team a strong foundation to scale consistent, high-quality work."},
+    {s:272.80,e:283.72,t:"If your team is already using our previous Workflow Builder, please know that all your existing workflows will remain fully supported with absolutely no changes to functionality."},
+    {s:284.64,e:286.80,t:"Thank you for your time today."},
+    {s:286.86,e:293.68,t:"If you want to see how this can transform your own business processes, we invite you to reach out and request a demo."}
+  ];
+
+  const audio = document.getElementById("audio");
+  const linesEl = document.getElementById("lines");
+  const speed = document.getElementById("speed");
+  const followBtn = document.getElementById("follow");
+  let follow = true, current = -1;
+
+  const fmt = (sec)=> `${Math.floor(sec/60)}:${String(Math.floor(sec%60)).padStart(2,"0")}`;
+
+  segments.forEach((seg,i)=>{
+    const row=document.createElement("div");
+    row.className="line";
+    row.dataset.i=i;
+    row.innerHTML=`<div class="t">${fmt(seg.s)}</div><div class="txt">${seg.t}</div>`;
+    row.onclick=()=>{ audio.currentTime = seg.s + 0.01; audio.play().catch(()=>{}); };
+    linesEl.appendChild(row);
+  });
+
+  speed.onchange=()=> audio.playbackRate = Number(speed.value);
+
+  followBtn.onclick=()=>{
+    follow=!follow;
+    followBtn.textContent=`Auto-follow: ${follow?"ON":"OFF"}`;
+  };
+
+  function findIndex(t){
+    for(let i=0;i<segments.length;i++){ if(t>=segments[i].s && t<segments[i].e) return i; }
+    for(let i=segments.length-1;i>=0;i--){ if(t>=segments[i].s) return i; }
+    return 0;
+  }
+
+  function setCurrent(i){
+    if(i===current) return;
+    const prev=linesEl.querySelector(".current");
+    if(prev) prev.classList.remove("current");
+    current=i;
+    const cur=linesEl.querySelector(`.line[data-i="${i}"]`);
+    if(cur){
+      cur.classList.add("current");
+      if(follow){
+        linesEl.scrollTo({top: Math.max(0, cur.offsetTop - linesEl.clientHeight*0.35), behavior:"smooth"});
+      }
+    }
+  }
+
+  audio.addEventListener("timeupdate", ()=> setCurrent(findIndex(audio.currentTime)));
+  audio.addEventListener("loadedmetadata", ()=> setCurrent(findIndex(0)));
+</script>
+</body>
+</html>
