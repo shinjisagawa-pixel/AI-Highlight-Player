@@ -3,152 +3,37 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>7 Quiet AI Features — Highlight Player</title>
+  <title>AI Highlight Player — Library</title>
   <style>
-    :root{--bg:#0b1220;--panel:#0f1a33;--text:#e8eefc;--muted:#a9b7d6;--hl:#ffe08a;--hlText:#1b1b1b;--bd:rgba(255,255,255,.12)}
+    :root{--bg:#0b1220;--panel:#0f1a33;--text:#e8eefc;--muted:#a9b7d6;--bd:rgba(255,255,255,.12);--accent:#7aa2ff}
     body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:linear-gradient(180deg,var(--bg),#070b14);color:var(--text)}
-    header{position:sticky;top:0;background:rgba(11,18,32,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--bd);z-index:10}
-    .wrap{max-width:980px;margin:0 auto;padding:14px 12px}
-    h1{margin:0 0 6px;font-size:16px}
-    .sub{margin:0;color:var(--muted);font-size:12px;line-height:1.4}
-    .player{margin-top:10px;padding:12px;background:rgba(15,26,51,.8);border:1px solid var(--bd);border-radius:14px}
-    audio{width:100%}
-    .controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
-    .chip{display:inline-flex;gap:6px;align-items:center;padding:6px 10px;border:1px solid var(--bd);border-radius:999px;background:rgba(255,255,255,.03);color:var(--muted);font-size:12px}
-    select,button{background:rgba(255,255,255,.05);color:var(--text);border:1px solid var(--bd);border-radius:10px;padding:6px 10px;font-size:12px}
-    button{cursor:pointer}
-    .panel{margin-top:12px;background:rgba(15,26,51,.7);border:1px solid var(--bd);border-radius:14px;overflow:hidden}
-    .panel h2{margin:0;padding:12px;font-size:13px;color:var(--muted);border-bottom:1px solid rgba(255,255,255,.08)}
-    .lines{max-height:62vh;overflow:auto;padding:10px;scroll-behavior:smooth}
-    .line{display:flex;gap:10px;padding:10px;border-radius:12px;border:1px solid transparent}
-    .line:hover{background:rgba(255,255,255,.03)}
-    .t{min-width:70px;color:var(--muted);font-variant-numeric:tabular-nums;font-size:12px}
-    .txt{flex:1;line-height:1.35;font-size:14px}
-    .current{background:var(--hl);color:var(--hlText);border-color:rgba(0,0,0,.12)}
-    .current .t{color:rgba(0,0,0,.62)}
+    .wrap{max-width:980px;margin:0 auto;padding:18px 12px 40px}
+    h1{margin:0 0 6px;font-size:18px}
+    p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}
+    .grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:14px}
+    .card{display:block;text-decoration:none;color:inherit;background:rgba(15,26,51,.7);border:1px solid var(--bd);border-radius:14px;padding:14px}
+    .card:hover{border-color:rgba(122,162,255,.7)}
+    .meta{color:var(--muted);font-size:12px;margin-top:6px}
+    .tag{display:inline-block;margin-right:8px;padding:2px 8px;border:1px solid var(--bd);border-radius:999px;color:var(--muted);font-size:12px}
+    .go{color:var(--accent);font-weight:600}
   </style>
 </head>
 <body>
-<header>
   <div class="wrap">
-    <h1>7 Quiet AI Features — Highlighted Transcript Player</h1>
-    <p class="sub">Line-level highlighting synced to narration audio. Tap a line to jump.</p>
-    <div class="player">
-      <audio id="audio" controls preload="metadata">
-        <source src="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.ef1cb65e.mp3" type="audio/mpeg">
-      </audio>
-      <div class="controls">
-        <span class="chip">Audio: <a href="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.ef1cb65e.mp3" target="_blank" rel="noreferrer" style="color:#7aa2ff">Source</a></span>
-        <label class="chip">Speed
-          <select id="speed">
-            <option value="0.8">0.8×</option><option value="0.9">0.9×</option>
-            <option value="1" selected>1.0×</option>
-            <option value="1.1">1.1×</option><option value="1.25">1.25×</option>
-          </select>
-        </label>
-        <button id="follow">Auto-follow: ON</button>
-      </div>
+    <h1>AI Highlight Player — Library</h1>
+    <p>Choose a talk. Each page plays audio and highlights the current transcript line.</p>
+
+    <div class="grid">
+      <a class="card" href="./talks/2026-03-quiet-ai-features/">
+        <div><span class="tag">EN</span><span class="tag">~5 min</span></div>
+        <div style="margin-top:10px;font-size:16px;font-weight:700;">
+          7 Quiet AI Features Changing Everyday Business
+        </div>
+        <div class="meta">Created: 2026-03 • Click to open <span class="go">→</span></div>
+      </a>
+
+      <!-- 次の回を増やすときは、このカードをコピペして href とタイトルを変える -->
     </div>
   </div>
-</header>
-
-<main class="wrap">
-  <section class="panel">
-    <h2>Transcript</h2>
-    <div class="lines" id="lines"></div>
-  </section>
-</main>
-
-<script>
-  const segments = [
-    {s:0.08,e:5.06,t:"Title: Seven Quiet AI Features Changing Everyday Business."},
-    {s:6.52,e:8.24,t:"Slide 1 — Introduction."},
-    {s:8.32,e:9.82,t:"Good morning, everyone."},
-    {s:9.84,e:16.76,t:"When we discuss artificial intelligence, we usually focus on massive headline-making model releases."},
-    {s:16.80,e:25.82,t:"However, the real business value often lies in the quiet, under-the-radar updates that show up inside the platforms we already use."},
-    {s:25.86,e:26.62,t:"Today,"},
-    {s:26.70,e:34.78,t:"I want to share seven new AI features from March 2026 that can transform everyday productivity."},
-    {s:34.84,e:46.03,t:"Instead of opening a separate chat window, these features embed AI directly into familiar software like Google Workspace and Microsoft 365."},
-    {s:46.06,e:54.46,t:"The theme is simple: measurable time savings and less friction from constant context switching."},
-    {s:54.58,e:60.05,t:"Slide 2 — AI inside Google Workspace and Microsoft 365."},
-    {s:60.12,e:62.78,t:"Let's start with Google Workspace."},
-    {s:62.82,e:70.56,t:"Google has introduced a new Help Me Create mode across Docs, Sheets, Slides, and Drive."},
-    {s:70.92,e:89.14,t:"The most impressive part is that Gemini can now construct spreadsheets by pulling live data directly from Google Search, and it can turn your entire Google Drive into a centralized, searchable knowledge layer, so you can retrieve company information quickly from anywhere."},
-    {s:89.18,e:98.12,t:"On the Microsoft side, the company is rolling out agentic capabilities directly inside Word, PowerPoint, and Excel."},
-    {s:98.18,e:102.56,t:"General availability for enterprise users starts on May first."},
-    {s:102.60,e:106.84,t:"In practice, the AI behaves like an in-app agent."},
-    {s:106.86,e:112.20,t:"It can handle multi-step actions without forcing you to leave the application."},
-    {s:112.28,e:116.30,t:"Slide 3 — Real-time data in Excel and reusable skills."},
-    {s:116.46,e:117.88,t:"Speaking of Excel,"},
-    {s:117.96,e:122.71,t:"OpenAI has launched a direct GPT-4 integration."},
-    {s:122.76,e:135.62,t:"You can now use a ChatGPT sidebar inside Excel to build financial models using plain English, and it can pull live market intelligence directly from major providers like FactSet,"},
-    {s:135.68,e:138.43,t:"Moody's, and S&P Global."},
-    {s:138.46,e:143.72,t:"For finance teams, this can eliminate the manual copy and paste loop."},
-    {s:143.78,e:145.16,t:"To save even more time,"},
-    {s:145.22,e:151.86,t:"OpenAI also introduced ChatGPT Skills for business and enterprise accounts."},
-    {s:151.87,e:157.38,t:"This skips the base twenty dollar and Pro two hundred dollar individual plans."},
-    {s:157.40,e:161.42,t:"Skills let you define reusable step-based automations."},
-    {s:161.46,e:169.62,t:"Instead of typing the same instructions every week, your team can share standard workflows and run recurring tasks with far less effort."},
-    {s:170.87,e:174.12,t:"Slide 4 — The rise of secure local agents."},
-    {s:174.16,e:179.26,t:"Next, we are entering the era of secure local AI agents."},
-    {s:179.28,e:187.52,t:"Perplexity recently announced its Personal Computer, a secure system that runs around the clock on a dedicated Mac mini."},
-    {s:187.56,e:193.76,t:"It orchestrates more than nineteen different AI models to complete complex workflows."},
-    {s:193.80,e:201.98,t:"Crucially, sensitive actions require user approval, and the system generates a full audit trail to support enterprise security."},
-    {s:202.04,e:210.70,t:"Microsoft is taking a similar direction with Copilot Cowork, built using Anthropic's Cowork technology."},
-    {s:210.71,e:215.86,t:"It delegates autonomous workflows grounded in your local Outlook emails,"},
-    {s:215.90,e:218.65,t:"Teams messages, and files."},
-    {s:218.68,e:226.58,t:"The goal is clear: give knowledge workers major efficiency gains without sacrificing oversight."},
-    {s:226.64,e:229.84,t:"Slide 5 — Scheduled automation and conclusion."},
-    {s:229.92,e:233.48,t:"Finally, for work that needs to happen while you're away,"},
-    {s:233.54,e:238.98,t:"Anthropic's Claude Code now supports scheduled background automation."},
-    {s:239.02,e:246.36,t:"You can set up to fifty concurrent tasks, such as daily PR monitoring or weekly dependency audits."},
-    {s:246.42,e:251.38,t:"These tasks run automatically and expire after three days."},
-    {s:251.46,e:253.91,t:"So here's the takeaway."},
-    {s:253.98,e:259.65,t:"These seven features are a strong signal that AI is no longer just a chatbot."},
-    {s:259.68,e:265.16,t:"It's becoming a built-in coworker inside the tools we already depend on."},
-    {s:265.20,e:278.74,t:"From the May first Microsoft rollout to the nineteen orchestrated models in Perplexity to the fifty scheduled tasks in Claude, these capabilities are ready for serious enterprise use."},
-    {s:278.78,e:288.50,t:"By adopting integrated solutions like these, we can reduce manual work, strengthen data governance, and move toward operational excellence."},
-    {s:288.56,e:289.64,t:"Thank you for your time."}
-  ];
-
-  const audio = document.getElementById("audio");
-  const linesEl = document.getElementById("lines");
-  const speed = document.getElementById("speed");
-  const followBtn = document.getElementById("follow");
-  let follow = true, current = -1;
-
-  const fmt = (sec)=> `${Math.floor(sec/60)}:${String(Math.floor(sec%60)).padStart(2,"0")}`;
-
-  segments.forEach((seg,i)=>{
-    const row=document.createElement("div");
-    row.className="line";
-    row.dataset.i=i;
-    row.innerHTML=`<div class="t">${fmt(seg.s)}</div><div class="txt">${seg.t}</div>`;
-    row.onclick=()=>{ audio.currentTime = seg.s + 0.01; audio.play().catch(()=>{}); };
-    linesEl.appendChild(row);
-  });
-
-  speed.onchange=()=> audio.playbackRate = Number(speed.value);
-  followBtn.onclick=()=>{ follow=!follow; followBtn.textContent=`Auto-follow: ${follow?"ON":"OFF"}`; };
-
-  function findIndex(t){
-    for(let i=0;i<segments.length;i++){ if(t>=segments[i].s && t<segments[i].e) return i; }
-    for(let i=segments.length-1;i>=0;i--){ if(t>=segments[i].s) return i; }
-    return 0;
-  }
-
-  function setCurrent(i){
-    if(i===current) return;
-    const prev=linesEl.querySelector(".current"); if(prev) prev.classList.remove("current");
-    current=i;
-    const cur=linesEl.querySelector(`.line[data-i="${i}"]`);
-    if(cur){ cur.classList.add("current");
-      if(follow){ linesEl.scrollTo({top: Math.max(0, cur.offsetTop - linesEl.clientHeight*0.35), behavior:"smooth"}); }
-    }
-  }
-
-  audio.addEventListener("timeupdate", ()=> setCurrent(findIndex(audio.currentTime)));
-  audio.addEventListener("loadedmetadata", ()=> setCurrent(findIndex(0)));
-</script>
 </body>
 </html>
