@@ -13,6 +13,7 @@ Audio + transcript player with **line-level highlighting** (mobile-friendly).
 | 1 | 7 Quiet AI Features | https://shinjisagawa-pixel.github.io/AI-Highlight-Player/talks/2026-03-quiet-ai-features/ |
 | 2 | Harvey Agent Builder: From Steps to Outcomes | https://shinjisagawa-pixel.github.io/AI-Highlight-Player/talks/2026-03-harvey-agent-builder/ |
 | 3 | The State of the AI Race in 2026 | https://shinjisagawa-pixel.github.io/AI-Highlight-Player/talks/2026-03-ai-race-2026/ |
+| 4 | The AI Labor Shift: Follow the Money, Protect Your Career | https://shinjisagawa-pixel.github.io/AI-Highlight-Player/talks/2026-03-ai-labor-shift/ |
       <!-- TALKS_TABLE_END -->
 
 
