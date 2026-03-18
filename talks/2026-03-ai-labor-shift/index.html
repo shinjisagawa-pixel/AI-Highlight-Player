@@ -175,9 +175,21 @@
     const cur=linesEl.querySelector(`.line[data-i="${i}"]`);
     if(cur){
       cur.classList.add("current");
-      if(follow){
-        linesEl.scrollTo({top: Math.max(0, cur.offsetTop - linesEl.clientHeight*0.35), behavior:"smooth"});
-      }
+if (follow) {
+  const pad = 32; // 上下に少し余白を残す（iPhoneは24より32が安定しがち）
+  const c = linesEl.getBoundingClientRect();
+  const r = cur.getBoundingClientRect();
+
+  // 上に見切れている（or 近すぎる）→ 上へスクロールして戻す
+  if (r.top < c.top + pad) {
+    linesEl.scrollBy({ top: (r.top - (c.top + pad)), behavior: "smooth" });
+  }
+  // 下に見切れている（or 近すぎる）→ 下へスクロール
+  else if (r.bottom > c.bottom - pad) {
+    linesEl.scrollBy({ top: (r.bottom - (c.bottom - pad)), behavior: "smooth" });
+  }
+}
+
     }
   }
 
