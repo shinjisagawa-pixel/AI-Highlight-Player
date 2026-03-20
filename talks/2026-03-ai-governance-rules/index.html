@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The AI Value Gap: 5 Governance Rules to Scale Agentic AI — Highlight Player</title>
+  <style>
+    :root{--bg:#0b1220;--panel:#0f1a33;--text:#e8eefc;--muted:#a9b7d6;--hl:#ffe08a;--hlText:#1b1b1b;--bd:rgba(255,255,255,.12);--accent:#7aa2ff}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:linear-gradient(180deg,var(--bg),#070b14);color:var(--text)}
+    header{position:sticky;top:0;background:rgba(11,18,32,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--bd);z-index:10}
+    .wrap{max-width:980px;margin:0 auto;padding:14px 12px}
+    h1{margin:0 0 6px;font-size:16px}
+    .sub{margin:0;color:var(--muted);font-size:12px;line-height:1.4}
+    .player{margin-top:10px;padding:12px;background:rgba(15,26,51,.8);border:1px solid var(--bd);border-radius:14px}
+    audio{width:100%}
+    .controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+    .chip{display:inline-flex;gap:6px;align-items:center;padding:6px 10px;border:1px solid var(--bd);border-radius:999px;background:rgba(255,255,255,.03);color:var(--muted);font-size:12px}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    select,button{background:rgba(255,255,255,.05);color:var(--text);border:1px solid var(--bd);border-radius:10px;padding:6px 10px;font-size:12px}
+    button{cursor:pointer}
+    .panel{margin-top:12px;background:rgba(15,26,51,.7);border:1px solid var(--bd);border-radius:14px;overflow:hidden}
+    .panel h2{margin:0;padding:12px;font-size:13px;color:var(--muted);border-bottom:1px solid rgba(255,255,255,.08)}
+    .lines{max-height:62vh;overflow:auto;padding:10px;scroll-behavior:smooth}
+    .line{display:flex;gap:10px;padding:10px;border-radius:12px;border:1px solid transparent}
+    .line:hover{background:rgba(255,255,255,.03)}
+    .t{min-width:70px;color:var(--muted);font-variant-numeric:tabular-nums;font-size:12px}
+    .txt{flex:1;line-height:1.35;font-size:14px}
+    .current{background:var(--hl);color:var(--hlText);border-color:rgba(0,0,0,.12)}
+    .current .t{color:rgba(0,0,0,.62)}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>The AI Value Gap: 5 Governance Rules to Scale Agentic AI — Highlighted Transcript Player</h1>
+    <p class="sub">Line-level highlighting synced to narration audio. Tap a line to jump.</p>
+
+    <div class="player">
+      <audio id="audio" controls preload="metadata">
+        <source src="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.d1bcb16a.mp3" type="audio/mpeg">
+      </audio>
+
+      <div class="controls">
+        <span class="chip">Audio: <a href="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.d1bcb16a.mp3" target="_blank" rel="noreferrer">Source</a></span>
+        <span class="chip">Timing: <a href="https://www.genspark.ai/api/files/s/ElCcrONJ" target="_blank" rel="noreferrer">Source</a></span>
+
+        <label class="chip">Speed
+          <select id="speed">
+            <option value="0.8">0.8×</option>
+            <option value="0.9">0.9×</option>
+            <option value="1" selected>1.0×</option>
+            <option value="1.1">1.1×</option>
+            <option value="1.25">1.25×</option>
+          </select>
+        </label>
+
+        <button id="follow">Auto-follow: ON</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="panel">
+    <h2>Transcript</h2>
+    <div class="lines" id="lines"></div>
+  </section>
+</main>
+
+<script>
+  const segments = [
+    {s:0.06,e:1.32,t:"Slide 1 —"},
+    {s:1.38,e:3.04,t:"The AI Value Gap."},
+    {s:4.30,e:4.98,t:"Good morning."},
+    {s:5.82,e:10.40,t:"Right now, companies everywhere are rushing to adopt artificial intelligence."},
+    {s:10.90,e:13.72,t:"But let us look at the reality of the situation."},
+    {s:13.74,e:21.30,t:"While half of all companies currently have AI tools, only twelve percent are actually getting real business value from them."},
+    {s:22.02,e:31.84,t:"Furthermore, research shows that over ninety percent of employees only use AI for basic tasks like summarizing meeting notes."},
+    {s:31.86,e:36.34,t:"Why is there such a massive gap between investment and value?"},
+    {s:36.40,e:39.76,t:"The answer is a lack of AI governance."},
+    {s:39.80,e:51.88,t:"According to Deloitte, seventy-four percent of companies expect to use autonomous agentic AI within the next two years, yet only twenty-one percent have a mature governance model."},
+    {s:51.94,e:52.46,t:"Today,"},
+    {s:52.54,e:62.54,t:"I am going to share why AI governance is not a roadblock but a scaling engine, and I will outline five essential rules your company must follow."},
+
+    {s:62.64,e:63.90,t:"Slide 2 —"},
+    {s:63.96,e:66.94,t:"Rule 1: Know your AI inventory."},
+    {s:68.08,e:69.88,t:"Rule number one is simple:"},
+    {s:69.96,e:73.28,t:"You must know what AI you actually have."},
+    {s:73.34,e:79.01,t:"Currently, over half of organizations lack a systematic inventory of their AI tools."},
+    {s:79.04,e:89.10,t:"This leads to a massive problem called shadow AI, which is when employees use unsanctioned, unapproved AI applications to do their work."},
+    {s:89.14,e:94.66,t:"Banning AI does not solve this; it just pushes the behavior underground."},
+    {s:94.68,e:97.08,t:"The risks are incredibly high."},
+    {s:97.14,e:103.84,t:"According to IBM research, shadow AI was involved in twenty percent of all tracked data breaches."},
+    {s:103.90,e:114.47,t:"Even worse, these shadow AI breaches cost companies an average of six hundred and seventy thousand dollars more per incident compared to normal breaches."},
+    {s:114.50,e:122.16,t:"You must officially inventory all tools, quickly approve the safe ones, and train your staff properly."},
+
+    {s:122.24,e:123.32,t:"Slide 3 —"},
+    {s:123.38,e:128.78,t:"Rule 2 and 3: Classify risk and assign ownership."},
+    {s:128.82,e:132.88,t:"Rule number two is to classify everything by risk level."},
+    {s:132.92,e:143.22,t:"You can borrow the framework from the EU AI Act, which categorizes risk into four tiers: minimal, limited, high, and unacceptable."},
+    {s:143.28,e:148.58,t:"You do not need heavy security for an AI that drafts generic welcome emails."},
+    {s:148.62,e:159.97,t:"However, if an AI is making high-risk decisions like approving healthcare or screening resumes, strict controls and human review are absolutely required."},
+    {s:160.00,e:164.60,t:"This leads to rule number three: Assign clear ownership."},
+    {s:164.68,e:174.20,t:"If an autonomous AI agent at your company makes a catastrophic mistake today, can you confidently name the exact person responsible within ten seconds?"},
+    {s:174.22,e:176.16,t:"Most companies cannot."},
+    {s:176.20,e:178.62,t:"You need clear accountability."},
+    {s:178.64,e:181.92,t:"Governance cannot just be handed to the IT department."},
+    {s:181.93,e:190.52,t:"You must build a cross-functional team that includes legal, IT, domain experts, and the daily AI users on the front lines."},
+
+    {s:191.98,e:193.10,t:"Slide 4 —"},
+    {s:193.14,e:196.76,t:"Rule 4: Write playbooks, not policies."},
+    {s:196.84,e:201.66,t:"Rule number four is to write living playbooks, not static policies."},
+    {s:202.68,e:213.00,t:"A standard corporate policy that just says, \"Do not do this,\" is completely useless because AI capabilities change every single week."},
+    {s:213.08,e:216.32,t:"Instead, you need practical playbooks."},
+    {s:216.38,e:235.16,t:"For every single AI use case, your playbook must define five things: the specific task, data access requirements, accuracy measurements, the designated reviewer, and the clear escalation path if something goes wrong."},
+    {s:235.22,e:247.94,t:"Remember, if an AI agent makes a mistake, regulatory bodies like the FTC have made it clear that your company is ultimately responsible, not the tech vendor."},
+
+    {s:247.98,e:250.65,t:"Slide 5 — Governance as a scaling engine."},
+    {s:250.68,e:253.27,t:"Finally, rule number five:"},
+    {s:253.30,e:257.58,t:"Treat governance as a scaling engine, not a brake."},
+    {s:257.64,e:261.48,t:"Many business leaders assume that rules will slow them down."},
+    {s:261.49,e:264.24,t:"The data proves the exact opposite."},
+    {s:264.30,e:272.86,t:"Companies with mature AI governance deploy new AI capabilities forty percent faster than their competitors."},
+    {s:272.92,e:281.51,t:"On top of that, organizations with strong governance save an average of one point nine million dollars per data breach."},
+    {s:281.54,e:290.62,t:"Proper governance is not a red stoplight. It is a system that safely guides your business forward at high speed."},
+
+    {s:290.68,e:292.20,t:"Slide 6 — Conclusion."},
+    {s:292.24,e:297.10,t:"To maintain this engine, you must commit to continuous improvement."},
+    {s:297.16,e:300.64,t:"You cannot review your AI rules once a year."},
+    {s:300.68,e:309.34,t:"Because the technology evolves so rapidly, a monthly review cycle is the absolute minimum requirement to stay secure."},
+    {s:309.38,e:323.54,t:"By managing your inventory, classifying risk, assigning ownership, writing playbooks, and reviewing them monthly, you will transform AI from a hidden liability into your greatest competitive asset."},
+    {s:323.62,e:324.04,t:"Thank you."}
+  ];
+
+  const audio = document.getElementById("audio");
+  const linesEl = document.getElementById("lines");
+  const speed = document.getElementById("speed");
+  const followBtn = document.getElementById("follow");
+  let follow = true, current = -1;
+
+  const fmt = (sec)=> `${Math.floor(sec/60)}:${String(Math.floor(sec%60)).padStart(2,"0")}`;
+
+  segments.forEach((seg,i)=>{
+    const row=document.createElement("div");
+    row.className="line";
+    row.dataset.i=i;
+    row.innerHTML=`<div class="t">${fmt(seg.s)}</div><div class="txt">${seg.t}</div>`;
+    row.onclick=()=>{ audio.currentTime = seg.s + 0.01; audio.play().catch(()=>{}); };
+    linesEl.appendChild(row);
+  });
+
+  speed.onchange=()=> audio.playbackRate = Number(speed.value);
+
+  followBtn.onclick=()=>{
+    follow=!follow;
+    followBtn.textContent=`Auto-follow: ${follow?"ON":"OFF"}`;
+  };
+
+  function findIndex(t){
+    for(let i=0;i<segments.length;i++){ if(t>=segments[i].s && t<segments[i].e) return i; }
+    for(let i=segments.length-1;i>=0;i--){ if(t>=segments[i].s) return i; }
+    return 0;
+  }
+
+  function setCurrent(i){
+    if(i===current) return;
+    const prev=linesEl.querySelector(".current");
+    if(prev) prev.classList.remove("current");
+    current=i;
+    const cur=linesEl.querySelector(`.line[data-i="${i}"]`);
+    if(cur){
+      cur.classList.add("current");
+
+      // Auto-follow FIX (ensures the current line stays visible, especially on iOS Safari)
+      if (follow) {
+        const pad = 32;
+        const c = linesEl.getBoundingClientRect();
+        const r = cur.getBoundingClientRect();
+
+        if (r.top < c.top + pad) {
+          linesEl.scrollBy({ top: (r.top - (c.top + pad)), behavior: "smooth" });
+        } else if (r.bottom > c.bottom - pad) {
+          linesEl.scrollBy({ top: (r.bottom - (c.bottom - pad)), behavior: "smooth" });
+        }
+      }
+    }
+  }
+
+  audio.addEventListener("timeupdate", ()=> setCurrent(findIndex(audio.currentTime)));
+  audio.addEventListener("loadedmetadata", ()=> setCurrent(findIndex(0)));
+</script>
+</body>
+</html>
