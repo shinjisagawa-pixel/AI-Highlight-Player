@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Beyond Workslop: How Expert-Driven AI Rebuilds Consumer Trust — Highlight Player</title>
+  <style>
+    :root{--bg:#0b1220;--panel:#0f1a33;--text:#e8eefc;--muted:#a9b7d6;--hl:#ffe08a;--hlText:#1b1b1b;--bd:rgba(255,255,255,.12);--accent:#7aa2ff}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:linear-gradient(180deg,var(--bg),#070b14);color:var(--text)}
+    header{position:sticky;top:0;background:rgba(11,18,32,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--bd);z-index:10}
+    .wrap{max-width:980px;margin:0 auto;padding:14px 12px}
+    h1{margin:0 0 6px;font-size:16px}
+    .sub{margin:0;color:var(--muted);font-size:12px;line-height:1.4}
+    .player{margin-top:10px;padding:12px;background:rgba(15,26,51,.8);border:1px solid var(--bd);border-radius:14px}
+    audio{width:100%}
+    .controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+    .chip{display:inline-flex;gap:6px;align-items:center;padding:6px 10px;border:1px solid var(--bd);border-radius:999px;background:rgba(255,255,255,.03);color:var(--muted);font-size:12px}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    select,button{background:rgba(255,255,255,.05);color:var(--text);border:1px solid var(--bd);border-radius:10px;padding:6px 10px;font-size:12px}
+    button{cursor:pointer}
+    .panel{margin-top:12px;background:rgba(15,26,51,.7);border:1px solid var(--bd);border-radius:14px;overflow:hidden}
+    .panel h2{margin:0;padding:12px;font-size:13px;color:var(--muted);border-bottom:1px solid rgba(255,255,255,.08)}
+    .lines{max-height:62vh;overflow:auto;padding:10px;scroll-behavior:smooth}
+    .line{display:flex;gap:10px;padding:10px;border-radius:12px;border:1px solid transparent}
+    .line:hover{background:rgba(255,255,255,.03)}
+    .t{min-width:70px;color:var(--muted);font-variant-numeric:tabular-nums;font-size:12px}
+    .txt{flex:1;line-height:1.35;font-size:14px}
+    .current{background:var(--hl);color:var(--hlText);border-color:rgba(0,0,0,.12)}
+    .current .t{color:rgba(0,0,0,.62)}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Beyond Workslop: How Expert-Driven AI Rebuilds Consumer Trust — Highlighted Transcript Player</h1>
+    <p class="sub">Line-level highlighting synced to narration audio. Tap a line to jump.</p>
+    <div class="player">
+      <audio id="audio" controls preload="metadata">
+        <source src="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.5ee80277.mp3" type="audio/mpeg">
+      </audio>
+      <div class="controls">
+        <span class="chip">Audio: <a href="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.5ee80277.mp3" target="_blank" rel="noreferrer">Source</a></span>
+        <span class="chip">Timing: <a href="https://www.genspark.ai/api/files/s/UAPByJWN" target="_blank" rel="noreferrer">Source</a></span>
+        <label class="chip">Speed
+          <select id="speed">
+            <option value="0.8">0.8×</option>
+            <option value="0.9">0.9×</option>
+            <option value="1" selected>1.0×</option>
+            <option value="1.1">1.1×</option>
+            <option value="1.25">1.25×</option>
+          </select>
+        </label>
+        <button id="follow">Auto-follow: ON</button>
+      </div>
+    </div>
+  </div>
+</header>
+<main class="wrap">
+  <section class="panel">
+    <h2>Transcript</h2>
+    <div class="lines" id="lines"></div>
+  </section>
+</main>
+<script>
+  /* Auto-follow fix applied — getBoundingClientRect + scrollBy (pad=32) */
+  const segments = [
+    {s:0.10,e:0.88,t:"Slide one:"},
+    {s:1.38,e:3.74,t:"The trust crisis in an AI world."},
+    {s:5.02,e:5.64,t:"Good morning."},
+    {s:6.32,e:8.46,t:"Look around the digital world today."},
+    {s:8.56,e:14.90,t:"The text on a landing page, an email from a customer service representative, a viral video."},
+    {s:14.92,e:20.40,t:"There is a very high chance that all of it is fake, or at least AI-generated."},
+    {s:21.00,e:28.42,t:"Europol projects that by the end of this year, up to ninety percent of online content may be synthetically generated."},
+    {s:29.14,e:31.80,t:"This is creating a massive crisis of trust."},
+    {s:32.50,e:40.68,t:"A recent Salesforce survey revealed that seventy-two percent of consumers trust companies less today than they did just one year ago."},
+    {s:40.74,e:41.33,t:"Today,"},
+    {s:41.54,e:51.46,t:"I wanna talk about how your company can survive in a world where everything appears fake, and how you can use true human expertise to rebuild that trust."},
+    {s:52.76,e:53.45,t:"Slide two:"},
+    {s:54.02,e:56.18,t:"The epidemic of AI workslop."},
+    {s:57.46,e:63.14,t:"The biggest threat to your brand right now is not just deepfakes, it is something called workslop."},
+    {s:63.82,e:71.12,t:"Workslop is AI-generated output that is technically competent but completely lacks authentic domain expertise."},
+    {s:71.56,e:74.02,t:"It sounds generic and uninspiring."},
+    {s:74.62,e:76.28,t:"Why is this happening?"},
+    {s:76.32,e:83.35,t:"According to a McKinsey study, only six percent of organizations actually qualify as AI high performers."},
+    {s:84.02,e:93.04,t:"Because AI generates passable work in seconds for a fraction of human labor costs, companies are falling into a dangerous economic trap."},
+    {s:93.54,e:96.18,t:"They are accepting good enough as good."},
+    {s:96.90,e:102.56,t:"Before AI, we rarely accepted good enough for important client emails or pitch decks."},
+    {s:103.16,e:108.02,t:"Now, business communications are becoming graveyards of generic workslop."},
+    {s:109.26,e:110.04,t:"Slide three:"},
+    {s:110.60,e:112.50,t:"Fraud and the liar\u2019s dividend."},
+    {s:113.73,e:118.20,t:"This flood of fake content brings serious operational risks."},
+    {s:118.24,e:127.06,t:"Experian\u2019s fraud forecast notes that seventy-two percent of business leaders identify AI-enabled fraud as a top operational challenge."},
+    {s:127.74,e:133.26,t:"The technical barrier to clone a voice or create a fake video is now almost zero."},
+    {s:133.82,e:137.36,t:"But there is another hidden risk called the liar\u2019s dividend."},
+    {s:137.92,e:145.68,t:"Because there is so much AI spam, your company\u2019s real, authentic expertise might be dismissed as fake."},
+    {s:145.78,e:148.65,t:"You cannot rely on basic instincts to fix this."},
+    {s:149.23,e:158.00,t:"In a recent study, people who claimed they could confidently spot AI images only scored about thirty percent accuracy."},
+    {s:158.08,e:158.82,t:"Slide four:"},
+    {s:159.24,e:161.36,t:"The failure of human-in-the-loop."},
+    {s:162.54,e:164.14,t:"So how do we fix this?"},
+    {s:164.80,e:173.20,t:"Many companies think the answer is human-in-the-loop, just having a regular employee passively review the AI output and click Approve."},
+    {s:173.86,e:175.50,t:"This is a critical flaw."},
+    {s:176.12,e:180.74,t:"Putting a non-specialist in charge of AI just reinforces the workslop."},
+    {s:181.26,e:183.96,t:"Instead, you need expert-driven loops."},
+    {s:184.42,e:191.98,t:"Domain experts must proactively shape the AI\u2019s context and review the work against high professional standards."},
+    {s:192.02,e:193.16,t:"Does this make a difference?"},
+    {s:193.78,e:195.04,t:"Absolutely."},
+    {s:195.16,e:203.26,t:"Smith OS reported that AI content overseen by human experts performs four times better than fully automated outputs."},
+    {s:204.14,e:208.50,t:"It directly increases proposal acceptance rates and client conversions."},
+    {s:210.10,e:210.92,t:"Slide five:"},
+    {s:211.50,e:212.94,t:"The actionable roadmap."},
+    {s:214.06,e:219.92,t:"To fight workslop and elevate human expertise, your company must follow a specific roadmap."},
+    {s:220.94,e:225.00,t:"First, immediately audit all of your customer-facing content."},
+    {s:225.80,e:229.72,t:"Flag anything that sounds generic or lacks a unique perspective."},
+    {s:230.88,e:236.22,t:"Second, identify the strongest domain experts in your company for each specific area."},
+    {s:237.38,e:239.82,t:"Third, capture their unique reasoning."},
+    {s:240.50,e:245.70,t:"Do not just document what decisions they make, document exactly why they make them."},
+    {s:246.72,e:252.02,t:"Finally, build AI systems that bring these experts into the workflow routinely."},
+    {s:252.03,e:257.11,t:"This should not be an annual review, but a strict monthly or bi-monthly process."},
+    {s:258.76,e:259.58,t:"Slide six:"},
+    {s:259.98,e:260.65,t:"Conclusion."},
+    {s:261.72,e:267.18,t:"In conclusion, generic prompts will always produce generic outputs."},
+    {s:267.20,e:278.27,t:"But when you embed your proprietary reasoning and company-specific logic into your AI workflows, you transform AI from a business liability into a powerful differentiator."},
+    {s:279.08,e:286.98,t:"Elevating human expertise is no longer just a way to improve productivity, it is an essential strategy to maintain consumer trust."},
+    {s:287.88,e:295.28,t:"By moving to expert-driven loops, you ensure your company\u2019s unique voice is never lost in a sea of AI workslop."},
+    {s:296.18,e:297.51,t:"Thank you very much for your time."}
+  ];
+  const audio   = document.getElementById("audio");
+  const linesEl = document.getElementById("lines");
+  const speed   = document.getElementById("speed");
+  const followBtn = document.getElementById("follow");
+  let follow = true, current = -1;
+  const fmt = sec => `${Math.floor(sec/60)}:${String(Math.floor(sec%60)).padStart(2,"0")}`;
+  segments.forEach((seg,i)=>{
+    const row = document.createElement("div");
+    row.className = "line"; row.dataset.i = i;
+    row.innerHTML = `<div class="t">${fmt(seg.s)}</div><div class="txt">${seg.t}</div>`;
+    row.onclick = () => { audio.currentTime = seg.s + 0.01; audio.play().catch(()=>{}); };
+    linesEl.appendChild(row);
+  });
+  speed.onchange = () => audio.playbackRate = Number(speed.value);
+  followBtn.onclick = () => { follow = !follow; followBtn.textContent = `Auto-follow: ${follow?"ON":"OFF"}`; };
+  function findIndex(t){
+    for(let i=0;i<segments.length;i++){ if(t>=segments[i].s && t<segments[i].e) return i; }
+    for(let i=segments.length-1;i>=0;i--){ if(t>=segments[i].s) return i; }
+    return 0;
+  }
+  function setCurrent(i){
+    if(i===current) return;
+    const prev = linesEl.querySelector(".current");
+    if(prev) prev.classList.remove("current");
+    current = i;
+    const cur = linesEl.querySelector(`.line[data-i="${i}"]`);
+    if(cur){
+      cur.classList.add("current");
+      if(follow){
+        const pad = 32;
+        const c = linesEl.getBoundingClientRect();
+        const r = cur.getBoundingClientRect();
+        if(r.top < c.top + pad){
+          linesEl.scrollBy({top: r.top - (c.top + pad), behavior:"smooth"});
+        } else if(r.bottom > c.bottom - pad){
+          linesEl.scrollBy({top: r.bottom - (c.bottom - pad), behavior:"smooth"});
+        }
+      }
+    }
+  }
+  audio.addEventListener("timeupdate", ()=> setCurrent(findIndex(audio.currentTime)));
+  audio.addEventListener("loadedmetadata", ()=> setCurrent(findIndex(0)));
+</script>
+</body>
+</html>
