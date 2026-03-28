@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Ep 693: AI Without the Jargon: The Language Every Business Leader Needs in 2026(Start Here Series Vol 2)</title>
+  <style>
+    :root{--bg:#0b1220;--panel:#0f1a33;--text:#e8eefc;--muted:#a9b7d6;--hl:#ffe08a;--hlText:#1b1b1b;--bd:rgba(255,255,255,.12);--accent:#7aa2ff}
+    body{margin:0;padding-bottom:env(safe-area-inset-bottom);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:linear-gradient(180deg,var(--bg),#070b14);color:var(--text)}
+    header{position:sticky;top:0;background:rgba(11,18,32,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--bd);z-index:10}
+    .wrap{max-width:980px;margin:0 auto;padding:14px 12px}
+    h1{margin:0 0 6px;font-size:16px}
+    .sub{margin:0;color:var(--muted);font-size:12px;line-height:1.4}
+    .player{margin-top:10px;padding:12px;background:rgba(15,26,51,.8);border:1px solid var(--bd);border-radius:14px}
+    audio{width:100%}
+    .controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+    .chip{display:inline-flex;gap:6px;align-items:center;padding:6px 10px;border:1px solid var(--bd);border-radius:999px;background:rgba(255,255,255,.03);color:var(--muted);font-size:12px}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    select,button{background:rgba(255,255,255,.05);color:var(--text);border:1px solid var(--bd);border-radius:10px;padding:6px 10px;font-size:12px}
+    button{cursor:pointer}
+    .panel{margin-top:12px;background:rgba(15,26,51,.7);border:1px solid var(--bd);border-radius:14px;overflow:hidden}
+    .panel h2{margin:0;padding:12px;font-size:13px;color:var(--muted);border-bottom:1px solid rgba(255,255,255,.08)}
+    .lines{max-height:62dvh;overflow:auto;padding:10px 10px calc(env(safe-area-inset-bottom) + 64px) 10px;scroll-behavior:smooth}
+    .line{display:flex;gap:10px;padding:10px;border-radius:12px;border:1px solid transparent}
+    .line:hover{background:rgba(255,255,255,.03)}
+    .t{min-width:70px;color:var(--muted);font-variant-numeric:tabular-nums;font-size:12px}
+    .txt{flex:1;line-height:1.35;font-size:14px}
+    .current{background:var(--hl);color:var(--hlText);border-color:rgba(0,0,0,.12)}
+    .current .t{color:rgba(0,0,0,.62)}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Ep 693: AI Without the Jargon: The Language Every Business Leader Needs in 2026(Start Here Series Vol 2)</h1>
+    <p class="sub">Line-level highlighting synced to narration audio. Tap a line to jump.</p>
+    <div class="player">
+      <audio id="audio" controls preload="metadata">
+        <source src="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.3b6f31ce.mp3" type="audio/mpeg">
+      </audio>
+      <div class="controls">
+        <span class="chip">Audio: <a href="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.3b6f31ce.mp3" target="_blank" rel="noreferrer">Source</a></span>
+        <span class="chip">Timing: <a href="https://www.genspark.ai/api/files/s/CUPYRxWX" target="_blank" rel="noreferrer">Source</a></span>
+        <label class="chip">Speed
+          <select id="speed">
+            <option value="0.8">0.8×</option>
+            <option value="0.9">0.9×</option>
+            <option value="1" selected>1.0×</option>
+            <option value="1.1">1.1×</option>
+            <option value="1.25">1.25×</option>
+          </select>
+        </label>
+        <button id="follow">Auto-follow: ON</button>
+      </div>
+    </div>
+  </div>
+</header>
+<main class="wrap">
+  <section class="panel">
+    <h2>Transcript</h2>
+    <div class="lines" id="lines"></div>
+  </section>
+</main>
+<script>
+  /* Auto-follow fix: getBoundingClientRect + scrollBy (pad=32) */
+  /* iOS Safari fix: dvh + safe-area-inset-bottom + viewport-fit=cover */
+  const segments = [
+    {s:0.08,e:1.02,t:"Good morning, everyone."},
+    {s:2.26,e:2.56,t:"Today,"},
+    {s:2.78,e:10.52,t:"I want to address one of the greatest challenges facing business leaders in twenty twenty-six: the AI capability gap."},
+    {s:11.52,e:20.28,t:"Currently, there is a massive divide between what artificial intelligence can actually accomplish and what most companies are actually using it for."},
+    {s:21.22,e:24.66,t:"To understand the scale of this shift, we must look at the data."},
+    {s:25.62,e:30.63,t:"When ChatGPT launched, it acquired one hundred million users in just two months."},
+    {s:31.46,e:35.83,t:"Today, it boasts nearly nine hundred million weekly active users."},
+    {s:36.48,e:41.86,t:"In just two years, forty percent of Americans have started using generative AI regularly."},
+    {s:42.56,e:49.02,t:"To put this remarkable growth into perspective, it took the internet five times as long to achieve the same level of adoption."},
+    {s:50.10,e:57.68,t:"Despite these unprecedented numbers, many business leaders still mistakenly view AI as merely a simple chatbot."},
+    {s:58.44,e:68.07,t:"However, recent blind studies reveal that large language models consistently outperform human experts in completing economically valuable work."},
+    {s:68.80,e:77.25,t:"We have transitioned from basic text assistants to powerful autonomous systems, yet our internal communication has not evolved."},
+    {s:78.15,e:86.66,t:"Technical teams are using complicated jargon, which creates confusion, stalls pilot programs, and wastes corporate investments."},
+    {s:87.70,e:94.80,t:"To successfully implement AI, we must bridge this communication gap and understand a few core business terms."},
+    {s:95.46,e:102.76,t:"First, we must understand the basic process of AI, which consists of a prompt, an action, and an outcome."},
+    {s:103.56,e:112.28,t:"The prompt is the human instruction, the action is the internal sequence of the model, and the outcome is the final result."},
+    {s:112.32,e:116.88,t:"When we provide a prompt, the AI does not read our words directly."},
+    {s:116.94,e:119.96,t:"Instead, it converts our language into tokens."},
+    {s:120.72,e:126.00,t:"A token is simply a chunk of text that averages about four characters in length."},
+    {s:126.06,e:131.90,t:"These tokens are processed inside a context window, which functions much like a self-purging hard drive."},
+    {s:132.72,e:140.64,t:"If the context window becomes full, the model will silently drop the earliest information, which can easily ruin your expected results."},
+    {s:141.66,e:144.48,t:"You may also hear technical teams discuss parameters."},
+    {s:145.30,e:148.62,t:"Parameters represent the computational horsepower of a model."},
+    {s:149.40,e:160.22,t:"For instance, previous major models reportedly operated with up to two trillion parameters, which provided immense power but required extremely high computational costs."},
+    {s:160.98,e:169.82,t:"Now, the industry trend is actually shifting towards smaller, highly specialized models designed for specific sectors like finance and healthcare."},
+    {s:170.86,e:176.60,t:"Furthermore, to make AI truly valuable, we cannot just use generic public models."},
+    {s:177.36,e:181.62,t:"We must connect AI to our own proprietary business data."},
+    {s:181.68,e:187.65,t:"This is achieved through a process called RAG, or Retrieval-Augmented Generation."},
+    {s:187.86,e:200.56,t:"RAG allows the AI model to search your internal company documents and ground its answers in facts, which practically eliminates false outputs, commonly known as hallucinations."},
+    {s:201.96,e:204.40,t:"Today, models are no longer static."},
+    {s:204.90,e:209.02,t:"They are agentic, meaning they act as autonomous workers."},
+    {s:209.88,e:224.40,t:"Using simple integrations called connectors, these agentic models can autonomously access your emails, calendars, and cloud drives to execute multi-step business workflows without constant human input."},
+    {s:224.46,e:237.82,t:"Additionally, new technologies like the Model Context Protocol, or MCP, now allow different AI tools to seamlessly communicate with each other, further reducing technical bottlenecks for your team."},
+    {s:238.70,e:243.10,t:"Of course, adopting autonomous AI introduces new risks."},
+    {s:243.70,e:251.22,t:"We must be careful of prompt injections, where models are tricked into executing unintended or harmful actions."},
+    {s:252.20,e:260.62,t:"To protect our organizations, leaders must implement strong guardrails, combining human oversight with technical safety filters."},
+    {s:261.46,e:266.92,t:"However, please remember that the greatest risk to your business is moving too slowly."},
+    {s:267.76,e:277.53,t:"Because AI technology evolves monthly, slow and cautious pilot programs often become obsolete before they can deliver any return on investment."},
+    {s:278.42,e:283.88,t:"To survive and thrive, we must build a unified AI strategy."},
+    {s:283.92,e:292.59,t:"We need to clearly identify our business problems, calculate our current costs, and run fast, responsible implementation sprints."},
+    {s:293.52,e:304.50,t:"Let us eliminate the confusing jargon today, establish a shared vocabulary across our entire organization, and leverage AI to drive measurable business outcomes."},
+    {s:305.40,e:306.47,t:"Thank you for your time."}
+  ];
+  const audio   = document.getElementById("audio");
+  const linesEl = document.getElementById("lines");
+  const speed   = document.getElementById("speed");
+  const followBtn = document.getElementById("follow");
+  let follow = true, current = -1;
+  const fmt = sec => `${Math.floor(sec/60)}:${String(Math.floor(sec%60)).padStart(2,"0")}`;
+  segments.forEach((seg,i)=>{
+    const row = document.createElement("div");
+    row.className = "line"; row.dataset.i = i;
+    row.innerHTML = `<div class="t">${fmt(seg.s)}</div><div class="txt">${seg.t}</div>`;
+    row.onclick = () => { audio.currentTime = seg.s + 0.01; audio.play().catch(()=>{}); };
+    linesEl.appendChild(row);
+  });
+  speed.onchange = () => audio.playbackRate = Number(speed.value);
+  followBtn.onclick = () => { follow = !follow; followBtn.textContent = `Auto-follow: ${follow?"ON":"OFF"}`; };
+  function findIndex(t){
+    for(let i=0;i<segments.length;i++){ if(t>=segments[i].s && t<segments[i].e) return i; }
+    for(let i=segments.length-1;i>=0;i--){ if(t>=segments[i].s) return i; }
+    return 0;
+  }
+  function setCurrent(i){
+    if(i===current) return;
+    const prev = linesEl.querySelector(".current");
+    if(prev) prev.classList.remove("current");
+    current = i;
+    const cur = linesEl.querySelector(`.line[data-i="${i}"]`);
+    if(cur){
+      cur.classList.add("current");
+      if(follow){
+        const pad = 32;
+        const c = linesEl.getBoundingClientRect();
+        const r = cur.getBoundingClientRect();
+        if(r.top < c.top + pad){
+          linesEl.scrollBy({top: r.top - (c.top + pad), behavior:"smooth"});
+        } else if(r.bottom > c.bottom - pad){
+          linesEl.scrollBy({top: r.bottom - (c.bottom - pad), behavior:"smooth"});
+        }
+      }
+    }
+  }
+  audio.addEventListener("timeupdate", ()=> setCurrent(findIndex(audio.currentTime)));
+  audio.addEventListener("loadedmetadata", ()=> setCurrent(findIndex(0)));
+</script>
+</body>
+</html>
