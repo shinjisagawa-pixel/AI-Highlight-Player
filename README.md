@@ -19,8 +19,7 @@ Audio + transcript player with **line-level highlighting** (mobile-friendly).
 | 7 | Ep 695: AI as an Operating System: LLMs Are the Internet Now (Start Here Series Vol 3) | https://shinjisagawa-pixel.github.io/AI-Highlight-Player/talks/2026-03-ep695-ai-as-operating-system/ |
 | 8 | Ep 693: AI Without the Jargon: The Language Every Business Leader Needs in 2026 (Start Here Series Vol 2) | https://shinjisagawa-pixel.github.io/AI-Highlight-Player/talks/2026-03-ep693-ai-language-leaders/ |
 | 9 | The State of the AI Race in 2026 | https://shinjisagawa-pixel.github.io/AI-Highlight-Player/talks/2026-03-ai-race-2026/ |
-| 10 | The AI Labor Shift: Follow the Money, Protect Your Career | https://shinjisagawa-pixel.github.io/AI-Highlight-Player/talks/2026-03-ai-labor-shift/ |
-| 11 | The AI Value Gap: 5 Governance Rules to Scale Agentic AI | https://shinjisagawa-pixel.github.io/AI-Highlight-Player/talks/2026-03-ai-governance-rules/ |
+| 10 | The AI Value Gap: 5 Governance Rules to Scale Agentic AI | https://shinjisagawa-pixel.github.io/AI-Highlight-Player/talks/2026-03-ai-governance-rules/ |
       <!-- TALKS_TABLE_END -->
 
 
