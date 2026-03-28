@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Ep 695: AI as an Operating System: LLMs Are the Internet Now (Start Here Series Vol 3)</title>
+  <style>
+    :root{--bg:#0b1220;--panel:#0f1a33;--text:#e8eefc;--muted:#a9b7d6;--hl:#ffe08a;--hlText:#1b1b1b;--bd:rgba(255,255,255,.12);--accent:#7aa2ff}
+    body{margin:0;padding-bottom:env(safe-area-inset-bottom);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:linear-gradient(180deg,var(--bg),#070b14);color:var(--text)}
+    header{position:sticky;top:0;background:rgba(11,18,32,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--bd);z-index:10}
+    .wrap{max-width:980px;margin:0 auto;padding:14px 12px}
+    h1{margin:0 0 6px;font-size:16px}
+    .sub{margin:0;color:var(--muted);font-size:12px;line-height:1.4}
+    .player{margin-top:10px;padding:12px;background:rgba(15,26,51,.8);border:1px solid var(--bd);border-radius:14px}
+    audio{width:100%}
+    .controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+    .chip{display:inline-flex;gap:6px;align-items:center;padding:6px 10px;border:1px solid var(--bd);border-radius:999px;background:rgba(255,255,255,.03);color:var(--muted);font-size:12px}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    select,button{background:rgba(255,255,255,.05);color:var(--text);border:1px solid var(--bd);border-radius:10px;padding:6px 10px;font-size:12px}
+    button{cursor:pointer}
+    .panel{margin-top:12px;background:rgba(15,26,51,.7);border:1px solid var(--bd);border-radius:14px;overflow:hidden}
+    .panel h2{margin:0;padding:12px;font-size:13px;color:var(--muted);border-bottom:1px solid rgba(255,255,255,.08)}
+    .lines{max-height:calc(100dvh - 320px);overflow:auto;padding:10px 10px 100px 10px;scroll-behavior:smooth}
+    .line{display:flex;gap:10px;padding:10px;border-radius:12px;border:1px solid transparent}
+    .line:hover{background:rgba(255,255,255,.03)}
+    .t{min-width:70px;color:var(--muted);font-variant-numeric:tabular-nums;font-size:12px}
+    .txt{flex:1;line-height:1.35;font-size:14px}
+    .current{background:var(--hl);color:var(--hlText);border-color:rgba(0,0,0,.12)}
+    .current .t{color:rgba(0,0,0,.62)}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Ep 695: AI as an Operating System: LLMs Are the Internet Now (Start Here Series Vol 3)</h1>
+    <p class="sub">Line-level highlighting synced to narration audio. Tap a line to jump.</p>
+    <div class="player">
+      <audio id="audio" controls preload="metadata">
+        <source src="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.352ee4e2.mp3" type="audio/mpeg">
+      </audio>
+      <div class="controls">
+        <span class="chip">Audio: <a href="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.352ee4e2.mp3" target="_blank" rel="noreferrer">Source</a></span>
+        <span class="chip">Timing: <a href="https://www.genspark.ai/api/files/s/Vq3kJjDh" target="_blank" rel="noreferrer">Source</a></span>
+        <label class="chip">Speed
+          <select id="speed">
+            <option value="0.8">0.8×</option>
+            <option value="0.9">0.9×</option>
+            <option value="1" selected>1.0×</option>
+            <option value="1.1">1.1×</option>
+            <option value="1.25">1.25×</option>
+          </select>
+        </label>
+        <button id="follow">Auto-follow: ON</button>
+      </div>
+    </div>
+  </div>
+</header>
+<main class="wrap">
+  <section class="panel">
+    <h2>Transcript</h2>
+    <div class="lines" id="lines"></div>
+  </section>
+</main>
+<script>
+  /* iOS Safari fix v2: visualViewport + calc(100dvh-320px) + padding-bottom:100px */
+  const segments = [
+    {s:0.12,e:1.08,t:"Good morning, everyone."},
+    {s:1.92,e:8.14,t:"Today, we need to discuss a massive shift in how we work and manage our businesses."},
+    {s:8.20,e:15.00,t:"We must stop thinking about artificial intelligence as a simple tool that we choose to use occasionally."},
+    {s:15.08,e:15.56,t:"Instead,"},
+    {s:16.00,e:23.32,t:"AI is rapidly becoming the core infrastructure or the operating system for all our daily business operations."},
+    {s:24.22,e:27.16,t:"Just like the Internet is essential for knowledge work today,"},
+    {s:27.76,e:31.80,t:"AI will soon be the required background service for everything we do."},
+    {s:32.76,e:36.28,t:"The data already shows the incredible scale of this transformation."},
+    {s:37.06,e:42.11,t:"Right now, nearly two billion people use AI on an almost weekly basis."},
+    {s:43.02,e:53.14,t:"More importantly for us as business leaders, ninety percent of knowledge workers who use AI report higher productivity compared to those who do not."},
+    {s:53.18,e:59.62,t:"By adopting this technology, leading organizations are completely redesigning their traditional processes."},
+    {s:60.28,e:75.62,t:"For example, a workflow that used to take ten steps and ten hours can now be collapsed into just three steps: human input, agent execution, and human oversight, and completed in just thirty minutes."},
+    {s:75.63,e:80.66,t:"This happens because the line between the traditional Internet and AI is disappearing."},
+    {s:81.56,e:84.88,t:"Soon, we will not browse the web in the way we do now."},
+    {s:85.54,e:92.32,t:"Instead, front-end large language models and agentic browsers will be the primary interface for our work."},
+    {s:93.40,e:100.36,t:"When you use AI as your operating system, you connect your company's dynamic data into a single chat interface."},
+    {s:101.10,e:113.52,t:"This allows your team members to collaborate in real time and greatly reduces the time lost to constantly switching between different software, an inefficiency that analysts call the app hop tax."},
+    {s:114.44,e:119.32,t:"This is entirely possible because AI has moved far beyond simple chatbots."},
+    {s:120.00,e:126.42,t:"Today, we utilize AI agents that can work autonomously to plan and execute tasks."},
+    {s:127.32,e:133.96,t:"According to a Gartner study, forty percent of enterprise applications will feature AI agents by this year."},
+    {s:134.94,e:141.68,t:"A major technological breakthrough driving this is the Model Context Protocol, or MCP."},
+    {s:142.57,e:151.52,t:"This new standard acts like a universal adapter, allowing different AI models, agentic tools, and enterprise data to communicate directly with each other."},
+    {s:152.44,e:158.74,t:"This means humans no longer have to manually copy and paste information across twenty different business apps."},
+    {s:159.68,e:168.71,t:"Estimates suggest that up to ninety percent of organizations using advanced enterprise AI have already implemented MCP compatible services."},
+    {s:169.76,e:175.90,t:"To build this new infrastructure, enterprises must choose their AI platform carefully."},
+    {s:175.94,e:180.20,t:"The main contenders today are Microsoft three sixty-five Copilot,"},
+    {s:180.80,e:181.66,t:"Google Gemini,"},
+    {s:182.16,e:186.10,t:"Anthropic Claude, and OpenAI's ChatGPT."},
+    {s:187.12,e:191.42,t:"Each offers different strengths, but their business adoption is undeniable."},
+    {s:191.76,e:199.93,t:"For instance, reports indicate that ninety-two percent of Fortune five hundred companies are already using an OpenAI product."},
+    {s:200.94,e:206.10,t:"However, simply buying an AI subscription is not a strategy."},
+    {s:206.11,e:219.24,t:"You must implement strong governance controls, manage human approval loops for sensitive actions, and build flexible backup systems in case a specific AI model changes in the future."},
+    {s:219.28,e:231.06,t:"The companies that successfully transition their daily operations into an AI native workspace will run faster, operate leaner, and gain a massive competitive advantage."},
+    {s:232.16,e:235.76,t:"The technology and frameworks exist today."},
+    {s:235.80,e:243.80,t:"The opportunity to transform your business is here, and the time to build your AI operating system is right now."},
+    {s:245.08,e:246.13,t:"Thank you for your time."}
+  ];
+  const audio   = document.getElementById("audio");
+  const linesEl = document.getElementById("lines");
+  const speed   = document.getElementById("speed");
+  const followBtn = document.getElementById("follow");
+  let follow = true, current = -1;
+  const fmt = sec => `${Math.floor(sec/60)}:${String(Math.floor(sec%60)).padStart(2,"0")}`;
+  segments.forEach((seg,i)=>{
+    const row = document.createElement("div");
+    row.className = "line"; row.dataset.i = i;
+    row.innerHTML = `<div class="t">${fmt(seg.s)}</div><div class="txt">${seg.t}</div>`;
+    row.onclick = () => { audio.currentTime = seg.s + 0.01; audio.play().catch(()=>{}); };
+    linesEl.appendChild(row);
+  });
+  speed.onchange = () => audio.playbackRate = Number(speed.value);
+  followBtn.onclick = () => { follow = !follow; followBtn.textContent = `Auto-follow: ${follow?"ON":"OFF"}`; };
+  function findIndex(t){
+    for(let i=0;i<segments.length;i++){ if(t>=segments[i].s && t<segments[i].e) return i; }
+    for(let i=segments.length-1;i>=0;i--){ if(t>=segments[i].s) return i; }
+    return 0;
+  }
+  function effectiveBottom(){
+    const c = linesEl.getBoundingClientRect();
+    if(window.visualViewport){
+      const vvB = window.visualViewport.offsetTop + window.visualViewport.height;
+      return Math.min(c.bottom, vvB);
+    }
+    return c.bottom;
+  }
+  function setCurrent(i){
+    if(i===current) return;
+    const prev = linesEl.querySelector(".current");
+    if(prev) prev.classList.remove("current");
+    current = i;
+    const cur = linesEl.querySelector(`.line[data-i="${i}"]`);
+    if(cur){
+      cur.classList.add("current");
+      if(follow){
+        const pad = 32;
+        const c = linesEl.getBoundingClientRect();
+        const r = cur.getBoundingClientRect();
+        const eB = effectiveBottom() - pad;
+        if(r.top < c.top + pad){
+          linesEl.scrollBy({top: r.top - (c.top + pad), behavior:"smooth"});
+        } else if(r.bottom > eB){
+          linesEl.scrollBy({top: r.bottom - eB, behavior:"smooth"});
+        }
+      }
+    }
+  }
+  audio.addEventListener("timeupdate", ()=> setCurrent(findIndex(audio.currentTime)));
+  audio.addEventListener("loadedmetadata", ()=> setCurrent(findIndex(0)));
+</script>
+</body>
+</html>
