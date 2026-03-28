@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Ep 703: AI Hallucinations: What they are, why they happen, and the right way to reduce the risk (Start Here Series Vol 5)</title>
+  <style>
+    :root{--bg:#0b1220;--panel:#0f1a33;--text:#e8eefc;--muted:#a9b7d6;--hl:#ffe08a;--hlText:#1b1b1b;--bd:rgba(255,255,255,.12);--accent:#7aa2ff}
+    body{margin:0;padding-bottom:env(safe-area-inset-bottom);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:linear-gradient(180deg,var(--bg),#070b14);color:var(--text)}
+    header{position:sticky;top:0;background:rgba(11,18,32,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--bd);z-index:10}
+    .wrap{max-width:980px;margin:0 auto;padding:14px 12px}
+    h1{margin:0 0 6px;font-size:16px}
+    .sub{margin:0;color:var(--muted);font-size:12px;line-height:1.4}
+    .player{margin-top:10px;padding:12px;background:rgba(15,26,51,.8);border:1px solid var(--bd);border-radius:14px}
+    audio{width:100%}
+    .controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+    .chip{display:inline-flex;gap:6px;align-items:center;padding:6px 10px;border:1px solid var(--bd);border-radius:999px;background:rgba(255,255,255,.03);color:var(--muted);font-size:12px}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    select,button{background:rgba(255,255,255,.05);color:var(--text);border:1px solid var(--bd);border-radius:10px;padding:6px 10px;font-size:12px}
+    button{cursor:pointer}
+    .panel{margin-top:12px;background:rgba(15,26,51,.7);border:1px solid var(--bd);border-radius:14px;overflow:hidden}
+    .panel h2{margin:0;padding:12px;font-size:13px;color:var(--muted);border-bottom:1px solid rgba(255,255,255,.08)}
+    .lines{max-height:calc(100dvh - 320px);overflow:auto;padding:10px 10px 100px 10px;scroll-behavior:smooth}
+    .line{display:flex;gap:10px;padding:10px;border-radius:12px;border:1px solid transparent}
+    .line:hover{background:rgba(255,255,255,.03)}
+    .t{min-width:70px;color:var(--muted);font-variant-numeric:tabular-nums;font-size:12px}
+    .txt{flex:1;line-height:1.35;font-size:14px}
+    .current{background:var(--hl);color:var(--hlText);border-color:rgba(0,0,0,.12)}
+    .current .t{color:rgba(0,0,0,.62)}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Ep 703: AI Hallucinations: What they are, why they happen, and the right way to reduce the risk (Start Here Series Vol 5)</h1>
+    <p class="sub">Line-level highlighting synced to narration audio. Tap a line to jump.</p>
+    <div class="player">
+      <audio id="audio" controls preload="metadata">
+        <source src="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.03292405.mp3" type="audio/mpeg">
+      </audio>
+      <div class="controls">
+        <span class="chip">Audio: <a href="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.03292405.mp3" target="_blank" rel="noreferrer">Source</a></span>
+        <span class="chip">Timing: <a href="https://www.genspark.ai/api/files/s/neZsXfJA" target="_blank" rel="noreferrer">Source</a></span>
+        <label class="chip">Speed
+          <select id="speed">
+            <option value="0.8">0.8×</option>
+            <option value="0.9">0.9×</option>
+            <option value="1" selected>1.0×</option>
+            <option value="1.1">1.1×</option>
+            <option value="1.25">1.25×</option>
+          </select>
+        </label>
+        <button id="follow">Auto-follow: ON</button>
+      </div>
+    </div>
+  </div>
+</header>
+<main class="wrap">
+  <section class="panel">
+    <h2>Transcript</h2>
+    <div class="lines" id="lines"></div>
+  </section>
+</main>
+<script>
+  /* iOS Safari fix v2: visualViewport + calc(100dvh-320px) + padding-bottom:100px */
+  const segments = [
+    {s:0.10,e:1.06,t:"Good morning, everyone."},
+    {s:2.00,e:9.86,t:"Today, we need to address the elephant in the room when it comes to enterprise AI: hallucinations."},
+    {s:10.96,e:21.38,t:"For many organizations, the fear of an AI system confidently generating false information is the primary reason they hesitate to adopt this powerful technology."},
+    {s:22.44,e:28.62,t:"However, we must stop viewing hallucinations as a fundamental disqualifying flaw."},
+    {s:28.66,e:34.44,t:"Instead, we need to understand them as a manageable property of advanced AI systems."},
+    {s:35.36,e:42.59,t:"If you use the right workflows, you can drastically reduce this risk and safely scale AI across your business."},
+    {s:43.55,e:51.70,t:"To understand why this is a business-critical issue, we have to look at the real-world costs of moving too fast without proper training."},
+    {s:52.56,e:62.80,t:"The AI Hallucination Cases Database recently documented four hundred eighty-six legal incidents worldwide that involved fabricated AI content."},
+    {s:63.60,e:71.10,t:"We have seen one hundred twenty-eight lawyers cited for filing court documents containing hallucinated fake cases."},
+    {s:72.00,e:74.10,t:"The financial impact is also very real."},
+    {s:74.88,e:88.46,t:"In one high-profile example, a major consulting firm had to refund a portion of a three hundred thousand dollar government contract because their report contained phantom citations generated by AI."},
+    {s:89.27,e:99.66,t:"These expensive and public embarrassments happen because companies are rolling out AI licenses to thousands of employees without teaching them how to verify the outputs."},
+    {s:100.58,e:103.86,t:"But the technology is improving at an incredible speed."},
+    {s:104.82,e:111.26,t:"Early AI models were highly unreliable, fabricating up to forty percent of academic citations."},
+    {s:112.06,e:125.40,t:"Today, the latest models have dropped that error rate down to just six point two percent on general queries, with developers reporting a thirty percent reduction in errors over just a few months."},
+    {s:125.41,e:129.95,t:"This massive improvement is largely due to something called the context window."},
+    {s:130.86,e:138.66,t:"Older models would suffer from brain fog during long tasks, dropping their factual recall ability down to forty-five percent."},
+    {s:139.58,e:150.96,t:"Today's models can process hundreds of thousands of words and maintain a ninety-five percent or higher factual recall rate without forgetting crucial details."},
+    {s:151.02,e:162.08,t:"Despite these technical improvements, the AI will still occasionally guess to be helpful, meaning human error is now a bigger risk than AI error."},
+    {s:162.12,e:166.72,t:"To protect our organizations, we must implement a strict four-layer workflow."},
+    {s:167.72,e:173.54,t:"First, we must change the model's default behavior by setting custom instructions."},
+    {s:173.60,e:185.44,t:"We can program our enterprise AI to explicitly say I do not know, provide a confidence score, and separate confirmed facts from assumptions instead of blindly guessing."},
+    {s:186.42,e:191.04,t:"Second, we must connect the AI to our own proprietary company data."},
+    {s:191.94,e:197.86,t:"This is a process known as Retrieval-Augmented Generation, or RAG."},
+    {s:198.82,e:205.88,t:"By forcing the AI to read your internal documents before it answers, you ground its responses in reality."},
+    {s:205.94,e:219.50,t:"A recent Stanford study proved that combining RAG with proper guardrails and human feedback reduced hallucinations by an incredible ninety-six percent compared to using a basic AI model."},
+    {s:220.60,e:224.62,t:"Third, we must build expert-driven verification loops."},
+    {s:225.40,e:231.32,t:"If an AI agent is performing high-stakes work, you cannot simply trust the final output."},
+    {s:231.90,e:244.24,t:"You should require a second pass review where an expert human, or even a secondary AI model, specifically checks the factual claims before anything goes to a client."},
+    {s:244.34,e:247.60,t:"Finally, we must trace the AI's logic."},
+    {s:248.36,e:255.15,t:"Modern AI models will show you their chain of thought, allowing you to see exactly how they reached a conclusion."},
+    {s:256.05,e:266.56,t:"Just as you would ask a junior employee to walk you through their research, you must audit the AI's step-by-step process to ensure it followed your instructions."},
+    {s:267.66,e:268.32,t:"In conclusion,"},
+    {s:268.94,e:276.22,t:"AI hallucinations will not completely disappear because these systems are fundamentally designed to predict patterns."},
+    {s:277.08,e:282.06,t:"However, the companies winning the AI race are not waiting for a perfect model."},
+    {s:282.74,e:287.68,t:"They are actively building multi-layered safety workflows into their daily operations."},
+    {s:288.68,e:301.06,t:"By grounding AI in your own data, enforcing strict instructions, and requiring expert verification, you can eliminate the fear of hallucinations and confidently transform your business."},
+    {s:302.20,e:303.12,t:"Thank you for your time."}
+  ];
+  const audio   = document.getElementById("audio");
+  const linesEl = document.getElementById("lines");
+  const speed   = document.getElementById("speed");
+  const followBtn = document.getElementById("follow");
+  let follow = true, current = -1;
+  const fmt = sec => `${Math.floor(sec/60)}:${String(Math.floor(sec%60)).padStart(2,"0")}`;
+  segments.forEach((seg,i)=>{
+    const row = document.createElement("div");
+    row.className = "line"; row.dataset.i = i;
+    row.innerHTML = `<div class="t">${fmt(seg.s)}</div><div class="txt">${seg.t}</div>`;
+    row.onclick = () => { audio.currentTime = seg.s + 0.01; audio.play().catch(()=>{}); };
+    linesEl.appendChild(row);
+  });
+  speed.onchange = () => audio.playbackRate = Number(speed.value);
+  followBtn.onclick = () => { follow = !follow; followBtn.textContent = `Auto-follow: ${follow?"ON":"OFF"}`; };
+  function findIndex(t){
+    for(let i=0;i<segments.length;i++){ if(t>=segments[i].s && t<segments[i].e) return i; }
+    for(let i=segments.length-1;i>=0;i--){ if(t>=segments[i].s) return i; }
+    return 0;
+  }
+  function effectiveBottom(){
+    const c = linesEl.getBoundingClientRect();
+    if(window.visualViewport){
+      const vvB = window.visualViewport.offsetTop + window.visualViewport.height;
+      return Math.min(c.bottom, vvB);
+    }
+    return c.bottom;
+  }
+  function setCurrent(i){
+    if(i===current) return;
+    const prev = linesEl.querySelector(".current");
+    if(prev) prev.classList.remove("current");
+    current = i;
+    const cur = linesEl.querySelector(`.line[data-i="${i}"]`);
+    if(cur){
+      cur.classList.add("current");
+      if(follow){
+        const pad = 32;
+        const c = linesEl.getBoundingClientRect();
+        const r = cur.getBoundingClientRect();
+        const eB = effectiveBottom() - pad;
+        if(r.top < c.top + pad){
+          linesEl.scrollBy({top: r.top - (c.top + pad), behavior:"smooth"});
+        } else if(r.bottom > eB){
+          linesEl.scrollBy({top: r.bottom - eB, behavior:"smooth"});
+        }
+      }
+    }
+  }
+  audio.addEventListener("timeupdate", ()=> setCurrent(findIndex(audio.currentTime)));
+  audio.addEventListener("loadedmetadata", ()=> setCurrent(findIndex(0)));
+</script>
+</body>
+</html>
