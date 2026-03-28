@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>Ep 693: AI Without the Jargon: The Language Every Business Leader Needs in 2026(Start Here Series Vol 2)</title>
+  <title>Ep 693: AI Without the Jargon: The Language Every Business Leader Needs in 2026 (Start Here Series Vol 2)</title>
   <style>
     :root{--bg:#0b1220;--panel:#0f1a33;--text:#e8eefc;--muted:#a9b7d6;--hl:#ffe08a;--hlText:#1b1b1b;--bd:rgba(255,255,255,.12);--accent:#7aa2ff}
     body{margin:0;padding-bottom:env(safe-area-inset-bottom);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:linear-gradient(180deg,var(--bg),#070b14);color:var(--text)}
@@ -21,7 +21,7 @@
     button{cursor:pointer}
     .panel{margin-top:12px;background:rgba(15,26,51,.7);border:1px solid var(--bd);border-radius:14px;overflow:hidden}
     .panel h2{margin:0;padding:12px;font-size:13px;color:var(--muted);border-bottom:1px solid rgba(255,255,255,.08)}
-    .lines{max-height:62dvh;overflow:auto;padding:10px 10px calc(env(safe-area-inset-bottom) + 64px) 10px;scroll-behavior:smooth}
+    .lines{max-height:calc(100dvh - 320px);overflow:auto;padding:10px 10px 100px 10px;scroll-behavior:smooth}
     .line{display:flex;gap:10px;padding:10px;border-radius:12px;border:1px solid transparent}
     .line:hover{background:rgba(255,255,255,.03)}
     .t{min-width:70px;color:var(--muted);font-variant-numeric:tabular-nums;font-size:12px}
@@ -33,7 +33,7 @@
 <body>
 <header>
   <div class="wrap">
-    <h1>Ep 693: AI Without the Jargon: The Language Every Business Leader Needs in 2026(Start Here Series Vol 2)</h1>
+    <h1>Ep 693: AI Without the Jargon: The Language Every Business Leader Needs in 2026 (Start Here Series Vol 2)</h1>
     <p class="sub">Line-level highlighting synced to narration audio. Tap a line to jump.</p>
     <div class="player">
       <audio id="audio" controls preload="metadata">
@@ -63,8 +63,7 @@
   </section>
 </main>
 <script>
-  /* Auto-follow fix: getBoundingClientRect + scrollBy (pad=32) */
-  /* iOS Safari fix: dvh + safe-area-inset-bottom + viewport-fit=cover */
+  /* iOS Safari fix v2: visualViewport + calc(100dvh-320px) + padding-bottom:100px */
   const segments = [
     {s:0.08,e:1.02,t:"Good morning, everyone."},
     {s:2.26,e:2.56,t:"Today,"},
@@ -129,6 +128,14 @@
     for(let i=segments.length-1;i>=0;i--){ if(t>=segments[i].s) return i; }
     return 0;
   }
+  function effectiveBottom(){
+    const c = linesEl.getBoundingClientRect();
+    if(window.visualViewport){
+      const vvB = window.visualViewport.offsetTop + window.visualViewport.height;
+      return Math.min(c.bottom, vvB);
+    }
+    return c.bottom;
+  }
   function setCurrent(i){
     if(i===current) return;
     const prev = linesEl.querySelector(".current");
@@ -141,10 +148,11 @@
         const pad = 32;
         const c = linesEl.getBoundingClientRect();
         const r = cur.getBoundingClientRect();
+        const eB = effectiveBottom() - pad;
         if(r.top < c.top + pad){
           linesEl.scrollBy({top: r.top - (c.top + pad), behavior:"smooth"});
-        } else if(r.bottom > c.bottom - pad){
-          linesEl.scrollBy({top: r.bottom - (c.bottom - pad), behavior:"smooth"});
+        } else if(r.bottom > eB){
+          linesEl.scrollBy({top: r.bottom - eB, behavior:"smooth"});
         }
       }
     }
