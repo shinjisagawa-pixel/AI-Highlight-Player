@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ep 691: Generative AI: How it works and why it matters in 2026 more than ever (Start Here Series Vol 1)</title>
+  <style>
+    :root{--bg:#0b1220;--panel:#0f1a33;--text:#e8eefc;--muted:#a9b7d6;--hl:#ffe08a;--hlText:#1b1b1b;--bd:rgba(255,255,255,.12);--accent:#7aa2ff}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:linear-gradient(180deg,var(--bg),#070b14);color:var(--text)}
+    header{position:sticky;top:0;background:rgba(11,18,32,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--bd);z-index:10}
+    .wrap{max-width:980px;margin:0 auto;padding:14px 12px}
+    h1{margin:0 0 6px;font-size:16px}
+    .sub{margin:0;color:var(--muted);font-size:12px;line-height:1.4}
+    .player{margin-top:10px;padding:12px;background:rgba(15,26,51,.8);border:1px solid var(--bd);border-radius:14px}
+    audio{width:100%}
+    .controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+    .chip{display:inline-flex;gap:6px;align-items:center;padding:6px 10px;border:1px solid var(--bd);border-radius:999px;background:rgba(255,255,255,.03);color:var(--muted);font-size:12px}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    select,button{background:rgba(255,255,255,.05);color:var(--text);border:1px solid var(--bd);border-radius:10px;padding:6px 10px;font-size:12px}
+    button{cursor:pointer}
+    .panel{margin-top:12px;background:rgba(15,26,51,.7);border:1px solid var(--bd);border-radius:14px;overflow:hidden}
+    .panel h2{margin:0;padding:12px;font-size:13px;color:var(--muted);border-bottom:1px solid rgba(255,255,255,.08)}
+    .lines{max-height:62vh;overflow:auto;padding:10px;scroll-behavior:smooth}
+    .line{display:flex;gap:10px;padding:10px;border-radius:12px;border:1px solid transparent}
+    .line:hover{background:rgba(255,255,255,.03)}
+    .t{min-width:70px;color:var(--muted);font-variant-numeric:tabular-nums;font-size:12px}
+    .txt{flex:1;line-height:1.35;font-size:14px}
+    .current{background:var(--hl);color:var(--hlText);border-color:rgba(0,0,0,.12)}
+    .current .t{color:rgba(0,0,0,.62)}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Ep 691: Generative AI: How it works and why it matters in 2026 more than ever (Start Here Series Vol 1)</h1>
+    <p class="sub">Line-level highlighting synced to narration audio. Tap a line to jump.</p>
+    <div class="player">
+      <audio id="audio" controls preload="metadata">
+        <source src="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.bfd524dd.mp3" type="audio/mpeg">
+      </audio>
+      <div class="controls">
+        <span class="chip">Audio: <a href="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.bfd524dd.mp3" target="_blank" rel="noreferrer">Source</a></span>
+        <span class="chip">Timing: <a href="https://www.genspark.ai/api/files/s/Ptb6F1uj" target="_blank" rel="noreferrer">Source</a></span>
+        <label class="chip">Speed
+          <select id="speed">
+            <option value="0.8">0.8×</option>
+            <option value="0.9">0.9×</option>
+            <option value="1" selected>1.0×</option>
+            <option value="1.1">1.1×</option>
+            <option value="1.25">1.25×</option>
+          </select>
+        </label>
+        <button id="follow">Auto-follow: ON</button>
+      </div>
+    </div>
+  </div>
+</header>
+<main class="wrap">
+  <section class="panel">
+    <h2>Transcript</h2>
+    <div class="lines" id="lines"></div>
+  </section>
+</main>
+<script>
+  /* Auto-follow fix applied — getBoundingClientRect + scrollBy (pad=32) */
+  const segments = [
+    {s:0.08,e:0.72,t:"Slide one:"},
+    {s:1.64,e:4.48,t:"The unprecedented scale of generative AI."},
+    {s:5.68,e:7.32,t:"Good morning, everyone."},
+    {s:7.38,e:12.16,t:"Today, we are looking at the reality of generative AI in twenty twenty-six."},
+    {s:13.28,e:15.48,t:"Let's start with a simple fact."},
+    {s:15.56,e:18.18,t:"Nothing in human history has spread this fast."},
+    {s:18.99,e:22.82,t:"To reach one hundred million users, the Internet took eight years."},
+    {s:23.56,e:27.42,t:"ChatGPT reached that same milestone in just two months."},
+    {s:28.30,e:33.72,t:"Today, there are nearly nine hundred million weekly users of this technology."},
+    {s:33.78,e:40.50,t:"Just two years after its launch, forty percent of working-age Americans are using generative AI regularly."},
+    {s:41.20,e:45.78,t:"For context, it took the Internet seven years to reach that level of adoption."},
+    {s:46.88,e:51.70,t:"Generative AI is no longer a novelty, a trend, or an emerging concept."},
+    {s:52.46,e:58.90,t:"It is the new foundation of the business world, and today, we will discuss why it matters to your company more than ever."},
+    {s:60.20,e:60.84,t:"Slide two:"},
+    {s:61.66,e:64.30,t:"From chatbots to AI operating systems."},
+    {s:65.58,e:71.08,t:"A major reason for this massive shift is that the technology itself has completely evolved."},
+    {s:71.98,e:76.24,t:"In twenty twenty-two, we viewed AI as a friendly chatbot."},
+    {s:76.30,e:79.44,t:"You asked a question, and it gave you text."},
+    {s:79.50,e:83.16,t:"Today, these systems are fully functional operating systems."},
+    {s:84.02,e:89.40,t:"Right now, ninety-two percent of Fortune five hundred companies use OpenAI technology."},
+    {s:90.08,e:97.82,t:"More importantly, eighty percent of companies are already deploying AI agents capable of taking autonomous actions."},
+    {s:97.92,e:108.62,t:"Modern AI does not just answer questions, it can control a computer, access local file systems, browse the Internet, and execute complex multi-step workflows."},
+    {s:109.56,e:115.48,t:"Business leaders must realize that choosing an AI platform today, whether it is Microsoft Copilot,"},
+    {s:115.90,e:122.52,t:"Google Gemini, or Anthropic Claude, is exactly like choosing whether your company runs on Windows or Mac."},
+    {s:123.22,e:126.78,t:"It is a foundational infrastructure decision."},
+    {s:126.90,e:127.64,t:"Slide three:"},
+    {s:128.36,e:130.50,t:"The undeniable return on investment."},
+    {s:131.66,e:135.40,t:"You might have seen headlines claiming that AI pilots are failing."},
+    {s:135.46,e:139.47,t:"However, large-scale independent data proves the exact opposite."},
+    {s:140.31,e:144.96,t:"The return on investment for generative AI is substantial and undeniable."},
+    {s:145.94,e:157.82,t:"According to the International Data Corporation, companies are seeing a $3.70 return for every $1 invested, with top performers seeing returns of over $10."},
+    {s:158.76,e:167.14,t:"A recent survey showed that ninety-two percent of enterprise early adopters are already breaking even or profiting from their AI investments."},
+    {s:167.88,e:171.18,t:"When we look at daily workflows, the impact is massive."},
+    {s:172.10,e:176.08,t:"Research shows an eighty percent reduction in task completion time."},
+    {s:176.92,e:190.42,t:"A complex research and data synthesis project that used to take one hundred hours of human labor can now be completed by a single AI model in under ten minutes with extremely high factual accuracy."},
+    {s:190.52,e:191.17,t:"Slide four:"},
+    {s:191.78,e:193.44,t:"The impact on the workforce."},
+    {s:194.58,e:201.45,t:"Because AI can perform these tasks so efficiently, the traditional workforce is experiencing severe disruption."},
+    {s:201.78,e:206.91,t:"Companies are rapidly shifting their investments toward automation and AI infrastructure."},
+    {s:207.60,e:214.34,t:"As a result, entry-level hiring has dropped by forty-four percent from its peak just three years ago."},
+    {s:215.26,e:222.30,t:"In twenty twenty-five, only thirty percent of college graduates successfully secured a job in their chosen field."},
+    {s:223.12,e:230.66,t:"At the same time, sixty-two percent of employers now explicitly require AI knowledge for new hires."},
+    {s:230.74,e:236.19,t:"Organizations are realizing that they may not need as many people to do standard knowledge work."},
+    {s:236.86,e:242.62,t:"Instead, global spending on AI is expected to hit two trillion dollars this year."},
+    {s:243.46,e:249.06,t:"The companies that are surviving and growing are the ones betting heavily on AI automation."},
+    {s:250.18,e:252.88,t:"Moving from experimentation to execution."},
+    {s:254.00,e:257.88,t:"So, what is the strategic move for your company right now?"},
+    {s:258.76,e:263.58,t:"You must immediately move from experimentation to full-scale execution."},
+    {s:264.25,e:270.10,t:"The gap between AI-fluent companies and everyone else is widening every single day."},
+    {s:270.94,e:281.32,t:"Data shows that early adopters are three times more likely to see a positive impact on their operating profit compared to companies that are still running slow, limited pilots."},
+    {s:282.24,e:288.62,t:"You cannot treat AI as a small tool that you simply add on top of your existing workflows."},
+    {s:288.68,e:296.84,t:"You must unlearn outdated business habits and restructure your roles and processes to be completely AI native."},
+    {s:296.90,e:300.52,t:"The window to gain a competitive advantage is closing fast."},
+    {s:301.24,e:310.04,t:"Now is the time to choose your AI operating system, train your teams, and scale these autonomous tools across your entire enterprise."},
+    {s:311.06,e:311.50,t:"Thank you."}
+  ];
+  const audio   = document.getElementById("audio");
+  const linesEl = document.getElementById("lines");
+  const speed   = document.getElementById("speed");
+  const followBtn = document.getElementById("follow");
+  let follow = true, current = -1;
+  const fmt = sec => `${Math.floor(sec/60)}:${String(Math.floor(sec%60)).padStart(2,"0")}`;
+  segments.forEach((seg,i)=>{
+    const row = document.createElement("div");
+    row.className = "line"; row.dataset.i = i;
+    row.innerHTML = `<div class="t">${fmt(seg.s)}</div><div class="txt">${seg.t}</div>`;
+    row.onclick = () => { audio.currentTime = seg.s + 0.01; audio.play().catch(()=>{}); };
+    linesEl.appendChild(row);
+  });
+  speed.onchange = () => audio.playbackRate = Number(speed.value);
+  followBtn.onclick = () => { follow = !follow; followBtn.textContent = `Auto-follow: ${follow?"ON":"OFF"}`; };
+  function findIndex(t){
+    for(let i=0;i<segments.length;i++){ if(t>=segments[i].s && t<segments[i].e) return i; }
+    for(let i=segments.length-1;i>=0;i--){ if(t>=segments[i].s) return i; }
+    return 0;
+  }
+  function setCurrent(i){
+    if(i===current) return;
+    const prev = linesEl.querySelector(".current");
+    if(prev) prev.classList.remove("current");
+    current = i;
+    const cur = linesEl.querySelector(`.line[data-i="${i}"]`);
+    if(cur){
+      cur.classList.add("current");
+      if(follow){
+        const pad = 32;
+        const c = linesEl.getBoundingClientRect();
+        const r = cur.getBoundingClientRect();
+        if(r.top < c.top + pad){
+          linesEl.scrollBy({top: r.top - (c.top + pad), behavior:"smooth"});
+        } else if(r.bottom > c.bottom - pad){
+          linesEl.scrollBy({top: r.bottom - (c.bottom - pad), behavior:"smooth"});
+        }
+      }
+    }
+  }
+  audio.addEventListener("timeupdate", ()=> setCurrent(findIndex(audio.currentTime)));
+  audio.addEventListener("loadedmetadata", ()=> setCurrent(findIndex(0)));
+</script>
+</body>
+</html>
