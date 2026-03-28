@@ -14,11 +14,12 @@ Audio + transcript player with **line-level highlighting** (mobile-friendly).
 | 2 | Harvey Agent Builder: From Steps to Outcomes | https://shinjisagawa-pixel.github.io/AI-Highlight-Player/talks/2026-03-harvey-agent-builder/ |
 | 3 | Ep 691: Generative AI: How it works and why it matters in 2026 more than ever (Start Here Series Vol 1) | https://shinjisagawa-pixel.github.io/AI-Highlight-Player/talks/2026-03-generative-ai-start-here/ |
 | 4 | Ep 740: Everything Is Fake: How Your Company Can Leverage Human Expertise and Fight AI Workslop (Start Here Series Ep 15) | https://shinjisagawa-pixel.github.io/AI-Highlight-Player/talks/2026-03-expert-driven-ai-trust/ |
-| 5 | Ep 695: AI as an Operating System: LLMs Are the Internet Now (Start Here Series Vol 3) | https://shinjisagawa-pixel.github.io/AI-Highlight-Player/talks/2026-03-ep695-ai-as-operating-system/ |
-| 6 | Ep 693: AI Without the Jargon: The Language Every Business Leader Needs in 2026 (Start Here Series Vol 2) | https://shinjisagawa-pixel.github.io/AI-Highlight-Player/talks/2026-03-ep693-ai-language-leaders/ |
-| 7 | The State of the AI Race in 2026 | https://shinjisagawa-pixel.github.io/AI-Highlight-Player/talks/2026-03-ai-race-2026/ |
-| 8 | The AI Labor Shift: Follow the Money, Protect Your Career | https://shinjisagawa-pixel.github.io/AI-Highlight-Player/talks/2026-03-ai-labor-shift/ |
-| 9 | The AI Value Gap: 5 Governance Rules to Scale Agentic AI | https://shinjisagawa-pixel.github.io/AI-Highlight-Player/talks/2026-03-ai-governance-rules/ |
+| 5 | Ep 698: Human-AI Collaboration: Best practices for working alongside AI (Start Here Series Vol 4) | https://shinjisagawa-pixel.github.io/AI-Highlight-Player/talks/2026-03-ep698-human-ai-collaboration/ |
+| 6 | Ep 695: AI as an Operating System: LLMs Are the Internet Now (Start Here Series Vol 3) | https://shinjisagawa-pixel.github.io/AI-Highlight-Player/talks/2026-03-ep695-ai-as-operating-system/ |
+| 7 | Ep 693: AI Without the Jargon: The Language Every Business Leader Needs in 2026 (Start Here Series Vol 2) | https://shinjisagawa-pixel.github.io/AI-Highlight-Player/talks/2026-03-ep693-ai-language-leaders/ |
+| 8 | The State of the AI Race in 2026 | https://shinjisagawa-pixel.github.io/AI-Highlight-Player/talks/2026-03-ai-race-2026/ |
+| 9 | The AI Labor Shift: Follow the Money, Protect Your Career | https://shinjisagawa-pixel.github.io/AI-Highlight-Player/talks/2026-03-ai-labor-shift/ |
+| 10 | The AI Value Gap: 5 Governance Rules to Scale Agentic AI | https://shinjisagawa-pixel.github.io/AI-Highlight-Player/talks/2026-03-ai-governance-rules/ |
       <!-- TALKS_TABLE_END -->
 
 
