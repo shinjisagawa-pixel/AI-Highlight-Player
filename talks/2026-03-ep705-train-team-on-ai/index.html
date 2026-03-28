@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Ep 705: How to Train Your Team on AI: The 7 Steps to Educate Your Organization on LLMs (Start Here Series Vol 6)</title>
+  <style>
+    :root{--bg:#0b1220;--panel:#0f1a33;--text:#e8eefc;--muted:#a9b7d6;--hl:#ffe08a;--hlText:#1b1b1b;--bd:rgba(255,255,255,.12);--accent:#7aa2ff}
+    body{margin:0;padding-bottom:env(safe-area-inset-bottom);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:linear-gradient(180deg,var(--bg),#070b14);color:var(--text)}
+    header{position:sticky;top:0;background:rgba(11,18,32,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--bd);z-index:10}
+    .wrap{max-width:980px;margin:0 auto;padding:14px 12px}
+    h1{margin:0 0 6px;font-size:16px}
+    .sub{margin:0;color:var(--muted);font-size:12px;line-height:1.4}
+    .player{margin-top:10px;padding:12px;background:rgba(15,26,51,.8);border:1px solid var(--bd);border-radius:14px}
+    audio{width:100%}
+    .controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+    .chip{display:inline-flex;gap:6px;align-items:center;padding:6px 10px;border:1px solid var(--bd);border-radius:999px;background:rgba(255,255,255,.03);color:var(--muted);font-size:12px}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    select,button{background:rgba(255,255,255,.05);color:var(--text);border:1px solid var(--bd);border-radius:10px;padding:6px 10px;font-size:12px}
+    button{cursor:pointer}
+    .panel{margin-top:12px;background:rgba(15,26,51,.7);border:1px solid var(--bd);border-radius:14px;overflow:hidden}
+    .panel h2{margin:0;padding:12px;font-size:13px;color:var(--muted);border-bottom:1px solid rgba(255,255,255,.08)}
+    .lines{max-height:calc(100dvh - 320px);overflow:auto;padding:10px 10px 100px 10px;scroll-behavior:smooth}
+    .line{display:flex;gap:10px;padding:10px;border-radius:12px;border:1px solid transparent}
+    .line:hover{background:rgba(255,255,255,.03)}
+    .t{min-width:70px;color:var(--muted);font-variant-numeric:tabular-nums;font-size:12px}
+    .txt{flex:1;line-height:1.35;font-size:14px}
+    .current{background:var(--hl);color:var(--hlText);border-color:rgba(0,0,0,.12)}
+    .current .t{color:rgba(0,0,0,.62)}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Ep 705: How to Train Your Team on AI: The 7 Steps to Educate Your Organization on LLMs (Start Here Series Vol 6)</h1>
+    <p class="sub">Line-level highlighting synced to narration audio. Tap a line to jump.</p>
+    <div class="player">
+      <audio id="audio" controls preload="metadata">
+        <source src="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.29263e89.mp3" type="audio/mpeg">
+      </audio>
+      <div class="controls">
+        <span class="chip">Audio: <a href="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.29263e89.mp3" target="_blank" rel="noreferrer">Source</a></span>
+        <span class="chip">Timing: <a href="https://www.genspark.ai/api/files/s/MnbcKT4D" target="_blank" rel="noreferrer">Source</a></span>
+        <label class="chip">Speed
+          <select id="speed">
+            <option value="0.8">0.8×</option>
+            <option value="0.9">0.9×</option>
+            <option value="1" selected>1.0×</option>
+            <option value="1.1">1.1×</option>
+            <option value="1.25">1.25×</option>
+          </select>
+        </label>
+        <button id="follow">Auto-follow: ON</button>
+      </div>
+    </div>
+  </div>
+</header>
+<main class="wrap">
+  <section class="panel">
+    <h2>Transcript</h2>
+    <div class="lines" id="lines"></div>
+  </section>
+</main>
+<script>
+  /* iOS Safari fix v2: visualViewport + calc(100dvh-320px) + padding-bottom:100px */
+  const segments = [
+    {s:0.08,e:1.74,t:"Good morning, everyone."},
+    {s:1.78,e:13.39,t:"Today, we need to discuss a critical issue facing corporate America: the massive gap between buying artificial intelligence tools and actually training employees to use them."},
+    {s:14.22,e:23.62,t:"Right now, ninety-two percent of companies are planning higher AI investments, but a shocking one percent consider their AI deployments to be mature."},
+    {s:24.40,e:35.42,t:"Furthermore, a recent study predicts that by the end of twenty twenty-six, less than thirty percent of large enterprises will actually mandate AI training for their teams."},
+    {s:36.06,e:41.86,t:"We are spending millions on software but failing at the most basic step: education."},
+    {s:42.66,e:50.49,t:"To bridge this gap, organizations must follow seven concrete steps to train their teams and achieve a real return on investment."},
+    {s:51.38,e:54.24,t:"Step one is that leadership must go first."},
+    {s:55.14,e:58.94,t:"AI transformation will fail if it is just a top-down mandate."},
+    {s:59.71,e:67.92,t:"CEOs and senior leaders must become daily users of AI tools to set an authentic AI-first standard."},
+    {s:68.78,e:74.90,t:"You cannot expect your team to change how they work if the top executives are still doing things the old way."},
+    {s:75.72,e:80.22,t:"Step two requires us to fix broken workflows before adding AI."},
+    {s:81.08,e:87.78,t:"If you add AI to an inefficient, poorly designed process, you will only make the confusion and errors worse."},
+    {s:88.72,e:97.36,t:"Before implementing AI, you must systematically redesign your workflows so that they make sense even without automation."},
+    {s:97.46,e:101.16,t:"Step three is to pick one AI platform and commit to it."},
+    {s:101.96,e:107.44,t:"Many companies suffer from tool sprawl, using a mix of platforms across different departments."},
+    {s:108.24,e:115.00,t:"This fragmentation leads to inconsistent data practices and security risks like shadow IT."},
+    {s:115.82,e:125.00,t:"You must select a single AI operating system, ideally one that aligns with your current cloud provider, and train everyone within that one platform."},
+    {s:125.94,e:130.30,t:"Step four involves training your employees in three distinct layers."},
+    {s:131.16,e:141.56,t:"Many companies mistakenly believe that simply upskilling is enough, but we actually need to unlearn old habits and rebuild our workflows."},
+    {s:141.62,e:146.86,t:"The training must start with basic AI literacy for the entire organization."},
+    {s:146.94,e:151.80,t:"Next, it must provide role-specific training tailored to individual departments."},
+    {s:152.56,e:156.92,t:"Finally, it must focus on data and procedure mastery."},
+    {s:157.00,e:162.34,t:"This leads directly into step five: documenting your procedures, not just your data."},
+    {s:163.22,e:170.30,t:"While connecting structured data to AI is common, the real business value lies in capturing human decision-making."},
+    {s:171.08,e:176.94,t:"We need to document how our top performers solve complex problems and make expert decisions."},
+    {s:177.92,e:187.99,t:"Capturing this unstructured data allows AI agents to replicate high-value human behaviors and prevents knowledge loss when key employees leave the company."},
+    {s:189.00,e:195.18,t:"Step six is to mandate hands-on practice and focus on outputs rather than usage metrics."},
+    {s:195.24,e:200.54,t:"You cannot measure AI success simply by checking how many people logged into the platform."},
+    {s:201.18,e:210.62,t:"Instead, you should host regular hands-on workshops, such as ninety-minute sessions where teams tackle real department challenges together."},
+    {s:211.52,e:216.68,t:"You must measure the quality and business impact of the actual work produced."},
+    {s:218.78,e:228.08,t:"Finally, step seven is the ultimate goal: transitioning your team from being AI operators to AI orchestrators."},
+    {s:229.10,e:235.00,t:"Over the next five to ten years, the nature of knowledge work will change drastically."},
+    {s:235.01,e:240.76,t:"The most valuable employees will not be the people who simply type prompts or push buttons."},
+    {s:241.42,e:248.28,t:"Instead, they will be the people who design, supervise, and refine autonomous AI workflows."},
+    {s:248.96,e:259.03,t:"We must shift our focus to managing AI agents, placing our smartest human experts at key oversight points to review the AI's work."},
+    {s:260.70,e:265.65,t:"In conclusion, simply buying AI software is not a strategy."},
+    {s:266.38,e:276.70,t:"To stop running in circles and start seeing real results, we must intentionally rebuild our technology, our processes, and our skill sets."},
+    {s:277.44,e:288.24,t:"By following these seven steps, we can successfully transition our workforce and build organizations where human and artificial intelligence grow together."},
+    {s:289.92,e:290.30,t:"Thank you."}
+  ];
+  const audio   = document.getElementById("audio");
+  const linesEl = document.getElementById("lines");
+  const speed   = document.getElementById("speed");
+  const followBtn = document.getElementById("follow");
+  let follow = true, current = -1;
+  const fmt = sec => `${Math.floor(sec/60)}:${String(Math.floor(sec%60)).padStart(2,"0")}`;
+  segments.forEach((seg,i)=>{
+    const row = document.createElement("div");
+    row.className = "line"; row.dataset.i = i;
+    row.innerHTML = `<div class="t">${fmt(seg.s)}</div><div class="txt">${seg.t}</div>`;
+    row.onclick = () => { audio.currentTime = seg.s + 0.01; audio.play().catch(()=>{}); };
+    linesEl.appendChild(row);
+  });
+  speed.onchange = () => audio.playbackRate = Number(speed.value);
+  followBtn.onclick = () => { follow = !follow; followBtn.textContent = `Auto-follow: ${follow?"ON":"OFF"}`; };
+  function findIndex(t){
+    for(let i=0;i<segments.length;i++){ if(t>=segments[i].s && t<segments[i].e) return i; }
+    for(let i=segments.length-1;i>=0;i--){ if(t>=segments[i].s) return i; }
+    return 0;
+  }
+  function effectiveBottom(){
+    const c = linesEl.getBoundingClientRect();
+    if(window.visualViewport){
+      const vvB = window.visualViewport.offsetTop + window.visualViewport.height;
+      return Math.min(c.bottom, vvB);
+    }
+    return c.bottom;
+  }
+  function setCurrent(i){
+    if(i===current) return;
+    const prev = linesEl.querySelector(".current");
+    if(prev) prev.classList.remove("current");
+    current = i;
+    const cur = linesEl.querySelector(`.line[data-i="${i}"]`);
+    if(cur){
+      cur.classList.add("current");
+      if(follow){
+        const pad = 32;
+        const c = linesEl.getBoundingClientRect();
+        const r = cur.getBoundingClientRect();
+        const eB = effectiveBottom() - pad;
+        if(r.top < c.top + pad){
+          linesEl.scrollBy({top: r.top - (c.top + pad), behavior:"smooth"});
+        } else if(r.bottom > eB){
+          linesEl.scrollBy({top: r.bottom - eB, behavior:"smooth"});
+        }
+      }
+    }
+  }
+  audio.addEventListener("timeupdate", ()=> setCurrent(findIndex(audio.currentTime)));
+  audio.addEventListener("loadedmetadata", ()=> setCurrent(findIndex(0)));
+</script>
+</body>
+</html>
