@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Ep 698: Human-AI Collaboration: Best practices for working alongside AI (Start Here Series Vol 4)</title>
+  <style>
+    :root{--bg:#0b1220;--panel:#0f1a33;--text:#e8eefc;--muted:#a9b7d6;--hl:#ffe08a;--hlText:#1b1b1b;--bd:rgba(255,255,255,.12);--accent:#7aa2ff}
+    body{margin:0;padding-bottom:env(safe-area-inset-bottom);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:linear-gradient(180deg,var(--bg),#070b14);color:var(--text)}
+    header{position:sticky;top:0;background:rgba(11,18,32,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--bd);z-index:10}
+    .wrap{max-width:980px;margin:0 auto;padding:14px 12px}
+    h1{margin:0 0 6px;font-size:16px}
+    .sub{margin:0;color:var(--muted);font-size:12px;line-height:1.4}
+    .player{margin-top:10px;padding:12px;background:rgba(15,26,51,.8);border:1px solid var(--bd);border-radius:14px}
+    audio{width:100%}
+    .controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+    .chip{display:inline-flex;gap:6px;align-items:center;padding:6px 10px;border:1px solid var(--bd);border-radius:999px;background:rgba(255,255,255,.03);color:var(--muted);font-size:12px}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    select,button{background:rgba(255,255,255,.05);color:var(--text);border:1px solid var(--bd);border-radius:10px;padding:6px 10px;font-size:12px}
+    button{cursor:pointer}
+    .panel{margin-top:12px;background:rgba(15,26,51,.7);border:1px solid var(--bd);border-radius:14px;overflow:hidden}
+    .panel h2{margin:0;padding:12px;font-size:13px;color:var(--muted);border-bottom:1px solid rgba(255,255,255,.08)}
+    .lines{max-height:calc(100dvh - 320px);overflow:auto;padding:10px 10px 100px 10px;scroll-behavior:smooth}
+    .line{display:flex;gap:10px;padding:10px;border-radius:12px;border:1px solid transparent}
+    .line:hover{background:rgba(255,255,255,.03)}
+    .t{min-width:70px;color:var(--muted);font-variant-numeric:tabular-nums;font-size:12px}
+    .txt{flex:1;line-height:1.35;font-size:14px}
+    .current{background:var(--hl);color:var(--hlText);border-color:rgba(0,0,0,.12)}
+    .current .t{color:rgba(0,0,0,.62)}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Ep 698: Human-AI Collaboration: Best practices for working alongside AI (Start Here Series Vol 4)</h1>
+    <p class="sub">Line-level highlighting synced to narration audio. Tap a line to jump.</p>
+    <div class="player">
+      <audio id="audio" controls preload="metadata">
+        <source src="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.a902f4b1.mp3" type="audio/mpeg">
+      </audio>
+      <div class="controls">
+        <span class="chip">Audio: <a href="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.a902f4b1.mp3" target="_blank" rel="noreferrer">Source</a></span>
+        <span class="chip">Timing: <a href="https://www.genspark.ai/api/files/s/6NvwxCzn" target="_blank" rel="noreferrer">Source</a></span>
+        <label class="chip">Speed
+          <select id="speed">
+            <option value="0.8">0.8×</option>
+            <option value="0.9">0.9×</option>
+            <option value="1" selected>1.0×</option>
+            <option value="1.1">1.1×</option>
+            <option value="1.25">1.25×</option>
+          </select>
+        </label>
+        <button id="follow">Auto-follow: ON</button>
+      </div>
+    </div>
+  </div>
+</header>
+<main class="wrap">
+  <section class="panel">
+    <h2>Transcript</h2>
+    <div class="lines" id="lines"></div>
+  </section>
+</main>
+<script>
+  /* iOS Safari fix v2: visualViewport + calc(100dvh-320px) + padding-bottom:100px */
+  const segments = [
+    {s:0.10,e:1.54,t:"Good morning."},
+    {s:1.58,e:1.96,t:"Today,"},
+    {s:2.08,e:7.14,t:"I want to talk about how we work with artificial intelligence in twenty twenty-six."},
+    {s:7.20,e:12.14,t:"The challenge we face today is no longer technical, it is a management challenge."},
+    {s:12.96,e:16.94,t:"The companies winning the AI race are not simply buying better models."},
+    {s:17.22,e:21.69,t:"Instead, they are completely changing the human-AI relationship."},
+    {s:22.76,e:27.08,t:"For the past few years, many of us have acted as operators."},
+    {s:27.14,e:31.28,t:"We typed prompts, pushed buttons, and corrected the AI's mistakes."},
+    {s:31.98,e:37.54,t:"But to succeed now, we must shift from being operators to becoming orchestrators."},
+    {s:38.44,e:40.92,t:"An orchestrator does not do the repetitive work."},
+    {s:41.20,e:50.78,t:"Instead, an orchestrator sets the parameters, defines success, and manages AI agents just like a team of highly skilled specialists."},
+    {s:51.66,e:54.94,t:"To make this shift, we must abandon outdated ideas."},
+    {s:55.62,e:60.46,t:"The most dangerous outdated idea is the traditional human-in-the-loop."},
+    {s:61.42,e:69.37,t:"In the past, we believed we could just put a junior employee at the end of a process to review the AI's work and catch mistakes."},
+    {s:70.22,e:72.81,t:"Today, this is practically impossible."},
+    {s:73.72,e:80.19,t:"AI agents work too fast and create processes that are too complex for a standard human review."},
+    {s:81.09,e:88.94,t:"When AI is correct eighty-five to ninety-five percent of the time, human reviewers naturally lose focus."},
+    {s:88.98,e:91.26,t:"This creates massive business risks."},
+    {s:91.96,e:103.58,t:"For example, recent studies show that there are already over seven hundred court cases worldwide involving fabricated citations or hallucinations generated by AI."},
+    {s:104.56,e:109.58,t:"Passive human oversight is no longer a safety net, it is a liability."},
+    {s:110.56,e:112.10,t:"So, what is the solution?"},
+    {s:112.98,e:117.08,t:"We must replace generic oversight with expert-driven loops."},
+    {s:117.94,e:123.76,t:"Companies often use junior staff to check AI outputs because it seems cheaper."},
+    {s:123.80,e:126.52,t:"However, the data proves this is a mistake."},
+    {s:127.42,e:137.02,t:"A recent case study in the legal technology sector showed what happens when senior partners, true experts, are placed in the AI review loop."},
+    {s:137.06,e:138.72,t:"The results were incredible."},
+    {s:138.76,e:149.36,t:"The contract review process was eighty-six percent faster, and issue detection improved by sixty-five percent compared to using less experienced reviewers."},
+    {s:149.40,e:155.76,t:"By placing top experts at critical decision points, we drastically increase our return on investment."},
+    {s:156.70,e:162.72,t:"Furthermore, we have to stop simply slapping AI onto our old broken processes."},
+    {s:163.60,e:168.78,t:"If you add AI to an inefficient workflow, you just create augmentation debt."},
+    {s:169.62,e:176.20,t:"This means you generate more errors at a faster speed, which requires costly corrections."},
+    {s:176.26,e:181.56,t:"We need to unlearn our old habits and build AI-native workflows from the ground up."},
+    {s:182.40,e:185.76,t:"A key part of this new workflow is context engineering."},
+    {s:186.42,e:190.12,t:"We must stop starting from zero every time we use AI."},
+    {s:190.72,e:194.64,t:"Instead, our teams need to build and share context vaults."},
+    {s:195.40,e:202.26,t:"These are reusable files containing our company data, performance benchmarks, and specific task instructions."},
+    {s:202.54,e:209.37,t:"Providing the AI with deep reusable business context is the primary predictor of success today."},
+    {s:210.80,e:221.52,t:"Finally, as AI takes over data synthesis, pattern recognition, and repetitive tasks, we must elevate the AI champions within our organizations."},
+    {s:222.36,e:230.76,t:"These are the employees dedicated to keeping up with AI changes, finding new automation opportunities, and training the rest of the team."},
+    {s:231.76,e:245.02,t:"By automating the dull work, we free up our human workers to focus on what humans still do best: high-context empathy, making ambiguous decisions, and building relationships."},
+    {s:246.40,e:252.18,t:"The gap between AI operators and AI orchestrators is widening rapidly."},
+    {s:253.00,e:265.27,t:"Do not just upskill your old processes, redesign your workflows, embed your best experts into the loop, and manage your AI systems as the powerful team they are."},
+    {s:266.37,e:269.24,t:"The time to orchestrate your future is now."},
+    {s:270.66,e:271.04,t:"Thank you."}
+  ];
+  const audio   = document.getElementById("audio");
+  const linesEl = document.getElementById("lines");
+  const speed   = document.getElementById("speed");
+  const followBtn = document.getElementById("follow");
+  let follow = true, current = -1;
+  const fmt = sec => `${Math.floor(sec/60)}:${String(Math.floor(sec%60)).padStart(2,"0")}`;
+  segments.forEach((seg,i)=>{
+    const row = document.createElement("div");
+    row.className = "line"; row.dataset.i = i;
+    row.innerHTML = `<div class="t">${fmt(seg.s)}</div><div class="txt">${seg.t}</div>`;
+    row.onclick = () => { audio.currentTime = seg.s + 0.01; audio.play().catch(()=>{}); };
+    linesEl.appendChild(row);
+  });
+  speed.onchange = () => audio.playbackRate = Number(speed.value);
+  followBtn.onclick = () => { follow = !follow; followBtn.textContent = `Auto-follow: ${follow?"ON":"OFF"}`; };
+  function findIndex(t){
+    for(let i=0;i<segments.length;i++){ if(t>=segments[i].s && t<segments[i].e) return i; }
+    for(let i=segments.length-1;i>=0;i--){ if(t>=segments[i].s) return i; }
+    return 0;
+  }
+  function effectiveBottom(){
+    const c = linesEl.getBoundingClientRect();
+    if(window.visualViewport){
+      const vvB = window.visualViewport.offsetTop + window.visualViewport.height;
+      return Math.min(c.bottom, vvB);
+    }
+    return c.bottom;
+  }
+  function setCurrent(i){
+    if(i===current) return;
+    const prev = linesEl.querySelector(".current");
+    if(prev) prev.classList.remove("current");
+    current = i;
+    const cur = linesEl.querySelector(`.line[data-i="${i}"]`);
+    if(cur){
+      cur.classList.add("current");
+      if(follow){
+        const pad = 32;
+        const c = linesEl.getBoundingClientRect();
+        const r = cur.getBoundingClientRect();
+        const eB = effectiveBottom() - pad;
+        if(r.top < c.top + pad){
+          linesEl.scrollBy({top: r.top - (c.top + pad), behavior:"smooth"});
+        } else if(r.bottom > eB){
+          linesEl.scrollBy({top: r.bottom - eB, behavior:"smooth"});
+        }
+      }
+    }
+  }
+  audio.addEventListener("timeupdate", ()=> setCurrent(findIndex(audio.currentTime)));
+  audio.addEventListener("loadedmetadata", ()=> setCurrent(findIndex(0)));
+</script>
+</body>
+</html>
