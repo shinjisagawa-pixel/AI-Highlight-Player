@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Ep 717: AI Agents in 2026 Explained: What They Are and When You Should Use Them</title>
+  <style>
+    :root{
+      --bg:#0b1220;
+      --panel:#0f1a33;
+      --text:#e8eefc;
+      --muted:#a9b7d6;
+      --hl:#ffe08a;
+      --hlText:#1b1b1b;
+      --bd:rgba(255,255,255,.12);
+      --accent:#7aa2ff;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      padding-bottom:env(safe-area-inset-bottom);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background:linear-gradient(180deg,var(--bg),#070b14);
+      color:var(--text);
+    }
+    header{
+      position:sticky;
+      top:0;
+      background:rgba(11,18,32,.92);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--bd);
+      z-index:10;
+    }
+    .wrap{
+      max-width:980px;
+      margin:0 auto;
+      padding:14px 12px;
+    }
+    h1{
+      margin:0 0 6px;
+      font-size:16px;
+      line-height:1.35;
+    }
+    .sub{
+      margin:0;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.45;
+    }
+    .player{
+      margin-top:10px;
+      padding:12px;
+      background:rgba(15,26,51,.8);
+      border:1px solid var(--bd);
+      border-radius:14px;
+    }
+    audio{width:100%}
+    .controls{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin-top:10px;
+    }
+    .chip{
+      display:inline-flex;
+      gap:6px;
+      align-items:center;
+      padding:6px 10px;
+      border:1px solid var(--bd);
+      border-radius:999px;
+      background:rgba(255,255,255,.03);
+      color:var(--muted);
+      font-size:12px;
+    }
+    a{
+      color:var(--accent);
+      text-decoration:none;
+    }
+    a:hover{text-decoration:underline}
+    select,button{
+      background:rgba(255,255,255,.05);
+      color:var(--text);
+      border:1px solid var(--bd);
+      border-radius:10px;
+      padding:6px 10px;
+      font-size:12px;
+    }
+    button{cursor:pointer}
+    .panel{
+      margin-top:12px;
+      background:rgba(15,26,51,.7);
+      border:1px solid var(--bd);
+      border-radius:14px;
+      overflow:hidden;
+    }
+    .panel h2{
+      margin:0;
+      padding:12px;
+      font-size:13px;
+      color:var(--muted);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .lines{
+      max-height:calc(100dvh - 320px);
+      overflow:auto;
+      padding:10px 10px 100px 10px;
+      scroll-behavior:smooth;
+    }
+    .line{
+      display:flex;
+      gap:10px;
+      padding:10px;
+      border-radius:12px;
+      border:1px solid transparent;
+    }
+    .line:hover{background:rgba(255,255,255,.03)}
+    .t{
+      min-width:70px;
+      color:var(--muted);
+      font-variant-numeric:tabular-nums;
+      font-size:12px;
+    }
+    .txt{
+      flex:1;
+      line-height:1.4;
+      font-size:14px;
+    }
+    .current{
+      background:var(--hl);
+      color:var(--hlText);
+      border-color:rgba(0,0,0,.12);
+    }
+    .current .t{color:rgba(0,0,0,.62)}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Ep 717: AI Agents in 2026 Explained: What They Are and When You Should Use Them</h1>
+    <p class="sub">Line-level highlighting synced to narration audio. Tap a line to jump.</p>
+
+    <div class="player">
+      <audio id="audio" controls preload="metadata">
+        <source src="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.a90da21c.mp3" type="audio/mpeg">
+      </audio>
+
+      <div class="controls">
+        <span class="chip">Audio: <a href="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.a90da21c.mp3" target="_blank" rel="noreferrer">Source</a></span>
+        <span class="chip">Timing: <a href="https://www.genspark.ai/api/files/s/p0jCc40B" target="_blank" rel="noreferrer">Source</a></span>
+
+        <label class="chip">Speed
+          <select id="speed">
+            <option value="0.8">0.8×</option>
+            <option value="0.9">0.9×</option>
+            <option value="1" selected>1.0×</option>
+            <option value="1.1">1.1×</option>
+            <option value="1.25">1.25×</option>
+          </select>
+        </label>
+
+        <button id="follow">Auto-follow: ON</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="panel">
+    <h2>Transcript</h2>
+    <div class="lines" id="lines"></div>
+  </section>
+</main>
+
+<script>
+  const segments = [
+    {s:0.00,e:6.68,t:"Good morning, everyone. For years, we have been promised that AI agents would revolutionize how"},
+    {s:6.68,e:15.48,t:"we do business. Until recently, that was mostly hype. But today, in 2026, the era of true AI"},
+    {s:15.48,e:22.28,t:"agents has officially arrived. Recent advances from major technology companies have transformed"},
+    {s:22.28,e:29.30,t:"AI from a simple tool into an active, independent workforce. Today, we need to discuss what these"},
+    {s:29.30,e:34.38,t:"are, the risks they bring, and how we must strategically deploy them."},
+
+    {s:35.50,e:41.36,t:"First, we must define what a real AI agent actually is, because the market is currently"},
+    {s:41.36,e:47.70,t:"full of false advertising. A recent industry study found that less than 5% of technology vendors"},
+    {s:48.06,e:54.28,t:"marketing agentic capabilities are actually delivering true agents. Most of what they sell"},
+    {s:54.28,e:61.10,t:"is simply traditional automation, with a basic AI chatbot sprinkled on top, a practice experts"},
+    {s:61.10,e:68.86,t:"are calling agent washing. A true AI agent operates very differently. Think of it like a new,"},
+    {s:68.90,e:74.76,t:"entry-level human employee sitting at a computer. A real agent has permissioned access to your"},
+    {s:74.76,e:80.62,t:"business tools. It is goal-oriented. Most importantly, it makes autonomous decisions."},
+    {s:81.18,e:87.24,t:"If an agent tries to solve a problem and fails, it can retrace its steps, try a different approach,"},
+    {s:87.70,e:92.58,t:"self-correct, and even create smaller sub-agents to finish a complex task."},
+
+    {s:93.40,e:97.32,t:"The enterprise adoption of this technology is happening at an incredible speed."},
+    {s:98.44,e:104.80,t:"Currently, over 80% of Fortune 500 companies report that they are using active AI agents"},
+    {s:104.80,e:111.40,t:"in their production environments. Furthermore, Gartner projects that 40% of all enterprise"},
+    {s:111.40,e:117.66,t:"applications will embed AI agents by the end of this year. We are moving from a world where we"},
+    {s:117.66,e:123.72,t:"had to manually push buttons to a world where software tools like project management platforms"},
+    {s:123.72,e:129.84,t:"and customer relationship systems can autonomously complete multi-step tasks for us."},
+
+    {s:130.40,e:137.32,t:"However, giving AI this level of independence introduces massive new risks. Because modern"},
+    {s:137.32,e:143.22,t:"agents can independently download files, connect different software, and execute workflows,"},
+    {s:143.84,e:151.02,t:"they often operate outside of traditional IT control. In fact, 75% of chief security officers"},
+    {s:151.02,e:156.48,t:"have recently discovered unsanctioned AI tools actively running within their systems."},
+    {s:157.28,e:163.66,t:"What is even more concerning is that 92% of organizations right now completely lack visibility"},
+    {s:163.66,e:170.38,t:"into all their AI identities. This creates a dangerous environment where an AI agent could"},
+    {s:170.38,e:176.64,t:"accidentally bypass security policies or create compounding errors without any human knowing."},
+
+    {s:177.62,e:181.68,t:"So, how do we successfully and safely use AI agents?"},
+    {s:182.32,e:188.92,t:"The most important rule is this. Never put an AI agent on a broken process. If your internal"},
+    {s:188.92,e:195.92,t:"workflow is outdated or inefficient, an AI agent will just make the same mistakes much faster."},
+    {s:196.78,e:204.50,t:"This is exactly why 40% of agentic AI projects are expected to fail or be cancelled by next year."},
+    {s:204.90,e:211.60,t:"To get a real return on investment, you must only layer agents onto processes that are already"},
+    {s:211.60,e:218.00,t:"highly efficient and well documented. When you are ready to deploy an agent, you must use a"},
+    {s:218.58,e:225.92,t:"strategy called bounded autonomy. You cannot simply turn the agent on and walk away. You must"},
+    {s:225.92,e:235.16,t:"implement it in three careful phases. Phase one is the suggest-only phase. The agent does the work"},
+    {s:235.16,e:240.92,t:"in draft mode, but a human must completely review and approve it before anything happens."},
+    {s:241.70,e:249.60,t:"Phase two is execute with approval. Here, the agent lines up the action and the human simply"},
+    {s:249.60,e:256.34,t:"provides a one-click authorization. Only after you have proven success and established clear"},
+    {s:256.34,e:263.76,t:"audit trails should you move to phase three, guardrail-driven autonomy. In this final phase,"},
+    {s:263.76,e:271.30,t:"the agent works independently, but strictly within hard boundaries, such as a maximum spending cap"},
+    {s:271.30,e:279.18,t:"or restricted data access. In conclusion, the business advantage this year will not go to the"},
+    {s:279.18,e:286.22,t:"company that buys the most AI tools. It will go to the company that integrates AI agents intelligently"},
+    {s:286.22,e:293.70,t:"and safely. We must rebuild our broken workflows, establish strict security guardrails,"},
+    {s:293.84,e:301.20,t:"and gradually increase our agents' autonomy. The technology is finally here, and it is time"},
+    {s:301.20,e:306.80,t:"for us to start building our autonomous ecosystems. Thank you for your time."}
+  ];
+
+  const audio = document.getElementById("audio");
+  const linesEl = document.getElementById("lines");
+  const speed = document.getElementById("speed");
+  const followBtn = document.getElementById("follow");
+
+  let follow = true;
+  let current = -1;
+
+  const fmt = sec => `${Math.floor(sec/60)}:${String(Math.floor(sec%60)).padStart(2,"0")}`;
+
+  segments.forEach((seg, i) => {
+    const row = document.createElement("div");
+    row.className = "line";
+    row.dataset.i = i;
+    row.innerHTML = `<div class="t">${fmt(seg.s)}</div><div class="txt">${seg.t}</div>`;
+    row.onclick = () => {
+      audio.currentTime = seg.s + 0.01;
+      audio.play().catch(()=>{});
+    };
+    linesEl.appendChild(row);
+  });
+
+  speed.onchange = () => {
+    audio.playbackRate = Number(speed.value);
+  };
+
+  followBtn.onclick = () => {
+    follow = !follow;
+    followBtn.textContent = `Auto-follow: ${follow ? "ON" : "OFF"}`;
+  };
+
+  function findIndex(t){
+    for(let i=0;i<segments.length;i++){
+      if(t >= segments[i].s && t < segments[i].e) return i;
+    }
+    for(let i=segments.length-1;i>=0;i--){
+      if(t >= segments[i].s) return i;
+    }
+    return 0;
+  }
+
+  function effectiveBottom(){
+    const c = linesEl.getBoundingClientRect();
+    if(window.visualViewport){
+      const vvB = window.visualViewport.offsetTop + window.visualViewport.height;
+      return Math.min(c.bottom, vvB);
+    }
+    return c.bottom;
+  }
+
+  function setCurrent(i){
+    if(i === current) return;
+
+    const prev = linesEl.querySelector(".current");
+    if(prev) prev.classList.remove("current");
+
+    current = i;
+    const cur = linesEl.querySelector(`.line[data-i="${i}"]`);
+
+    if(cur){
+      cur.classList.add("current");
+
+      if(follow){
+        const pad = 32;
+        const c = linesEl.getBoundingClientRect();
+        const r = cur.getBoundingClientRect();
+        const eB = effectiveBottom() - pad;
+
+        if(r.top < c.top + pad){
+          linesEl.scrollBy({
+            top: r.top - (c.top + pad),
+            behavior: "smooth"
+          });
+        } else if(r.bottom > eB){
+          linesEl.scrollBy({
+            top: r.bottom - eB,
+            behavior: "smooth"
+          });
+        }
+      }
+    }
+  }
+
+  audio.addEventListener("timeupdate", () => {
+    setCurrent(findIndex(audio.currentTime));
+  });
+
+  audio.addEventListener("loadedmetadata", () => {
+    setCurrent(findIndex(0));
+  });
+</script>
+</body>
+</html>
