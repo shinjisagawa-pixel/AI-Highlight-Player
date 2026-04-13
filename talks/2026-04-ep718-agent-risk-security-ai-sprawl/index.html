@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Ep 718: Agent Risk, Security, and AI Sprawl in 2026: Why AI That Acts Changes Everything (Start Here Series Vol 9)</title>
+  <style>
+    :root{
+      --bg:#0b1220;
+      --panel:#0f1a33;
+      --text:#e8eefc;
+      --muted:#a9b7d6;
+      --hl:#ffe08a;
+      --hlText:#1b1b1b;
+      --bd:rgba(255,255,255,.12);
+      --accent:#7aa2ff;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      padding-bottom:env(safe-area-inset-bottom);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background:linear-gradient(180deg,var(--bg),#070b14);
+      color:var(--text);
+    }
+    header{
+      position:sticky;
+      top:0;
+      background:rgba(11,18,32,.92);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--bd);
+      z-index:10;
+    }
+    .wrap{
+      max-width:980px;
+      margin:0 auto;
+      padding:14px 12px;
+    }
+    h1{
+      margin:0 0 6px;
+      font-size:16px;
+      line-height:1.35;
+    }
+    .sub{
+      margin:0;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.45;
+    }
+    .player{
+      margin-top:10px;
+      padding:12px;
+      background:rgba(15,26,51,.8);
+      border:1px solid var(--bd);
+      border-radius:14px;
+    }
+    audio{width:100%}
+    .controls{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin-top:10px;
+    }
+    .chip{
+      display:inline-flex;
+      gap:6px;
+      align-items:center;
+      padding:6px 10px;
+      border:1px solid var(--bd);
+      border-radius:999px;
+      background:rgba(255,255,255,.03);
+      color:var(--muted);
+      font-size:12px;
+    }
+    a{
+      color:var(--accent);
+      text-decoration:none;
+    }
+    a:hover{text-decoration:underline}
+    select,button{
+      background:rgba(255,255,255,.05);
+      color:var(--text);
+      border:1px solid var(--bd);
+      border-radius:10px;
+      padding:6px 10px;
+      font-size:12px;
+    }
+    button{cursor:pointer}
+    .panel{
+      margin-top:12px;
+      background:rgba(15,26,51,.7);
+      border:1px solid var(--bd);
+      border-radius:14px;
+      overflow:hidden;
+    }
+    .panel h2{
+      margin:0;
+      padding:12px;
+      font-size:13px;
+      color:var(--muted);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .lines{
+      max-height:calc(100dvh - 320px);
+      overflow:auto;
+      padding:10px 10px 100px 10px;
+      scroll-behavior:smooth;
+    }
+    .line{
+      display:flex;
+      gap:10px;
+      padding:10px;
+      border-radius:12px;
+      border:1px solid transparent;
+    }
+    .line:hover{background:rgba(255,255,255,.03)}
+    .t{
+      min-width:70px;
+      color:var(--muted);
+      font-variant-numeric:tabular-nums;
+      font-size:12px;
+    }
+    .txt{
+      flex:1;
+      line-height:1.4;
+      font-size:14px;
+    }
+    .current{
+      background:var(--hl);
+      color:var(--hlText);
+      border-color:rgba(0,0,0,.12);
+    }
+    .current .t{color:rgba(0,0,0,.62)}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Ep 718: Agent Risk, Security, and AI Sprawl in 2026: Why AI That Acts Changes Everything (Start Here Series Vol 9)</h1>
+    <p class="sub">Line-level highlighting synced to narration audio. Tap a line to jump.</p>
+
+    <div class="player">
+      <audio id="audio" controls preload="metadata">
+        <source src="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.4e4144ef.mp3" type="audio/mpeg">
+      </audio>
+
+      <div class="controls">
+        <span class="chip">Audio: <a href="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.4e4144ef.mp3" target="_blank" rel="noreferrer">Source</a></span>
+        <span class="chip">Timing: <a href="https://www.genspark.ai/api/files/s/2ROwz11c" target="_blank" rel="noreferrer">Source</a></span>
+
+        <label class="chip">Speed
+          <select id="speed">
+            <option value="0.8">0.8×</option>
+            <option value="0.9">0.9×</option>
+            <option value="1" selected>1.0×</option>
+            <option value="1.1">1.1×</option>
+            <option value="1.25">1.25×</option>
+          </select>
+        </label>
+
+        <button id="follow">Auto-follow: ON</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="panel">
+    <h2>Transcript</h2>
+    <div class="lines" id="lines"></div>
+  </section>
+</main>
+
+<script>
+  const segments = [
+    {s:0.10,e:0.60,t:"Good morning."},
+    {s:1.22,e:1.66,t:"Today,"},
+    {s:1.84,e:9.64,t:"I want to discuss a massive shift that has happened in the world of technology and why we must urgently rethink our corporate security."},
+    {s:10.72,e:23.20,t:"Between 2022 and 2024, the primary risks associated with artificial intelligence were limited to misinformation, accidental data leaks, and embarrassing hallucinations."},
+    {s:23.28,e:30.62,t:"However, everything changed when AI models transitioned from simply generating text to taking autonomous actions."},
+
+    {s:31.38,e:38.46,t:"AI models did not just get smarter, they gained the ability to use computer tools just like a human employee."},
+    {s:38.50,e:47.11,t:"Today, the reliability of these AI agents has jumped from around fifty percent to ninety percent, making them highly capable workers."},
+    {s:47.94,e:58.22,t:"For the first time, advanced models have even surpassed human performance in computer use tasks, scoring seventy-two point five percent on major industry benchmarks."},
+    {s:59.12,e:65.15,t:"But this incredible leap in capability has also created a perfect storm for enterprise security."},
+
+    {s:66.09,e:72.78,t:"The fundamental risk today is that we have moved from AI that produces outputs to AI that takes actions."},
+    {s:73.72,e:81.88,t:"An AI agent can now navigate the Internet, access your company's data, and execute multi-step workflows faster than any human."},
+    {s:82.58,e:87.01,t:"And unfortunately, many of these actions are happening entirely in the shadows."},
+
+    {s:88.18,e:90.42,t:"Let us look at the reality of our workforce."},
+    {s:91.04,e:98.20,t:"Currently, fifty-seven percent of employees admit to using personal, unapproved AI accounts for their daily work."},
+    {s:98.92,e:106.72,t:"Even more alarming, a third of employees confess to inputting sensitive company data into these unapproved tools."},
+    {s:106.78,e:115.74,t:"This creates what experts call shadow AI, but the problem is rapidly evolving into something much worse: agent sprawl."},
+    {s:116.64,e:128.28,t:"This happens when companies approve AI agents but quickly lose the ability to track what those agents are actually doing, allowing them to multiply and act across various systems unseen."},
+    {s:129.12,e:141.76,t:"Eventually, this can lead to dark agent sprawl, where unobserved or even malicious AI agents work inside corporate infrastructure, spreading much like a computer virus."},
+
+    {s:141.78,e:151.58,t:"When an AI agent connects to your email, your calendar, or your proprietary files, every new permission expands the potential for massive damage."},
+    {s:151.62,e:161.73,t:"The speed at which an agent operates means that an error or a security breach can cascade across your entire system in seconds before any human notices."},
+
+    {s:162.52,e:167.52,t:"So, how do we successfully adopt AI agents without risking our entire business?"},
+    {s:168.32,e:172.02,t:"We must implement a strict, practical playbook starting today."},
+
+    {s:172.68,e:176.18,t:"First, we must enforce a policy of bounded autonomy."},
+    {s:176.84,e:180.28,t:"You cannot simply turn on an AI agent and let it run freely."},
+    {s:180.90,e:189.37,t:"You must start by allowing the agent only to suggest actions, then require a human to review and approve those actions before they are executed."},
+
+    {s:189.78,e:193.22,t:"Second, we must follow the least privilege principle."},
+    {s:194.00,e:198.74,t:"When deploying a new AI agent, always start with read-only access."},
+    {s:199.52,e:206.74,t:"Do not give the agent permission to write or modify data until it has proven its reliability on narrowly defined tasks."},
+
+    {s:207.92,e:212.84,t:"Third, you must mandate human approvals for any irreversible actions."},
+    {s:213.55,e:223.43,t:"Activities like sending external emails, deleting files, making corporate purchases, or changing system permissions must always require a human click."},
+
+    {s:224.56,e:228.53,t:"Finally, you must be able to trace every decision the AI makes."},
+    {s:229.28,e:237.92,t:"You need systems that log every tool the agent uses so you can monitor for abnormal patterns and audit the work after the fact."},
+
+    {s:237.93,e:246.66,t:"The companies that win in 2026 will treat AI agents as core production infrastructure, not just casual side experiments."},
+    {s:247.75,e:254.74,t:"We must balance our excitement for these powerful new tools with serious risk management and governance."},
+    {s:254.77,e:261.90,t:"Let us secure our systems today so we can safely harness the incredible power of autonomous AI tomorrow."},
+    {s:263.06,e:263.98,t:"Thank you for your time."}
+  ];
+
+  const audio = document.getElementById("audio");
+  const linesEl = document.getElementById("lines");
+  const speed = document.getElementById("speed");
+  const followBtn = document.getElementById("follow");
+
+  let follow = true;
+  let current = -1;
+
+  const fmt = sec => `${Math.floor(sec/60)}:${String(Math.floor(sec%60)).padStart(2,"0")}`;
+
+  segments.forEach((seg, i) => {
+    const row = document.createElement("div");
+    row.className = "line";
+    row.dataset.i = i;
+    row.innerHTML = `<div class="t">${fmt(seg.s)}</div><div class="txt">${seg.t}</div>`;
+    row.onclick = () => {
+      audio.currentTime = seg.s + 0.01;
+      audio.play().catch(()=>{});
+    };
+    linesEl.appendChild(row);
+  });
+
+  speed.onchange = () => {
+    audio.playbackRate = Number(speed.value);
+  };
+
+  followBtn.onclick = () => {
+    follow = !follow;
+    followBtn.textContent = `Auto-follow: ${follow ? "ON" : "OFF"}`;
+  };
+
+  function findIndex(t){
+    for(let i=0;i<segments.length;i++){
+      if(t >= segments[i].s && t < segments[i].e) return i;
+    }
+    for(let i=segments.length-1;i>=0;i--){
+      if(t >= segments[i].s) return i;
+    }
+    return 0;
+  }
+
+  function effectiveBottom(){
+    const c = linesEl.getBoundingClientRect();
+    if(window.visualViewport){
+      const vvB = window.visualViewport.offsetTop + window.visualViewport.height;
+      return Math.min(c.bottom, vvB);
+    }
+    return c.bottom;
+  }
+
+  function setCurrent(i){
+    if(i === current) return;
+
+    const prev = linesEl.querySelector(".current");
+    if(prev) prev.classList.remove("current");
+
+    current = i;
+    const cur = linesEl.querySelector(`.line[data-i="${i}"]`);
+
+    if(cur){
+      cur.classList.add("current");
+
+      if(follow){
+        const pad = 32;
+        const c = linesEl.getBoundingClientRect();
+        const r = cur.getBoundingClientRect();
+        const eB = effectiveBottom() - pad;
+
+        if(r.top < c.top + pad){
+          linesEl.scrollBy({
+            top: r.top - (c.top + pad),
+            behavior: "smooth"
+          });
+        } else if(r.bottom > eB){
+          linesEl.scrollBy({
+            top: r.bottom - eB,
+            behavior: "smooth"
+          });
+        }
+      }
+    }
+  }
+
+  audio.addEventListener("timeupdate", () => {
+    setCurrent(findIndex(audio.currentTime));
+  });
+
+  audio.addEventListener("loadedmetadata", () => {
+    setCurrent(findIndex(0));
+  });
+</script>
+</body>
+</html>
