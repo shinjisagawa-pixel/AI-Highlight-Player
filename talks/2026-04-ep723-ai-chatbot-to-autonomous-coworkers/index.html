@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Ep 723: From AI Chatbot to Autonomous Coworkers: How Consumer AI Has Changed and What's Next</title>
+  <style>
+    :root{
+      --bg:#0b1220;
+      --panel:#0f1a33;
+      --text:#e8eefc;
+      --muted:#a9b7d6;
+      --hl:#ffe08a;
+      --hlText:#1b1b1b;
+      --bd:rgba(255,255,255,.12);
+      --accent:#7aa2ff;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      padding-bottom:env(safe-area-inset-bottom);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background:linear-gradient(180deg,var(--bg),#070b14);
+      color:var(--text);
+    }
+    header{
+      position:sticky;
+      top:0;
+      background:rgba(11,18,32,.92);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--bd);
+      z-index:10;
+    }
+    .wrap{
+      max-width:980px;
+      margin:0 auto;
+      padding:14px 12px;
+    }
+    h1{
+      margin:0 0 6px;
+      font-size:16px;
+      line-height:1.35;
+    }
+    .sub{
+      margin:0;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.45;
+    }
+    .player{
+      margin-top:10px;
+      padding:12px;
+      background:rgba(15,26,51,.8);
+      border:1px solid var(--bd);
+      border-radius:14px;
+    }
+    audio{width:100%}
+    .controls{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin-top:10px;
+    }
+    .chip{
+      display:inline-flex;
+      gap:6px;
+      align-items:center;
+      padding:6px 10px;
+      border:1px solid var(--bd);
+      border-radius:999px;
+      background:rgba(255,255,255,.03);
+      color:var(--muted);
+      font-size:12px;
+    }
+    a{
+      color:var(--accent);
+      text-decoration:none;
+    }
+    a:hover{text-decoration:underline}
+    select,button{
+      background:rgba(255,255,255,.05);
+      color:var(--text);
+      border:1px solid var(--bd);
+      border-radius:10px;
+      padding:6px 10px;
+      font-size:12px;
+    }
+    button{cursor:pointer}
+    .panel{
+      margin-top:12px;
+      background:rgba(15,26,51,.7);
+      border:1px solid var(--bd);
+      border-radius:14px;
+      overflow:hidden;
+    }
+    .panel h2{
+      margin:0;
+      padding:12px;
+      font-size:13px;
+      color:var(--muted);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .lines{
+      max-height:calc(100dvh - 320px);
+      overflow:auto;
+      padding:10px 10px 100px 10px;
+      scroll-behavior:smooth;
+    }
+    .line{
+      display:flex;
+      gap:10px;
+      padding:10px;
+      border-radius:12px;
+      border:1px solid transparent;
+    }
+    .line:hover{background:rgba(255,255,255,.03)}
+    .t{
+      min-width:70px;
+      color:var(--muted);
+      font-variant-numeric:tabular-nums;
+      font-size:12px;
+    }
+    .txt{
+      flex:1;
+      line-height:1.4;
+      font-size:14px;
+    }
+    .current{
+      background:var(--hl);
+      color:var(--hlText);
+      border-color:rgba(0,0,0,.12);
+    }
+    .current .t{color:rgba(0,0,0,.62)}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Ep 723: From AI Chatbot to Autonomous Coworkers: How Consumer AI Has Changed and What's Next</h1>
+    <p class="sub">Line-level highlighting synced to narration audio. Tap a line to jump.</p>
+
+    <div class="player">
+      <audio id="audio" controls preload="metadata">
+        <source src="./ep723-ai-chatbot-to-autonomous-coworkers.mp3" type="audio/mpeg">
+      </audio>
+
+      <div class="controls">
+        <span class="chip">Audio file: <a href="./ep723-ai-chatbot-to-autonomous-coworkers.mp3" target="_blank" rel="noreferrer">Open</a></span>
+
+        <label class="chip">Speed
+          <select id="speed">
+            <option value="0.8">0.8×</option>
+            <option value="0.9">0.9×</option>
+            <option value="1" selected>1.0×</option>
+            <option value="1.1">1.1×</option>
+            <option value="1.25">1.25×</option>
+          </select>
+        </label>
+
+        <button id="follow">Auto-follow: ON</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="panel">
+    <h2>Transcript</h2>
+    <div class="lines" id="lines"></div>
+  </section>
+</main>
+
+<script>
+  const segments = [
+    {s:0.0,e:1.17,t:"Good morning, everyone."},
+    {s:1.35,e:3.3,t:"Think back to late 2022."},
+    {s:3.48,e:10.89,t:"If your entire department was actively using artificial intelligence back then, you likely would have gotten into serious trouble."},
+    {s:11.07,e:14.97,t:"AI was widely viewed as a simple, viral party trick."},
+    {s:15.15,e:19.05,t:"But today, in early 2026, the situation has completely reversed."},
+    {s:19.23,e:24.69,t:"If your department is not using AI right now, your company is probably sinking."},
+    {s:24.87,e:34.24,t:"The technology has evolved rapidly from a basic chatbot into an autonomous coworker, and today we must understand how to navigate this new reality."},
+
+    {s:34.42,e:41.05,t:"To understand where we are, we must look at the five distinct phases of AI-enabled work."},
+    {s:41.23,e:46.3,t:"Phase one began in November 2022 with the launch of standard online chatbots."},
+    {s:46.48,e:51.55,t:"While they gained massive attention, they were not suited for the business world."},
+    {s:51.73,e:57.19,t:"They lacked internet access, could not process company data, and suffered from rampant hallucinations."},
+
+    {s:57.37,e:62.05,t:"Phase two solved this by introducing business chat between 2023 and 2025."},
+    {s:62.23,e:70.82,t:"AI platforms were finally connected to secure company data and enterprise applications, which drastically reduced errors and made highly contextual answers possible."},
+
+    {s:71.0,e:75.68,t:"However, the true business revolution began in phase three: the agentic era."},
+    {s:75.86,e:85.23,t:"Driven by new reasoning models that can think, plan, and use logic, AI moved from just answering questions to actively executing multi-step tasks."},
+
+    {s:85.41,e:89.7,t:"This directly led to phase four, the era of AI coworkers."},
+    {s:89.88,e:94.95,t:"In this phase, we no longer give the AI a simple text prompt."},
+    {s:95.13,e:97.47,t:"Instead, we delegate a complete goal."},
+    {s:97.65,e:109.75,t:"These AI coworkers operate in virtual cloud environments and use browsers to deliver finished artifacts, like complex spreadsheets, documents, and presentations, at a quality and speed that frequently surpasses human output."},
+
+    {s:109.93,e:115.0,t:"Today, we have entered the fifth and most powerful phase: desktop AI agents."},
+    {s:115.18,e:119.86,t:"Unlike cloud-based assistants, these agents operate directly on your local computer."},
+    {s:120.04,e:125.89,t:"They can control your screen, manage your local files, download documents, and execute complex workflows."},
+    {s:126.07,e:136.61,t:"For instance, a desktop AI agent can now run continuously for eight to ten hours a day, performing the exact computer actions a human employee would do."},
+
+    {s:136.79,e:142.25,t:"Across all these phases, there is one hidden layer driving massive efficiency: scheduled automation."},
+    {s:142.43,e:148.67,t:"We are moving away from reactive AI, which simply waits for our instructions, toward proactive AI."},
+    {s:148.85,e:159.78,t:"Modern platforms now allow you to schedule tasks so that your agents can execute routines autonomously, even at two in the morning when your human staff is offline."},
+    {s:159.96,e:164.25,t:"This sleeper feature changes the entire relationship between humans and machines."},
+
+    {s:164.43,e:167.16,t:"However, this extraordinary power introduces significant risks."},
+    {s:167.34,e:173.19,t:"Desktop AI creates security and governance challenges that most IT departments are completely unprepared for."},
+    {s:173.37,e:185.08,t:"When an autonomous agent has local file access, companies face new operational threats like agent drift or agent crash, where an AI might disrupt operations or accidentally compromise sensitive data."},
+    {s:185.26,e:187.6,t:"Proactive governance is no longer optional."},
+    {s:187.78,e:189.73,t:"It is a critical requirement."},
+
+    {s:189.91,e:192.25,t:"So, what must we do next?"},
+    {s:192.43,e:197.5,t:"First, we must stop obsessing over which specific AI model is the best."},
+    {s:197.68,e:200.41,t:"Model capabilities are quickly becoming a commodity."},
+    {s:200.59,e:209.57,t:"The organizations that win in 2026 will be the ones that spend their time and resources rebuilding how knowledge work is fundamentally structured."},
+
+    {s:209.75,e:214.82,t:"We must recognize that the era of the AI assistant is completely over."},
+    {s:215.0,e:219.29,t:"We are now operating in the era of the AI worker."},
+    {s:219.47,e:231.57,t:"Historically, transitioning to new software tools took months, but the shift to autonomous AI workers has occurred at an unprecedented speed, with major adoptions happening in just a matter of days."},
+
+    {s:231.75,e:238.77,t:"The pace of this change is incredibly fast, and sadly, many companies have not even noticed it happening."},
+    {s:238.95,e:242.46,t:"Do not let your company be one of them."},
+    {s:242.64,e:251.62,t:"Embrace scheduled automation, secure your desktop environments, and redesign your workflows for a future where your most productive coworker is a software agent."},
+    {s:251.8,e:252.58,t:"Thank you."}
+  ];
+
+  const audio = document.getElementById("audio");
+  const linesEl = document.getElementById("lines");
+  const speed = document.getElementById("speed");
+  const followBtn = document.getElementById("follow");
+
+  let follow = true;
+  let current = -1;
+
+  const fmt = sec => `${Math.floor(sec/60)}:${String(Math.floor(sec%60)).padStart(2,"0")}`;
+
+  segments.forEach((seg, i) => {
+    const row = document.createElement("div");
+    row.className = "line";
+    row.dataset.i = i;
+    row.innerHTML = `<div class="t">${fmt(seg.s)}</div><div class="txt">${seg.t}</div>`;
+    row.onclick = () => {
+      audio.currentTime = seg.s + 0.01;
+      audio.play().catch(()=>{});
+    };
+    linesEl.appendChild(row);
+  });
+
+  speed.onchange = () => {
+    audio.playbackRate = Number(speed.value);
+  };
+
+  followBtn.onclick = () => {
+    follow = !follow;
+    followBtn.textContent = `Auto-follow: ${follow ? "ON" : "OFF"}`;
+  };
+
+  function findIndex(t){
+    for(let i=0;i<segments.length;i++){
+      if(t >= segments[i].s && t < segments[i].e) return i;
+    }
+    for(let i=segments.length-1;i>=0;i--){
+      if(t >= segments[i].s) return i;
+    }
+    return 0;
+  }
+
+  function effectiveBottom(){
+    const c = linesEl.getBoundingClientRect();
+    if(window.visualViewport){
+      const vvB = window.visualViewport.offsetTop + window.visualViewport.height;
+      return Math.min(c.bottom, vvB);
+    }
+    return c.bottom;
+  }
+
+  function setCurrent(i){
+    if(i === current) return;
+
+    const prev = linesEl.querySelector(".current");
+    if(prev) prev.classList.remove("current");
+
+    current = i;
+    const cur = linesEl.querySelector(`.line[data-i="${i}"]`);
+
+    if(cur){
+      cur.classList.add("current");
+
+      if(follow){
+        const pad = 32;
+        const c = linesEl.getBoundingClientRect();
+        const r = cur.getBoundingClientRect();
+        const eB = effectiveBottom() - pad;
+
+        if(r.top < c.top + pad){
+          linesEl.scrollBy({
+            top: r.top - (c.top + pad),
+            behavior: "smooth"
+          });
+        } else if(r.bottom > eB){
+          linesEl.scrollBy({
+            top: r.bottom - eB,
+            behavior: "smooth"
+          });
+        }
+      }
+    }
+  }
+
+  audio.addEventListener("timeupdate", () => {
+    setCurrent(findIndex(audio.currentTime));
+  });
+
+  audio.addEventListener("loadedmetadata", () => {
+    setCurrent(findIndex(0));
+  });
+</script>
+</body>
+</html>
