@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Ep 725: Measuring AI ROI: Why you're doing it wrong and the 7 Steps to fix it (Start Here Series Vol 11)</title>
+  <style>
+    :root{
+      --bg:#0b1220;
+      --panel:#0f1a33;
+      --text:#e8eefc;
+      --muted:#a9b7d6;
+      --hl:#ffe08a;
+      --hlText:#1b1b1b;
+      --bd:rgba(255,255,255,.12);
+      --accent:#7aa2ff;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      padding-bottom:env(safe-area-inset-bottom);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background:linear-gradient(180deg,var(--bg),#070b14);
+      color:var(--text);
+    }
+    header{
+      position:sticky;
+      top:0;
+      background:rgba(11,18,32,.92);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--bd);
+      z-index:10;
+    }
+    .wrap{
+      max-width:980px;
+      margin:0 auto;
+      padding:14px 12px;
+    }
+    h1{
+      margin:0 0 6px;
+      font-size:16px;
+      line-height:1.35;
+    }
+    .sub{
+      margin:0;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.45;
+    }
+    .player{
+      margin-top:10px;
+      padding:12px;
+      background:rgba(15,26,51,.8);
+      border:1px solid var(--bd);
+      border-radius:14px;
+    }
+    audio{width:100%}
+    .controls{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin-top:10px;
+    }
+    .chip{
+      display:inline-flex;
+      gap:6px;
+      align-items:center;
+      padding:6px 10px;
+      border:1px solid var(--bd);
+      border-radius:999px;
+      background:rgba(255,255,255,.03);
+      color:var(--muted);
+      font-size:12px;
+    }
+    a{
+      color:var(--accent);
+      text-decoration:none;
+    }
+    a:hover{text-decoration:underline}
+    select,button{
+      background:rgba(255,255,255,.05);
+      color:var(--text);
+      border:1px solid var(--bd);
+      border-radius:10px;
+      padding:6px 10px;
+      font-size:12px;
+    }
+    button{cursor:pointer}
+    .panel{
+      margin-top:12px;
+      background:rgba(15,26,51,.7);
+      border:1px solid var(--bd);
+      border-radius:14px;
+      overflow:hidden;
+    }
+    .panel h2{
+      margin:0;
+      padding:12px;
+      font-size:13px;
+      color:var(--muted);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .lines{
+      max-height:calc(100dvh - 320px);
+      overflow:auto;
+      padding:10px 10px 100px 10px;
+      scroll-behavior:smooth;
+    }
+    .line{
+      display:flex;
+      gap:10px;
+      padding:10px;
+      border-radius:12px;
+      border:1px solid transparent;
+    }
+    .line:hover{background:rgba(255,255,255,.03)}
+    .t{
+      min-width:70px;
+      color:var(--muted);
+      font-variant-numeric:tabular-nums;
+      font-size:12px;
+    }
+    .txt{
+      flex:1;
+      line-height:1.4;
+      font-size:14px;
+    }
+    .current{
+      background:var(--hl);
+      color:var(--hlText);
+      border-color:rgba(0,0,0,.12);
+    }
+    .current .t{color:rgba(0,0,0,.62)}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Ep 725: Measuring AI ROI: Why you're doing it wrong and the 7 Steps to fix it (Start Here Series Vol 11)</h1>
+    <p class="sub">Line-level highlighting synced to narration audio. Tap a line to jump.</p>
+
+    <div class="player">
+      <audio id="audio" controls preload="metadata">
+        <source src="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.eb50a152.mp3" type="audio/mpeg">
+      </audio>
+
+      <div class="controls">
+        <span class="chip">Audio: <a href="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.eb50a152.mp3" target="_blank" rel="noreferrer">Source</a></span>
+        <span class="chip">Timing: <a href="https://www.genspark.ai/api/files/s/UnoM9FGB" target="_blank" rel="noreferrer">Source</a></span>
+
+        <label class="chip">Speed
+          <select id="speed">
+            <option value="0.8">0.8×</option>
+            <option value="0.9">0.9×</option>
+            <option value="1" selected>1.0×</option>
+            <option value="1.1">1.1×</option>
+            <option value="1.25">1.25×</option>
+          </select>
+        </label>
+
+        <button id="follow">Auto-follow: ON</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="panel">
+    <h2>Transcript</h2>
+    <div class="lines" id="lines"></div>
+  </section>
+</main>
+
+<script>
+  const segments = [
+    {s:0.10,e:0.94,t:"Good morning, everyone."},
+    {s:1.94,e:7.55,t:"Today, I want to address one of the most critical questions business leaders face in twenty twenty-six."},
+    {s:8.58,e:15.06,t:"Can you actually prove that artificial intelligence is delivering a return on investment at your company?"},
+    {s:16.14,e:22.78,t:"For many, the answer is no, because they are trying to measure AI using outdated digital transformation playbooks."},
+
+    {s:23.84,e:30.19,t:"The debate over whether AI produces ROI is filled with noise and misleading information."},
+    {s:31.02,e:38.97,t:"For example, you may have seen a viral study claiming that ninety-five percent of enterprise AI pilots deliver zero ROI."},
+    {s:39.94,e:49.32,t:"However, this claim was deeply flawed, based on just fifty-two qualitative interviews measuring impact in under six months."},
+    {s:49.38,e:54.66,t:"If we look at real quantitative data, the reality is entirely different."},
+    {s:54.69,e:62.62,t:"The International Data Corporation found a three point seven zero dollar return for every single dollar invested in AI."},
+    {s:63.38,e:73.98,t:"Furthermore, major studies from Wharton and Google Cloud show that seventy-four percent of enterprises are reporting positive ROI on their generative AI deployments."},
+    {s:74.94,e:87.54,t:"When tested blindly against human experts with fourteen years of experience, today's AI models tie or win seventy percent of the time, and they complete the tasks one hundred times faster."},
+
+    {s:88.68,e:95.84,t:"So, if the technology is this powerful, why are companies struggling to see the financial impact?"},
+    {s:95.85,e:99.63,t:"The answer lies in something called invisible productivity."},
+    {s:100.64,e:108.06,t:"Currently, eighty-nine percent of organizations have not updated their job responsibilities to reflect the impact of AI."},
+    {s:109.00,e:122.70,t:"Because we still measure work by traditional hours instead of actual outcomes, employees are quietly using AI to automate massive portions of their jobs, and they are simply pocketing the saved time for themselves."},
+    {s:123.50,e:128.44,t:"The AI is working perfectly, but the company is not capturing the financial benefit."},
+
+    {s:129.34,e:135.48,t:"To fix this, we must completely unlearn our old habits and measure ROI accurately."},
+    {s:136.34,e:147.98,t:"The basic formula is straightforward. You take the employee's fully loaded hourly rate, multiply it by the hours saved with AI, and subtract the cost of the AI tool."},
+    {s:148.02,e:156.84,t:"To properly capture this data, we need to abandon long, slow pilot programs and implement a rigorous seven-step evaluation sprint."},
+
+    {s:157.96,e:166.28,t:"Step one is to define your success criteria and key performance indicators very rigidly before any testing begins."},
+    {s:166.40,e:170.86,t:"Step two is critical. You must establish a pre-AI baseline."},
+    {s:171.34,e:182.36,t:"Before you introduce AI to a workflow, time your employees performing the task manually and carefully record the error rates and the exact cost per completed task."},
+
+    {s:183.32,e:193.18,t:"Step three is to build twenty to forty realistic, messy work cases. Do not just test the easy scenarios. Include real-world outliers."},
+
+    {s:194.14,e:205.26,t:"Step four is to configure a consistent production workspace. Use the same AI models and permissions across all tests so your results are reliable."},
+
+    {s:205.34,e:217.08,t:"Step five requires you to run each test three times using both human teams and AI models, making sure to disable the AI's memory to avoid skewed results."},
+
+    {s:218.48,e:229.36,t:"Step six is to grade the outputs blindly. Standardize your criteria and evaluate the final work without knowing whether a human or an AI produced it."},
+    {s:230.21,e:235.50,t:"This removes human bias and shows you the true cost and time differences."},
+
+    {s:236.80,e:253.58,t:"Finally, step seven is to retest these workflows every single month. AI models receive frequent updates that can change their performance, so tracking a rolling three-month average ensures your data stays accurate."},
+
+    {s:253.66,e:258.54,t:"In conclusion, the debate over AI's effectiveness is over."},
+    {s:258.60,e:264.70,t:"The gravity of AI is inescapable, and quantitative evidence proves its immense value."},
+    {s:265.50,e:274.24,t:"As business leaders, we need to ask a new question: How much money are we losing by not measuring AI and training our teams right now?"},
+    {s:275.02,e:278.29,t:"Stop relying on vibes and outdated vanity metrics."},
+    {s:278.90,e:291.70,t:"By applying strict operational discipline and implementing these seven steps today, you can capture the true value of AI and secure a massive competitive advantage for your company."},
+    {s:291.78,e:292.18,t:"Thank you."}
+  ];
+
+  const audio = document.getElementById("audio");
+  const linesEl = document.getElementById("lines");
+  const speed = document.getElementById("speed");
+  const followBtn = document.getElementById("follow");
+
+  let follow = true;
+  let current = -1;
+
+  const fmt = sec => `${Math.floor(sec/60)}:${String(Math.floor(sec%60)).padStart(2,"0")}`;
+
+  segments.forEach((seg, i) => {
+    const row = document.createElement("div");
+    row.className = "line";
+    row.dataset.i = i;
+    row.innerHTML = `<div class="t">${fmt(seg.s)}</div><div class="txt">${seg.t}</div>`;
+    row.onclick = () => {
+      audio.currentTime = seg.s + 0.01;
+      audio.play().catch(()=>{});
+    };
+    linesEl.appendChild(row);
+  });
+
+  speed.onchange = () => {
+    audio.playbackRate = Number(speed.value);
+  };
+
+  followBtn.onclick = () => {
+    follow = !follow;
+    followBtn.textContent = `Auto-follow: ${follow ? "ON" : "OFF"}`;
+  };
+
+  function findIndex(t){
+    for(let i=0;i<segments.length;i++){
+      if(t >= segments[i].s && t < segments[i].e) return i;
+    }
+    for(let i=segments.length-1;i>=0;i--){
+      if(t >= segments[i].s) return i;
+    }
+    return 0;
+  }
+
+  function effectiveBottom(){
+    const c = linesEl.getBoundingClientRect();
+    if(window.visualViewport){
+      const vvB = window.visualViewport.offsetTop + window.visualViewport.height;
+      return Math.min(c.bottom, vvB);
+    }
+    return c.bottom;
+  }
+
+  function setCurrent(i){
+    if(i === current) return;
+
+    const prev = linesEl.querySelector(".current");
+    if(prev) prev.classList.remove("current");
+
+    current = i;
+    const cur = linesEl.querySelector(`.line[data-i="${i}"]`);
+
+    if(cur){
+      cur.classList.add("current");
+
+      if(follow){
+        const pad = 32;
+        const c = linesEl.getBoundingClientRect();
+        const r = cur.getBoundingClientRect();
+        const eB = effectiveBottom() - pad;
+
+        if(r.top < c.top + pad){
+          linesEl.scrollBy({
+            top: r.top - (c.top + pad),
+            behavior: "smooth"
+          });
+        } else if(r.bottom > eB){
+          linesEl.scrollBy({
+            top: r.bottom - eB,
+            behavior: "smooth"
+          });
+        }
+      }
+    }
+  }
+
+  audio.addEventListener("timeupdate", () => {
+    setCurrent(findIndex(audio.currentTime));
+  });
+
+  audio.addEventListener("loadedmetadata", () => {
+    setCurrent(findIndex(0));
+  });
+</script>
+</body>
+</html>
