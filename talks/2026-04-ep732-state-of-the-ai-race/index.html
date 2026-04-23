@@ -142,12 +142,12 @@
 
     <div class="player">
       <audio id="audio" controls preload="metadata">
-        <source src="https://tmpfiles.org/dl/34750478/ep732-state-of-the-ai-race.mp3" type="audio/mpeg">
+        <source src="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.d60c11b7.mp3" type="audio/mpeg">
       </audio>
 
       <div class="controls">
-        <span class="chip">Audio: <a href="https://tmpfiles.org/dl/34750478/ep732-state-of-the-ai-race.mp3" target="_blank" rel="noreferrer">Source</a></span>
-        <span class="chip">Timing: <a href="https://www.genspark.ai/api/files/s/zknAGp35" target="_blank" rel="noreferrer">Source</a></span>
+        <span class="chip">Audio: <a href="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.d60c11b7.mp3" target="_blank" rel="noreferrer">Source</a></span>
+        <span class="chip">Timing: <a href="https://www.genspark.ai/api/files/s/uhYuMmii" target="_blank" rel="noreferrer">Source</a></span>
 
         <label class="chip">Speed
           <select id="speed">
@@ -174,56 +174,68 @@
 
 <script>
   const segments = [
-    {s:0.22,e:1.50,t:"Good morning, everyone."},
-    {s:2.50,e:8.74,t:"Today, we need to discuss a critical question for our business strategy, who will win the AI race in twenty twenty-six?"},
-    {s:9.04,e:13.14,t:"And more importantly, how should our company navigate this highly competitive landscape?"},
-    {s:14.16,e:19.56,t:"We are looking at a race dominated by the big four: OpenAI, Google, Microsoft, and Anthropic."},
-    {s:20.58,e:24.60,t:"However, the nature of this race has fundamentally changed."},
-    {s:24.66,e:28.46,t:"The era of the simple AI chatbot is officially over."},
-    {s:28.52,e:31.16,t:"Today, we are in the era of agentic systems."},
-    {s:32.16,e:40.92,t:"These are autonomous AI systems capable of executing complex business workflows and connecting directly with our daily data to deliver actionable enterprise-ready outputs."},
+    {s:0.12,e:0.92,t:"Good morning, everyone."},
+    {s:1.60,e:5.96,t:"Today, we need to discuss a critical question for our business strategy:"},
+    {s:6.70,e:10.22,t:"Who will win the AI race in twenty twenty-six?"},
+    {s:10.31,e:15.82,t:"And more importantly, how should our company navigate this highly competitive landscape?"},
+    {s:16.66,e:19.18,t:"We are looking at a race dominated by the Big Four:"},
+    {s:19.89,e:20.68,t:"OpenAI,"},
+    {s:21.14,e:21.48,t:"Google,"},
+    {s:21.92,e:23.96,t:"Microsoft, and Anthropic."},
+    {s:24.84,e:28.98,t:"However, the nature of this race has fundamentally changed."},
+    {s:29.00,e:32.84,t:"The era of the simple AI chatbot is officially over."},
+    {s:33.58,e:37.26,t:"Today, we are in the era of agentic systems."},
+    {s:38.10,e:50.14,t:"These are autonomous AI systems capable of executing complex business workflows and connecting directly with our daily data to deliver actionable enterprise-ready outputs."},
 
-    {s:41.96,e:47.78,t:"To understand where we are, let us look at the incredible numbers driving this industry right now."},
-    {s:47.88,e:51.10,t:"OpenAI is the undisputed leader in consumer adoption."},
-    {s:52.07,e:58.90,t:"They have reached a staggering nine hundred million weekly active users and are generating an annualized revenue of twenty-five billion dollars."},
-    {s:59.92,e:68.63,t:"Their newest model, GPT 5.4, is performing exceptionally well, achieving an eighty-three percent win or tie rate when compared to human experts in blind tests."},
-    {s:69.67,e:73.16,t:"They have become completely synonymous with AI for the general public."},
+    {s:51.26,e:56.44,t:"To understand where we are, let us look at the incredible numbers driving this industry right now."},
+    {s:57.30,e:60.81,t:"OpenAI is the undisputed leader in consumer adoption."},
+    {s:61.44,e:70.14,t:"They have reached a staggering nine hundred million weekly active users and are generating an annualized revenue of twenty-five billion dollars."},
+    {s:70.94,e:71.76,t:"Their newest model,"},
+    {s:72.12,e:82.78,t:"GPT 5.4, is performing exceptionally well, achieving an eighty-three percent win or tie rate when compared to human experts in blind tests."},
+    {s:83.50,e:88.04,t:"They have become completely synonymous with AI for the general public."},
 
-    {s:74.24,e:77.59,t:"However, the enterprise and full-stack race is much more complex."},
-    {s:78.66,e:85.32,t:"Google is taking a massive share of the market with seven hundred and fifty million monthly active users and eight million paid enterprise seats."},
-    {s:86.36,e:90.24,t:"Google's true advantage is its multimodal capability."},
-    {s:90.27,e:95.24,t:"They are the only major provider natively handling video alongside text, image, and audio."},
-    {s:96.22,e:107.96,t:"By deeply integrating Gemini into Google Workspace, including Gmail, Drive, and Docs, Google is transforming daily operations so employees can analyze their data from anywhere within their organization."},
+    {s:88.08,e:92.78,t:"However, the enterprise and full stack race is much more complex."},
+    {s:93.68,e:102.35,t:"Google is taking a massive share of the market with seven hundred fifty million monthly active users and eight million paid enterprise seats."},
+    {s:103.28,e:106.43,t:"Google's true advantage is its multimodal capability."},
+    {s:107.05,e:113.40,t:"They are the only major provider natively handling video alongside text, image, and audio."},
+    {s:114.10,e:118.36,t:"By deeply integrating Gemini into Google Workspace, including Gmail,"},
+    {s:118.60,e:119.79,t:"Drive, and Docs,"},
+    {s:120.40,e:127.29,t:"Google is transforming daily operations so employees can analyze their data from anywhere within their organization."},
 
-    {s:108.06,e:111.66,t:"Then we have Microsoft, which remains the enterprise control plane."},
-    {s:112.52,e:117.56,t:"Microsoft has a major head start because its software is heavily embedded in corporate environments."},
-    {s:118.54,e:125.66,t:"They currently have fifteen million paid Copilot seats with a remarkable ninety percent penetration rate among Fortune five hundred companies."},
-    {s:126.68,e:133.20,t:"While their learning and governance curve can be high, Microsoft embeds AI by default across Word, Excel, Teams, and Outlook."},
-    {s:134.20,e:143.56,t:"They are also heavily invested in the broader AI ecosystem, holding a twenty-seven percent stake in OpenAI's public benefits corporation and committing five billion dollars to Anthropic."},
+    {s:128.26,e:132.17,t:"Then we have Microsoft, which remains the enterprise control plane."},
+    {s:133.09,e:138.60,t:"Microsoft has a major head start because its software is heavily embedded in corporate environments."},
+    {s:139.23,e:148.36,t:"They currently have fifteen million paid Copilot seats with a remarkable ninety percent penetration rate among Fortune five hundred companies."},
+    {s:149.18,e:151.68,t:"While their learning and governance curve can be high,"},
+    {s:152.16,e:155.76,t:"Microsoft embeds AI by default across Word,"},
+    {s:156.06,e:156.54,t:"Excel,"},
+    {s:156.92,e:158.29,t:"Teams, and Outlook."},
+    {s:159.07,e:170.63,t:"They are also heavily invested in the broader AI ecosystem, holding a twenty-seven percent stake in OpenAI's public benefits corporation and committing five billion dollars to Anthropic."},
 
-    {s:144.66,e:146.84,t:"Finally, we must talk about Anthropic."},
-    {s:147.74,e:156.84,t:"While they do not have the massive user base of OpenAI or Google, they are a financial powerhouse, reporting twenty billion dollars in annual recurring revenue."},
-    {s:156.85,e:159.58,t:"Anthropic is winning in the premium intelligence layer."},
-    {s:160.66,e:164.34,t:"Their models excel in complex reasoning and technical applications."},
-    {s:165.26,e:167.84,t:"This is especially true in the new agent coding war."},
-    {s:168.92,e:177.56,t:"Anthropic's Claude Code alone is reportedly responsible for four percent of all GitHub commits and reached two point five billion dollars in annual revenue within months of its launch."},
-    {s:178.58,e:187.52,t:"Coding is the first area where AI is delivering direct, quantifiable productivity gains, and Anthropic is leading this high-value technical space."},
+    {s:171.60,e:174.90,t:"Finally, we must talk about Anthropic."},
+    {s:174.92,e:184.96,t:"While they do not have the massive user base of OpenAI or Google, they are a financial powerhouse, reporting twenty billion dollars in annual recurring revenue."},
+    {s:185.88,e:188.89,t:"Anthropic is winning in the premium intelligence layer."},
+    {s:189.52,e:194.24,t:"Their models excel in complex reasoning and technical applications."},
+    {s:194.32,e:197.34,t:"This is especially true in the new agent coding war."},
+    {s:197.62,e:210.64,t:"Anthropic's Claude Code alone is reportedly responsible for four percent of all GitHub commits and reached two point five billion dollars in annual revenue within months of its launch."},
+    {s:211.86,e:222.76,t:"Coding is the first area where AI is delivering direct, quantifiable productivity gains, and Anthropic is leading this high-value technical space."},
 
-    {s:187.58,e:190.62,t:"The financial stakes are astronomical."},
-    {s:190.66,e:195.20,t:"These companies are spending unbelievable amounts of money on infrastructure and data centers."},
-    {s:196.26,e:205.02,t:"OpenAI is targeting six hundred billion dollars in compute spend through twenty thirty, while Google is planning up to one hundred and eighty-five billion dollars in capital expenditures."},
+    {s:222.80,e:225.64,t:"The financial stakes are astronomical."},
+    {s:225.70,e:230.90,t:"These companies are spending unbelievable amounts of money on infrastructure and data centers."},
+    {s:231.76,e:243.46,t:"OpenAI is targeting six hundred billion dollars in compute spend through twenty thirty, while Google is planning up to one hundred eighty-five billion dollars in capital expenditures."},
 
-    {s:206.11,e:208.60,t:"So, what does this mean for us as business leaders?"},
-    {s:209.61,e:213.71,t:"The winner in twenty twenty-six will not just be the company with the smartest model."},
-    {s:214.80,e:221.05,t:"It will be the provider that best integrates seamlessly into our proprietary business data to deliver enterprise-grade results."},
+    {s:244.64,e:247.80,t:"So what does this mean for us as business leaders?"},
+    {s:248.71,e:254.12,t:"The winner in twenty twenty-six will not just be the company with the smartest model."},
+    {s:254.16,e:263.72,t:"It will be the provider that best integrates seamlessly into our proprietary business data to deliver enterprise-grade results."},
 
-    {s:222.18,e:224.04,t:"Our strategy must be flexible."},
-    {s:225.10,e:230.04,t:"We must avoid relying entirely on a single vendor because models and platforms change constantly."},
-    {s:231.08,e:232.27,t:"We need a modular approach."},
-    {s:232.50,e:243.39,t:"We might use OpenAI for broad, everyday tasks, Google for multimodal content and scalable workspace integration, Anthropic for deep technical and coding work, and Microsoft for strict security and governance."},
-    {s:244.44,e:250.21,t:"We must stop treating AI as a simple chatbot and start redesigning our internal workflows for agentic systems."},
-    {s:251.22,e:258.88,t:"By preparing contingency plans and matching the right platform to the right problem, we can turn this AI competition into our own sustained business advantage."},
-    {s:259.96,e:261.06,t:"Thank you for your time."}
+    {s:263.80,e:266.22,t:"Our strategy must be flexible."},
+    {s:266.25,e:273.58,t:"We must avoid relying entirely on a single vendor because models and platforms change constantly."},
+    {s:273.62,e:276.19,t:"We need a modular approach."},
+    {s:276.19,e:279.55,t:"We might use OpenAI for broad everyday tasks,"},
+    {s:280.16,e:285.35,t:"Google for multimodal content and scalable workspace integration,"},
+    {s:285.40,e:292.39,t:"Anthropic for deep technical and coding work, and Microsoft for strict security and governance."},
+    {s:293.46,e:301.40,t:"We must stop treating AI as a simple chatbot and start redesigning our internal workflows for agentic systems."},
+    {s:302.34,e:312.96,t:"By preparing contingency plans and matching the right platform to the right problem, we can turn this AI competition into our own sustained business advantage."},
+    {s:314.12,e:315.12,t:"Thank you for your time."}
   ];
 
   const audio = document.getElementById("audio");
