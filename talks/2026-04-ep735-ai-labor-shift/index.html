@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Ep 735: The AI Labor Shift: When It Will Happen and What It Means for Jobs (Start Here Series Vol 13)</title>
+  <style>
+    :root{
+      --bg:#0b1220;
+      --panel:#0f1a33;
+      --text:#e8eefc;
+      --muted:#a9b7d6;
+      --hl:#ffe08a;
+      --hlText:#1b1b1b;
+      --bd:rgba(255,255,255,.12);
+      --accent:#7aa2ff;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      padding-bottom:env(safe-area-inset-bottom);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background:linear-gradient(180deg,var(--bg),#070b14);
+      color:var(--text);
+    }
+    header{
+      position:sticky;
+      top:0;
+      background:rgba(11,18,32,.92);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--bd);
+      z-index:10;
+    }
+    .wrap{
+      max-width:980px;
+      margin:0 auto;
+      padding:14px 12px;
+    }
+    h1{
+      margin:0 0 6px;
+      font-size:16px;
+      line-height:1.35;
+    }
+    .sub{
+      margin:0;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.45;
+    }
+    .player{
+      margin-top:10px;
+      padding:12px;
+      background:rgba(15,26,51,.8);
+      border:1px solid var(--bd);
+      border-radius:14px;
+    }
+    audio{width:100%}
+    .controls{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin-top:10px;
+    }
+    .chip{
+      display:inline-flex;
+      gap:6px;
+      align-items:center;
+      padding:6px 10px;
+      border:1px solid var(--bd);
+      border-radius:999px;
+      background:rgba(255,255,255,.03);
+      color:var(--muted);
+      font-size:12px;
+    }
+    a{
+      color:var(--accent);
+      text-decoration:none;
+    }
+    a:hover{text-decoration:underline}
+    select,button{
+      background:rgba(255,255,255,.05);
+      color:var(--text);
+      border:1px solid var(--bd);
+      border-radius:10px;
+      padding:6px 10px;
+      font-size:12px;
+    }
+    button{cursor:pointer}
+    .panel{
+      margin-top:12px;
+      background:rgba(15,26,51,.7);
+      border:1px solid var(--bd);
+      border-radius:14px;
+      overflow:hidden;
+    }
+    .panel h2{
+      margin:0;
+      padding:12px;
+      font-size:13px;
+      color:var(--muted);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .lines{
+      max-height:calc(100dvh - 320px);
+      overflow:auto;
+      padding:10px 10px 100px 10px;
+      scroll-behavior:smooth;
+    }
+    .line{
+      display:flex;
+      gap:10px;
+      padding:10px;
+      border-radius:12px;
+      border:1px solid transparent;
+    }
+    .line:hover{background:rgba(255,255,255,.03)}
+    .t{
+      min-width:70px;
+      color:var(--muted);
+      font-variant-numeric:tabular-nums;
+      font-size:12px;
+    }
+    .txt{
+      flex:1;
+      line-height:1.4;
+      font-size:14px;
+    }
+    .current{
+      background:var(--hl);
+      color:var(--hlText);
+      border-color:rgba(0,0,0,.12);
+    }
+    .current .t{color:rgba(0,0,0,.62)}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Ep 735: The AI Labor Shift: When It Will Happen and What It Means for Jobs (Start Here Series Vol 13)</h1>
+    <p class="sub">Line-level highlighting synced to narration audio. Tap a line to jump.</p>
+
+    <div class="player">
+      <audio id="audio" controls preload="metadata">
+        <source src="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.82d88b49.mp3" type="audio/mpeg">
+      </audio>
+
+      <div class="controls">
+        <span class="chip">Audio: <a href="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.82d88b49.mp3" target="_blank" rel="noreferrer">Source</a></span>
+        <span class="chip">Timing: <a href="https://www.genspark.ai/api/files/s/BlHT8lRc" target="_blank" rel="noreferrer">Source</a></span>
+
+        <label class="chip">Speed
+          <select id="speed">
+            <option value="0.8">0.8×</option>
+            <option value="0.9">0.9×</option>
+            <option value="1" selected>1.0×</option>
+            <option value="1.1">1.1×</option>
+            <option value="1.25">1.25×</option>
+          </select>
+        </label>
+
+        <button id="follow">Auto-follow: ON</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="panel">
+    <h2>Transcript</h2>
+    <div class="lines" id="lines"></div>
+  </section>
+</main>
+
+<script>
+  const segments = [
+    {s:0.12,e:1.16,t:"Good morning, everyone."},
+    {s:2.02,e:8.04,t:"Today, we need to discuss a critical reality that is transforming our workforce in twenty twenty-six."},
+    {s:9.00,e:13.44,t:"We are currently experiencing what experts call the AI labor shift."},
+    {s:14.30,e:31.94,t:"While we have heard for years that artificial intelligence will create millions of new jobs, many professionals are looking around and asking, \"Are we watching traditional work disappear before the new jobs even arrive?\" To understand this shift, we must look at the hard data."},
+
+    {s:32.96,e:35.62,t:"In the first few months of twenty twenty-six alone,"},
+    {s:36.24,e:47.02,t:"US companies reported over forty thousand planned job eliminations attributed to AI, adding to an existing forty-five thousand AI-related job cuts."},
+    {s:48.04,e:50.14,t:"Major tech firms are leading this trend."},
+    {s:50.83,e:54.65,t:"Meta cited more than fifteen thousand roles targeted for elimination,"},
+    {s:55.24,e:60.70,t:"Block cut four thousand jobs, and Oracle is moving toward thirty thousand reductions."},
+
+    {s:61.70,e:65.04,t:"However, we must be careful how we interpret these numbers."},
+    {s:65.70,e:76.31,t:"A recent study by Harvard Business Review revealed that sixty percent of hiring managers who blame AI for layoffs are not actually replacing those roles with AI."},
+    {s:77.13,e:84.82,t:"Instead, they are engaging in AI washing, using AI as a convenient excuse for broader cost reductions."},
+    {s:85.94,e:88.02,t:"Wall Street often rewards this behavior."},
+    {s:88.82,e:98.58,t:"For example, when Block announced a massive forty percent workforce reduction and attributed it to AI, the company's stock jumped by twenty-two percent."},
+
+    {s:99.51,e:106.02,t:"The true indicator of where the business world is heading is not just the layoffs, but where the money is moving."},
+    {s:107.10,e:116.30,t:"We are witnessing a massive transition from OPEX, or operating expenses like employee salaries, to CapEx, or capital expenditures."},
+    {s:117.24,e:117.65,t:"This year,"},
+    {s:118.08,e:118.59,t:"Amazon,"},
+    {s:118.90,e:119.40,t:"Alphabet,"},
+    {s:119.72,e:119.98,t:"Meta,"},
+    {s:120.32,e:131.62,t:"Microsoft, and Oracle are collectively set to spend seven hundred billion dollars on AI infrastructure like data centers, custom silicon, and power generation."},
+    {s:132.52,e:144.73,t:"They are deliberately substituting salary-based spending with long-term infrastructure, betting heavily on autonomous AI agents to handle work previously done by large human teams."},
+
+    {s:145.74,e:149.52,t:"This financial shift is completely changing corporate structures."},
+    {s:149.60,e:155.02,t:"Entry-level hiring and knowledge work is quietly down by fourteen percent."},
+    {s:155.03,e:159.70,t:"The traditional corporate ladder is crumbling in favor of smaller, flatter teams."},
+    {s:160.44,e:170.08,t:"This is happening because AI is now exceptionally good at handling codified knowledge, routine tasks like basic research, writing, and data synthesis."},
+    {s:171.08,e:175.98,t:"If a job relies heavily on this routine codified knowledge, it is at high risk."},
+
+    {s:176.88,e:180.40,t:"Despite this, there is incredible opportunity for those who adapt."},
+    {s:181.22,e:189.88,t:"Data from the Federal Reserve Bank of Dallas shows that workers who are proficient in AI are currently earning fifty-six percent more than their peers."},
+    {s:190.68,e:200.78,t:"This massive wage premium exists because AI-fluent professionals compound their productivity, achieving outcomes that previously required a team of ten people."},
+
+    {s:200.82,e:204.34,t:"Furthermore, there is a massive capability gap in the market."},
+    {s:205.06,e:207.92,t:"For instance, in computer and math roles,"},
+    {s:208.42,e:223.57,t:"AI could theoretically handle ninety-four percent of workloads, yet only thirty-three percent of this potential is actually realized because most companies lack the training and vision to use these tools effectively."},
+
+    {s:224.72,e:231.60,t:"So, how can we and our teams survive and thrive in this AI labor shift?"},
+    {s:232.70,e:236.76,t:"We must immediately implement a three-step survival guide."},
+
+    {s:237.82,e:241.12,t:"First, audit your role today."},
+    {s:241.20,e:254.38,t:"You must separate your daily tasks into codified knowledge, which is routine information processing, and tacit knowledge, which involves expert judgment, nuance, and relationship building."},
+    {s:255.36,e:258.90,t:"Knowing the difference is the foundation of your future relevance."},
+
+    {s:260.22,e:263.16,t:"Second, document your expert reasoning."},
+    {s:263.96,e:269.56,t:"AI cannot easily replicate human experience and complex decision-making frameworks."},
+    {s:270.40,e:279.52,t:"You must clearly identify and write down the unique human value and domain expertise you bring to your organization."},
+
+    {s:280.96,e:285.34,t:"Third, double down on one single AI platform."},
+    {s:286.22,e:291.38,t:"The pace of innovation is simply too fast to chase every new tool on the market."},
+    {s:292.22,e:302.18,t:"Instead, select a leading platform and embed it deeply into your daily workflow until it becomes a natural extension of your own expertise."},
+
+    {s:303.40,e:306.75,t:"The AI labor shift is no longer a future prediction."},
+    {s:307.42,e:308.92,t:"It is our current reality."},
+    {s:309.88,e:321.88,t:"By focusing on tacit knowledge, closing the capability gap, and mastering our tools, we can successfully navigate this transition and secure a massive competitive advantage."},
+    {s:323.12,e:324.08,t:"Thank you for your time."}
+  ];
+
+  const audio = document.getElementById("audio");
+  const linesEl = document.getElementById("lines");
+  const speed = document.getElementById("speed");
+  const followBtn = document.getElementById("follow");
+
+  let follow = true;
+  let current = -1;
+
+  const fmt = sec => `${Math.floor(sec/60)}:${String(Math.floor(sec%60)).padStart(2,"0")}`;
+
+  segments.forEach((seg, i) => {
+    const row = document.createElement("div");
+    row.className = "line";
+    row.dataset.i = i;
+    row.innerHTML = `<div class="t">${fmt(seg.s)}</div><div class="txt">${seg.t}</div>`;
+    row.onclick = () => {
+      audio.currentTime = seg.s + 0.01;
+      audio.play().catch(()=>{});
+    };
+    linesEl.appendChild(row);
+  });
+
+  speed.onchange = () => {
+    audio.playbackRate = Number(speed.value);
+  };
+
+  followBtn.onclick = () => {
+    follow = !follow;
+    followBtn.textContent = `Auto-follow: ${follow ? "ON" : "OFF"}`;
+  };
+
+  function findIndex(t){
+    for(let i=0;i<segments.length;i++){
+      if(t >= segments[i].s && t < segments[i].e) return i;
+    }
+    for(let i=segments.length-1;i>=0;i--){
+      if(t >= segments[i].s) return i;
+    }
+    return 0;
+  }
+
+  function effectiveBottom(){
+    const c = linesEl.getBoundingClientRect();
+    if(window.visualViewport){
+      const vvB = window.visualViewport.offsetTop + window.visualViewport.height;
+      return Math.min(c.bottom, vvB);
+    }
+    return c.bottom;
+  }
+
+  function setCurrent(i){
+    if(i === current) return;
+
+    const prev = linesEl.querySelector(".current");
+    if(prev) prev.classList.remove("current");
+
+    current = i;
+    const cur = linesEl.querySelector(`.line[data-i="${i}"]`);
+
+    if(cur){
+      cur.classList.add("current");
+
+      if(follow){
+        const pad = 32;
+        const c = linesEl.getBoundingClientRect();
+        const r = cur.getBoundingClientRect();
+        const eB = effectiveBottom() - pad;
+
+        if(r.top < c.top + pad){
+          linesEl.scrollBy({
+            top: r.top - (c.top + pad),
+            behavior: "smooth"
+          });
+        } else if(r.bottom > eB){
+          linesEl.scrollBy({
+            top: r.bottom - eB,
+            behavior: "smooth"
+          });
+        }
+      }
+    }
+  }
+
+  audio.addEventListener("timeupdate", () => {
+    setCurrent(findIndex(audio.currentTime));
+  });
+
+  audio.addEventListener("loadedmetadata", () => {
+    setCurrent(findIndex(0));
+  });
+</script>
+</body>
+</html>
