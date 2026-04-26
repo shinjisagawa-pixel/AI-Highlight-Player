@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Ep 737: AI Governance in Plain English: 5 AI Rules Every Company Needs to Follow (Start Here Series Vol 14)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <style>
+    :root{
+      --bg:#0b1020;
+      --panel:#121a2b;
+      --panel2:#182338;
+      --text:#eaf1ff;
+      --muted:#9fb0d1;
+      --line:#263350;
+      --accent:#7cc4ff;
+      --accent2:#c8e6ff;
+      --current:#1d3b63;
+      --chip:#16233a;
+      --shadow:0 10px 30px rgba(0,0,0,.28);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;
+      padding:0;
+      background:linear-gradient(180deg,#0a0f1c 0%, #0b1020 100%);
+      color:var(--text);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    }
+    body{
+      min-height:100vh;
+      min-height:100dvh;
+      padding:
+        max(16px, env(safe-area-inset-top))
+        16px
+        calc(16px + env(safe-area-inset-bottom))
+        16px;
+    }
+    a{color:var(--accent)}
+    .wrap{
+      max-width:980px;
+      margin:0 auto;
+    }
+    .hero{
+      background:linear-gradient(180deg,rgba(124,196,255,.14),rgba(124,196,255,.05));
+      border:1px solid rgba(124,196,255,.18);
+      border-radius:24px;
+      padding:20px 20px 16px;
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(10px);
+    }
+    .eyebrow{
+      color:var(--accent2);
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      margin-bottom:8px;
+      font-weight:700;
+    }
+    h1{
+      margin:0;
+      font-size:clamp(28px,4vw,42px);
+      line-height:1.12;
+      letter-spacing:-.02em;
+    }
+    .sub{
+      margin-top:10px;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.6;
+    }
+    .player{
+      margin-top:16px;
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:16px;
+      box-shadow:var(--shadow);
+    }
+    audio{
+      width:100%;
+      display:block;
+    }
+    .controls{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      margin-top:12px;
+    }
+    .chip, .btn, select{
+      border:1px solid var(--line);
+      background:var(--chip);
+      color:var(--text);
+      border-radius:999px;
+      padding:10px 14px;
+      font-size:14px;
+    }
+    .btn{
+      cursor:pointer;
+    }
+    .btn:hover{
+      border-color:#44679a;
+    }
+    .grid{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns:1fr;
+      gap:16px;
+    }
+    .card{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:20px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .card-h{
+      padding:14px 16px;
+      border-bottom:1px solid var(--line);
+      font-weight:700;
+      color:var(--accent2);
+      background:rgba(255,255,255,.02);
+      position:sticky;
+      top:0;
+      z-index:2;
+    }
+    #lines{
+      padding:8px;
+      overflow:auto;
+      overscroll-behavior:contain;
+      -webkit-overflow-scrolling:touch;
+      height:calc(100vh - 290px);
+      height:calc(100dvh - 290px);
+      min-height:300px;
+      max-height:70vh;
+    }
+    .line{
+      display:grid;
+      grid-template-columns:64px 1fr;
+      gap:12px;
+      align-items:start;
+      width:100%;
+      border:0;
+      background:transparent;
+      color:var(--text);
+      text-align:left;
+      padding:12px;
+      border-radius:14px;
+      cursor:pointer;
+      transition:background .18s ease;
+    }
+    .line:hover{
+      background:rgba(255,255,255,.04);
+    }
+    .line.current{
+      background:var(--current);
+      outline:1px solid rgba(124,196,255,.28);
+    }
+    .time{
+      color:var(--accent2);
+      font-variant-numeric:tabular-nums;
+      font-size:13px;
+      padding-top:2px;
+      white-space:nowrap;
+    }
+    .txt{
+      line-height:1.6;
+      font-size:16px;
+    }
+    .footer-note{
+      margin-top:14px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.6;
+    }
+    @media (max-width:640px){
+      body{padding-left:12px;padding-right:12px}
+      .hero,.player,.card{border-radius:18px}
+      .line{grid-template-columns:56px 1fr;gap:10px;padding:11px}
+      .txt{font-size:15px}
+      #lines{
+        height:calc(100vh - 300px);
+        height:calc(100dvh - 300px);
+        min-height:280px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="eyebrow">AI Highlight Player</div>
+      <h1>Ep 737: AI Governance in Plain English: 5 AI Rules Every Company Needs to Follow (Start Here Series Vol 14)</h1>
+      <div class="sub">
+        Inventory every AI asset, classify risk correctly, assign ownership, create living playbooks, and use governance as the engine for safe scale.
+      </div>
+    </section>
+
+    <section class="player">
+      <audio id="audio" controls preload="metadata" playsinline>
+        <source src="https://n.uguu.se/irLTJvNj.mp3" type="audio/mpeg">
+      </audio>
+
+      <div class="controls">
+        <a class="chip" href="https://n.uguu.se/irLTJvNj.mp3" target="_blank" rel="noreferrer noopener">Audio</a>
+        <label class="chip">Speed
+          <select id="speed">
+            <option value="0.8">0.8×</option>
+            <option value="0.9">0.9×</option>
+            <option value="1" selected>1.0×</option>
+            <option value="1.1">1.1×</option>
+            <option value="1.2">1.2×</option>
+            <option value="1.25">1.25×</option>
+          </select>
+        </label>
+        <button id="follow" class="btn" type="button">Auto-follow: ON</button>
+      </div>
+
+      <div class="footer-note">
+        Tap any line to jump playback. iPhone Safari bottom-bar overlap is handled with safe-area padding and visualViewport-aware scrolling.
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <div class="card-h">Transcript</div>
+        <div id="lines"></div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const segments = [
+      { s: 0.22, e: 1.50, t: "Good morning, everyone." },
+      { s: 2.48, e: 11.92, t: "Today, I want to explain AI governance in plain English, because right now, too many companies are adopting artificial intelligence without the rules required to use it safely and effectively." },
+      { s: 12.80, e: 15.10, t: "The current situation is surprisingly weak." },
+      { s: 16.14, e: 22.92, t: "Around half of companies now provide AI tools to their staff, but only about 12 percent are generating real business value from them." },
+      { s: 23.92, e: 30.26, t: "More than 90 percent of employees are still using AI only for simple tasks like summarizing notes or drafting basic text." },
+      { s: 31.32, e: 41.12, t: "At the same time, 74 percent of organizations plan to adopt autonomous or agentic AI within the next two years, yet only around 21 percent have a mature governance model in place." },
+      { s: 42.18, e: 43.42, t: "That gap is dangerous." },
+      { s: 44.46, e: 48.10, t: "We have already seen what happens when AI is used without proper control." },
+      { s: 49.14, e: 56.52, t: "UnitedHealthcare faced a class action lawsuit after an ungoverned AI system was reported to deny care with an error rate around 90 percent." },
+      { s: 57.54, e: 63.84, t: "More than half of organizations still do not even maintain a complete inventory of the AI tools being used inside the business." },
+      { s: 64.90, e: 72.50, t: "Shadow AI now appears in roughly 20 percent of data breaches, adding an average of 670 thousand dollars in extra cost per incident." },
+      { s: 73.54, e: 80.86, t: "And 75 percent of firms remain stuck in what many now call pilot purgatory, endlessly testing AI without building a safe path to scale." },
+      { s: 81.90, e: 83.20, t: "So what should companies do?" },
+      { s: 84.22, e: 87.52, t: "Here are the five AI governance rules every company needs to follow." },
+      { s: 88.54, e: 90.92, t: "Rule one: Inventory all AI assets." },
+      { s: 91.98, e: 93.78, t: "You cannot govern what you cannot see." },
+      { s: 94.84, e: 101.30, t: "Every company needs a living catalogue of approved AI tools, experiments, workflows, agents, and connected data sources." },
+      { s: 102.34, e: 108.92, t: "This inventory should also identify which tools are green-lit for broad use, which are restricted, and which are blocked entirely." },
+      { s: 109.82, e: 116.56, t: "Governance starts with visibility, and visibility must include user training so employees understand what tools are safe and why." },
+      { s: 117.46, e: 120.26, t: "Rule two: Classify every AI use case by risk." },
+      { s: 121.30, e: 124.90, t: "A simple way to do this is to follow the logic of the EU AI Act." },
+      { s: 125.98, e: 130.50, t: "Some use cases are minimal risk, like generating a first draft of an internal email." },
+      { s: 131.54, e: 137.62, t: "Others are high risk, like supporting a mortgage decision, approving medical coverage, or evaluating an employee." },
+      { s: 138.64, e: 142.46, t: "The higher the risk, the stronger the controls must be." },
+      { s: 142.54, e: 147.73, t: "High-risk systems require human review, testing, documentation, and clear accountability." },
+      { s: 148.78, e: 150.70, t: "Rule three: Assign clear ownership." },
+      { s: 151.70, e: 156.02, t: "Governance fails when everyone assumes someone else is responsible." },
+      { s: 156.10, e: 161.60, t: "Every company needs a cross-functional AI governance committee with the authority to act quickly." },
+      { s: 161.66, e: 167.27, t: "That means an executive sponsor, legal, IT or security, a domain expert, and a real daily user." },
+      { s: 168.33, e: 174.83, t: "This group must be able to make decisions in seconds when an issue appears, not weeks later after a meeting request moves through the calendar." },
+      { s: 175.92, e: 177.98, t: "Rule four: Create living playbooks." },
+      { s: 179.08, e: 181.24, t: "Static policy PDFs are not enough." },
+      { s: 182.26, e: 194.44, t: "Teams need practical, use-case-specific playbooks that define what the AI is allowed to do, what systems it can access, what accuracy threshold is acceptable, who must review outputs, and when escalation is required." },
+      { s: 194.45, e: 199.56, t: "A customer support bot should have a different playbook from a finance workflow or a healthcare application." },
+      { s: 200.48, e: 204.12, t: "Governance has to be dynamic, because AI systems change rapidly." },
+      { s: 205.14, e: 207.80, t: "Rule five: Treat governance as a scaling engine." },
+      { s: 208.80, e: 213.18, t: "Many leaders think governance slows innovation, but the evidence now shows the opposite." },
+      { s: 214.18, e: 221.78, t: "Companies with mature governance models deploy AI about 40 percent faster and save roughly 1.9 million dollars per breach when incidents occur." },
+      { s: 222.82, e: 228.44, t: "Good governance is not a brake; it is the operating system that makes safe scale possible." },
+      { s: 229.46, e: 231.86, t: "This is the key message for 2026." },
+      { s: 232.76, e: 236.70, t: "The companies that win with AI will not be the ones that simply buy the most tools." },
+      { s: 237.70, e: 246.34, t: "They will be the ones that know exactly what AI they are using, which use cases carry risk, who is responsible, what playbooks apply, and how to review the system every month." },
+      { s: 247.52, e: 251.06, t: "If you want AI to create real business value, start with governance." },
+      { s: 252.12, e: 268.33, t: "Build the inventory, classify the risks, assign ownership, create living playbooks, and review everything on a regular cycle, because in the age of autonomous AI, governance is no longer a legal formality." },
+      { s: 269.40, e: 272.84, t: "It is the foundation of speed, trust, and competitive advantage." },
+      { s: 273.92, e: 274.35, t: "Thank you." }
+    ];
+
+    const audio = document.getElementById("audio");
+    const linesEl = document.getElementById("lines");
+    const speed = document.getElementById("speed");
+    const followBtn = document.getElementById("follow");
+
+    let follow = true;
+    let current = -1;
+
+    const fmt = (sec) => {
+      const m = Math.floor(sec / 60);
+      const s = Math.floor(sec % 60);
+      return `${m}:${String(s).padStart(2, "0")}`;
+    };
+
+    function render() {
+      linesEl.innerHTML = "";
+      segments.forEach((seg, i) => {
+        const row = document.createElement("button");
+        row.type = "button";
+        row.className = "line";
+        row.dataset.i = i;
+        row.innerHTML = `
+          <div class="time">${fmt(seg.s)}</div>
+          <div class="txt">${seg.t}</div>
+        `;
+        row.addEventListener("click", () => {
+          audio.currentTime = Math.max(0, seg.s + 0.01);
+          audio.play().catch(() => {});
+        });
+        linesEl.appendChild(row);
+      });
+    }
+
+    function findIndex(t) {
+      for (let i = 0; i < segments.length; i++) {
+        if (t >= segments[i].s && t < segments[i].e) return i;
+      }
+      for (let i = segments.length - 1; i >= 0; i--) {
+        if (t >= segments[i].s) return i;
+      }
+      return 0;
+    }
+
+    function effectiveBottom() {
+      const c = linesEl.getBoundingClientRect();
+      if (window.visualViewport) {
+        const vvBottom = window.visualViewport.offsetTop + window.visualViewport.height;
+        return Math.min(c.bottom, vvBottom);
+      }
+      return c.bottom;
+    }
+
+    function setCurrent(i) {
+      if (i === current) return;
+      const prev = linesEl.querySelector(".line.current");
+      if (prev) prev.classList.remove("current");
+      current = i;
+      const cur = linesEl.querySelector(`.line[data-i="${i}"]`);
+      if (!cur) return;
+      cur.classList.add("current");
+
+      if (follow) {
+        const pad = 28;
+        const c = linesEl.getBoundingClientRect();
+        const r = cur.getBoundingClientRect();
+        const topLimit = c.top + pad;
+        const bottomLimit = effectiveBottom() - pad;
+
+        if (r.top < topLimit) {
+          linesEl.scrollBy({ top: r.top - topLimit, behavior: "smooth" });
+        } else if (r.bottom > bottomLimit) {
+          linesEl.scrollBy({ top: r.bottom - bottomLimit, behavior: "smooth" });
+        }
+      }
+    }
+
+    render();
+
+    speed.addEventListener("change", () => {
+      audio.playbackRate = Number(speed.value);
+    });
+
+    followBtn.addEventListener("click", () => {
+      follow = !follow;
+      followBtn.textContent = `Auto-follow: ${follow ? "ON" : "OFF"}`;
+    });
+
+    audio.addEventListener("timeupdate", () => {
+      setCurrent(findIndex(audio.currentTime));
+    });
+
+    audio.addEventListener("loadedmetadata", () => {
+      setCurrent(findIndex(0));
+    });
+
+    window.addEventListener("resize", () => {
+      if (current >= 0) setCurrent(current);
+    });
+
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", () => {
+        if (current >= 0) setCurrent(current);
+      });
+      window.visualViewport.addEventListener("scroll", () => {
+        if (current >= 0) setCurrent(current);
+      });
+    }
+  </script>
+</body>
+</html>
