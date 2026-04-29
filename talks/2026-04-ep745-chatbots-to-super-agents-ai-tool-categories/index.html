@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Ep 745: From Chatbots to Super Agents: The 11 AI Tool Categories Explained</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <style>
+    :root{
+      --bg:#0b1020;
+      --panel:#121a2b;
+      --panel2:#182338;
+      --text:#eaf1ff;
+      --muted:#9fb0d1;
+      --line:#263350;
+      --accent:#7cc4ff;
+      --accent2:#c8e6ff;
+      --current:#1d3b63;
+      --chip:#16233a;
+      --shadow:0 10px 30px rgba(0,0,0,.28);
+    }
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;
+      padding:0;
+      background:linear-gradient(180deg,#0a0f1c 0%, #0b1020 100%);
+      color:var(--text);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    }
+    body{
+      min-height:100vh;
+      min-height:100dvh;
+      padding:
+        max(16px, env(safe-area-inset-top))
+        16px
+        calc(16px + env(safe-area-inset-bottom))
+        16px;
+    }
+    a{color:var(--accent)}
+    .wrap{max-width:980px;margin:0 auto}
+    .hero{
+      background:linear-gradient(180deg,rgba(124,196,255,.14),rgba(124,196,255,.05));
+      border:1px solid rgba(124,196,255,.18);
+      border-radius:24px;
+      padding:20px 20px 16px;
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(10px);
+    }
+    .eyebrow{
+      color:var(--accent2);
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      margin-bottom:8px;
+      font-weight:700;
+    }
+    h1{
+      margin:0;
+      font-size:clamp(28px,4vw,42px);
+      line-height:1.12;
+      letter-spacing:-.02em;
+    }
+    .sub{
+      margin-top:10px;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.6;
+    }
+    .player{
+      margin-top:16px;
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:16px;
+      box-shadow:var(--shadow);
+    }
+    audio{width:100%;display:block}
+    .controls{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      margin-top:12px;
+    }
+    .chip,.btn,select{
+      border:1px solid var(--line);
+      background:var(--chip);
+      color:var(--text);
+      border-radius:999px;
+      padding:10px 14px;
+      font-size:14px;
+    }
+    .btn{cursor:pointer}
+    .btn:hover{border-color:#44679a}
+    .grid{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns:1fr;
+      gap:16px;
+    }
+    .card{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:20px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .card-h{
+      padding:14px 16px;
+      border-bottom:1px solid var(--line);
+      font-weight:700;
+      color:var(--accent2);
+      background:rgba(255,255,255,.02);
+      position:sticky;
+      top:0;
+      z-index:2;
+    }
+    #lines{
+      padding:8px;
+      overflow:auto;
+      overscroll-behavior:contain;
+      -webkit-overflow-scrolling:touch;
+      height:calc(100vh - 290px);
+      height:calc(100dvh - 290px);
+      min-height:300px;
+      max-height:70vh;
+    }
+    .line{
+      display:grid;
+      grid-template-columns:64px 1fr;
+      gap:12px;
+      align-items:start;
+      width:100%;
+      border:0;
+      background:transparent;
+      color:var(--text);
+      text-align:left;
+      padding:12px;
+      border-radius:14px;
+      cursor:pointer;
+      transition:background .18s ease;
+    }
+    .line:hover{background:rgba(255,255,255,.04)}
+    .line.current{
+      background:var(--current);
+      outline:1px solid rgba(124,196,255,.28);
+    }
+    .time{
+      color:var(--accent2);
+      font-variant-numeric:tabular-nums;
+      font-size:13px;
+      padding-top:2px;
+      white-space:nowrap;
+    }
+    .txt{
+      line-height:1.6;
+      font-size:16px;
+    }
+    .footer-note{
+      margin-top:14px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.6;
+    }
+    @media (max-width:640px){
+      body{padding-left:12px;padding-right:12px}
+      .hero,.player,.card{border-radius:18px}
+      .line{grid-template-columns:56px 1fr;gap:10px;padding:11px}
+      .txt{font-size:15px}
+      #lines{
+        height:calc(100vh - 300px);
+        height:calc(100dvh - 300px);
+        min-height:280px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="eyebrow">AI Highlight Player</div>
+      <h1>Ep 745: From Chatbots to Super Agents: The 11 AI Tool Categories Explained</h1>
+      <div class="sub">
+        Stop chasing shiny new tools. Understand the 11 core AI categories, focus on the few that matter most, and build a strategic stack around multimodal platforms, AI search, and autonomous agents.
+      </div>
+    </section>
+
+    <section class="player">
+      <audio id="audio" controls preload="metadata" playsinline>
+        <source src="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.258ba577.mp3" type="audio/mpeg">
+      </audio>
+
+      <div class="controls">
+        <a class="chip" href="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.258ba577.mp3" target="_blank" rel="noreferrer noopener">Audio</a>
+        <label class="chip">Speed
+          <select id="speed">
+            <option value="0.8">0.8×</option>
+            <option value="0.9">0.9×</option>
+            <option value="1" selected>1.0×</option>
+            <option value="1.1">1.1×</option>
+            <option value="1.2">1.2×</option>
+            <option value="1.25">1.25×</option>
+          </select>
+        </label>
+        <button id="follow" class="btn" type="button">Auto-follow: ON</button>
+      </div>
+
+      <div class="footer-note">
+        Tap any line to jump playback. Includes iPhone Safari-safe layout and visualViewport-aware auto-follow.
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <div class="card-h">Transcript</div>
+        <div id="lines"></div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const segments = [
+      { s: 0.22, e: 1.50, t: "Good morning, everyone." },
+      { s: 2.50, e: 7.72, t: "Today, I want to address a dangerous condition that is currently paralyzing many enterprise leaders." },
+      { s: 8.74, e: 10.97, t: "It is called shiny object AI syndrome." },
+      { s: 11.98, e: 21.34, t: "With hundreds of new artificial intelligence tools launching every single week, most professionals are either drowning in too many applications or paralyzed by confusion and not using enough." },
+      { s: 22.32, e: 26.40, t: "The secret to successful AI adoption is not chasing every new software release." },
+      { s: 27.46, e: 29.82, t: "Instead, it is understanding the landscape." },
+      { s: 30.86, e: 35.50, t: "Almost every AI product in the world fits into one of eleven distinct parent categories." },
+      { s: 36.52, e: 44.50, t: "Today, I will walk you through these categories so you can stop chasing tools and start building a strategic AI stack that drives real business value." },
+      { s: 44.58, e: 49.18, t: "Let us start with the foundation: text reasoning, multimodal platforms, and AI search." },
+      { s: 50.24, e: 52.65, t: "We are no longer dealing with simple chatbots." },
+      { s: 53.66, e: 59.59, t: "Today's tools, such as ChatGPT, Gemini, and Claude, process information and reason like human experts." },
+      { s: 60.60, e: 64.00, t: "However, we must unlearn our habit of demanding instant answers." },
+      { s: 65.00, e: 70.48, t: "To get the best results, we must be patient and allow these models to complete their complex reasoning cycles." },
+      { s: 71.60, e: 75.82, t: "Furthermore, the way we find information is completely changing." },
+      { s: 75.90, e: 79.74, t: "We are moving toward agentic browsing, where AI searches the internet for us." },
+      { s: 80.80, e: 87.40, t: "If your company's data and content are not optimized for AI discoverability right now, you will soon become invisible to the market." },
+      { s: 88.44, e: 93.62, t: "Next, we have the creation categories: voice, image, video, music, and design AI." },
+      { s: 94.62, e: 101.16, t: "Voice AI is becoming critically important due to what experts call the silver tsunami, the massive wave of retiring senior employees." },
+      { s: 102.20, e: 108.12, t: "We must use advanced speech-to-text tools to capture their decades of institutional knowledge before they leave the company." },
+      { s: 109.04, e: 118.46, t: "Additionally, because models now understand natural language so well, your employees can operate up to four times faster by speaking their instructions rather than typing them." },
+      { s: 118.50, e: 128.50, t: "The financial impact of generative media is also staggering. For example, Suno, a leading AI music generator, recently reported three hundred million dollars in revenue." },
+      { s: 128.56, e: 138.02, t: "These tools are no longer casual toys, they are enterprise-grade production studios capable of creating everything from slide decks to professional marketing videos in seconds." },
+      { s: 138.14, e: 144.11, t: "Finally, we reach the most disruptive frontier: vibe coding, AI coding copilots, and autonomous AI agents." },
+      { s: 145.16, e: 155.36, t: "Thanks to a trend called vibe coding, non-technical teams, like marketing and sales, can now build and deploy live full-stack applications simply by describing what they want in plain English." },
+      { s: 155.42, e: 157.97, t: "This is fundamentally rewriting who builds software." },
+      { s: 159.06, e: 162.68, t: "More importantly, we are now entering the era of the autonomous agent." },
+      { s: 163.70, e: 173.86, t: "Tools like Claude Cowork and Microsoft Cowork do not just answer text prompts, they can actually take control of your computer, manage your local files, and execute complex workflows across your desktop." },
+      { s: 174.86, e: 179.08, t: "They operate proactively on schedules, completing tasks even while you are asleep." },
+      { s: 180.14, e: 183.50, t: "So, how do we successfully navigate this complex landscape?" },
+      { s: 184.50, e: 185.66, t: "The answer is focus." },
+      { s: 186.72, e: 189.50, t: "You absolutely do not need all eleven categories." },
+      { s: 190.48, e: 193.08, t: "Trying to use everything is a recipe for disaster." },
+      { s: 194.12, e: 199.36, t: "Instead, you should select two to three categories that perfectly align with your daily business operations." },
+      { s: 200.42, e: 208.58, t: "However, to secure a competitive advantage, you must ensure your team is highly proficient in the core multimodal platforms, AI search, and autonomous agents." },
+      { s: 209.62, e: 215.90, t: "Within the next eighteen to thirty-six months, agent-driven work will become the standard business practice across all industries." },
+      { s: 216.78, e: 218.64, t: "Do not get distracted by the noise." },
+      { s: 219.64, e: 226.92, t: "Pick your tool categories wisely, build a unified strategic AI stack, and start transforming your operations today." },
+      { s: 227.04, e: 228.12, t: "Thank you for your time." }
+    ];
+
+    const audio = document.getElementById("audio");
+    const linesEl = document.getElementById("lines");
+    const speed = document.getElementById("speed");
+    const followBtn = document.getElementById("follow");
+
+    let follow = true;
+    let current = -1;
+
+    const fmt = (sec) => {
+      const m = Math.floor(sec / 60);
+      const s = Math.floor(sec % 60);
+      return `${m}:${String(s).padStart(2, "0")}`;
+    };
+
+    function render() {
+      linesEl.innerHTML = "";
+      segments.forEach((seg, i) => {
+        const row = document.createElement("button");
+        row.type = "button";
+        row.className = "line";
+        row.dataset.i = i;
+        row.innerHTML = `
+          <div class="time">${fmt(seg.s)}</div>
+          <div class="txt">${seg.t}</div>
+        `;
+        row.addEventListener("click", () => {
+          audio.currentTime = Math.max(0, seg.s + 0.01);
+          audio.play().catch(() => {});
+        });
+        linesEl.appendChild(row);
+      });
+    }
+
+    function findIndex(t) {
+      for (let i = 0; i < segments.length; i++) {
+        if (t >= segments[i].s && t < segments[i].e) return i;
+      }
+      for (let i = segments.length - 1; i >= 0; i--) {
+        if (t >= segments[i].s) return i;
+      }
+      return 0;
+    }
+
+    function effectiveBottom() {
+      const c = linesEl.getBoundingClientRect();
+      if (window.visualViewport) {
+        const vvBottom = window.visualViewport.offsetTop + window.visualViewport.height;
+        return Math.min(c.bottom, vvBottom);
+      }
+      return c.bottom;
+    }
+
+    function setCurrent(i) {
+      if (i === current) return;
+      const prev = linesEl.querySelector(".line.current");
+      if (prev) prev.classList.remove("current");
+      current = i;
+      const cur = linesEl.querySelector(`.line[data-i="${i}"]`);
+      if (!cur) return;
+      cur.classList.add("current");
+
+      if (follow) {
+        const pad = 28;
+        const c = linesEl.getBoundingClientRect();
+        const r = cur.getBoundingClientRect();
+        const topLimit = c.top + pad;
+        const bottomLimit = effectiveBottom() - pad;
+
+        if (r.top < topLimit) {
+          linesEl.scrollBy({ top: r.top - topLimit, behavior: "smooth" });
+        } else if (r.bottom > bottomLimit) {
+          linesEl.scrollBy({ top: r.bottom - bottomLimit, behavior: "smooth" });
+        }
+      }
+    }
+
+    render();
+
+    speed.addEventListener("change", () => {
+      audio.playbackRate = Number(speed.value);
+    });
+
+    followBtn.addEventListener("click", () => {
+      follow = !follow;
+      followBtn.textContent = `Auto-follow: ${follow ? "ON" : "OFF"}`;
+    });
+
+    audio.addEventListener("timeupdate", () => {
+      setCurrent(findIndex(audio.currentTime));
+    });
+
+    audio.addEventListener("loadedmetadata", () => {
+      setCurrent(findIndex(0));
+    });
+
+    window.addEventListener("resize", () => {
+      if (current >= 0) setCurrent(current);
+    });
+
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", () => {
+        if (current >= 0) setCurrent(current);
+      });
+      window.visualViewport.addEventListener("scroll", () => {
+        if (current >= 0) setCurrent(current);
+      });
+    }
+  </script>
+</body>
+</html>
