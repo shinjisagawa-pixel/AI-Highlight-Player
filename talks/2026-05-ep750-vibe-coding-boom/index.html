@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Ep 750: The Vibe Coding Boom: Why Vibe Coding isn't Going Away and How it's Both Good and Bad</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <style>
+    :root{
+      --bg:#0b1020;
+      --panel:#121a2b;
+      --panel2:#182338;
+      --text:#eaf1ff;
+      --muted:#9fb0d1;
+      --line:#263350;
+      --accent:#7cc4ff;
+      --accent2:#c8e6ff;
+      --current:#1d3b63;
+      --chip:#16233a;
+      --shadow:0 10px 30px rgba(0,0,0,.28);
+    }
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;
+      padding:0;
+      background:linear-gradient(180deg,#0a0f1c 0%, #0b1020 100%);
+      color:var(--text);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    }
+    body{
+      min-height:100vh;
+      min-height:100dvh;
+      padding:
+        max(16px, env(safe-area-inset-top))
+        16px
+        calc(16px + env(safe-area-inset-bottom))
+        16px;
+    }
+    a{color:var(--accent)}
+    .wrap{max-width:980px;margin:0 auto}
+    .hero{
+      background:linear-gradient(180deg,rgba(124,196,255,.14),rgba(124,196,255,.05));
+      border:1px solid rgba(124,196,255,.18);
+      border-radius:24px;
+      padding:20px 20px 16px;
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(10px);
+    }
+    .eyebrow{
+      color:var(--accent2);
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      margin-bottom:8px;
+      font-weight:700;
+    }
+    h1{
+      margin:0;
+      font-size:clamp(28px,4vw,42px);
+      line-height:1.12;
+      letter-spacing:-.02em;
+    }
+    .sub{
+      margin-top:10px;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.6;
+    }
+    .player{
+      margin-top:16px;
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:16px;
+      box-shadow:var(--shadow);
+    }
+    audio{width:100%;display:block}
+    .controls{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      margin-top:12px;
+    }
+    .chip,.btn,select{
+      border:1px solid var(--line);
+      background:var(--chip);
+      color:var(--text);
+      border-radius:999px;
+      padding:10px 14px;
+      font-size:14px;
+    }
+    .btn{cursor:pointer}
+    .btn:hover{border-color:#44679a}
+    .grid{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns:1fr;
+      gap:16px;
+    }
+    .card{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:20px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .card-h{
+      padding:14px 16px;
+      border-bottom:1px solid var(--line);
+      font-weight:700;
+      color:var(--accent2);
+      background:rgba(255,255,255,.02);
+      position:sticky;
+      top:0;
+      z-index:2;
+    }
+    #lines{
+      padding:8px;
+      overflow:auto;
+      overscroll-behavior:contain;
+      -webkit-overflow-scrolling:touch;
+      height:calc(100vh - 290px);
+      height:calc(100dvh - 290px);
+      min-height:300px;
+      max-height:70vh;
+    }
+    .line{
+      display:grid;
+      grid-template-columns:64px 1fr;
+      gap:12px;
+      align-items:start;
+      width:100%;
+      border:0;
+      background:transparent;
+      color:var(--text);
+      text-align:left;
+      padding:12px;
+      border-radius:14px;
+      cursor:pointer;
+      transition:background .18s ease;
+    }
+    .line:hover{background:rgba(255,255,255,.04)}
+    .line.current{
+      background:var(--current);
+      outline:1px solid rgba(124,196,255,.28);
+    }
+    .time{
+      color:var(--accent2);
+      font-variant-numeric:tabular-nums;
+      font-size:13px;
+      padding-top:2px;
+      white-space:nowrap;
+    }
+    .txt{
+      line-height:1.6;
+      font-size:16px;
+    }
+    .footer-note{
+      margin-top:14px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.6;
+    }
+    @media (max-width:640px){
+      body{padding-left:12px;padding-right:12px}
+      .hero,.player,.card{border-radius:18px}
+      .line{grid-template-columns:56px 1fr;gap:10px;padding:11px}
+      .txt{font-size:15px}
+      #lines{
+        height:calc(100vh - 300px);
+        height:calc(100dvh - 300px);
+        min-height:280px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="eyebrow">AI Highlight Player</div>
+      <h1>Ep 750: The Vibe Coding Boom: Why Vibe Coding isn't Going Away and How it's Both Good and Bad</h1>
+      <div class="sub">
+        Vibe coding is collapsing software build time and cost, but it also creates security flaws, hidden technical debt, and the “90-Day Black Box.” The advantage goes to teams that combine speed with real governance.
+      </div>
+    </section>
+
+    <section class="player">
+      <audio id="audio" controls preload="metadata" playsinline>
+        <source src="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.42ba7918.mp3" type="audio/mpeg">
+      </audio>
+
+      <div class="controls">
+        <a class="chip" href="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.42ba7918.mp3" target="_blank" rel="noreferrer noopener">Audio</a>
+        <label class="chip">Speed
+          <select id="speed">
+            <option value="0.8">0.8×</option>
+            <option value="0.9">0.9×</option>
+            <option value="1" selected>1.0×</option>
+            <option value="1.1">1.1×</option>
+            <option value="1.2">1.2×</option>
+            <option value="1.25">1.25×</option>
+          </select>
+        </label>
+        <button id="follow" class="btn" type="button">Auto-follow: ON</button>
+      </div>
+
+      <div class="footer-note">
+        Tap any line to jump playback. Includes iPhone Safari-safe layout and visualViewport-aware auto-follow.
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <div class="card-h">Transcript</div>
+        <div id="lines"></div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const segments = [
+      { s: 0.24, e: 5.56, t: "Imagine that you can describe your dream house out loud, and a building appears in front of your eyes in just minutes." },
+      { s: 6.60, e: 8.32, t: "It looks absolutely perfect." },
+      { s: 9.30, e: 15.22, t: "But when you move in and place your couch on the floor, the floor begins to sink because it was made of paper." },
+      { s: 15.28, e: 21.32, t: "You quickly realize the house looks great, but it is held together by duct tape and hopes, and there were no building permits." },
+      { s: 22.33, e: 28.78, t: "This scenario is exactly what is happening across the enterprise software industry today due to a massive shift called vibe coding." },
+      { s: 29.76, e: 36.92, t: "Vibe coding is the practice of building applications simply by describing your requirements in plain language to an AI agent." },
+      { s: 37.00, e: 38.92, t: "You do not need to be a software engineer." },
+      { s: 39.18, e: 42.48, t: "The AI handles the database, the deployment, and the coding." },
+      { s: 43.34, e: 47.55, t: "This approach has completely collapsed the cost and time required to build new software." },
+      { s: 48.62, e: 55.34, t: "Right now, it is estimated that between forty-one percent and forty-six percent of all new code written globally is generated by AI." },
+      { s: 56.40, e: 61.96, t: "Furthermore, ninety-two percent of US developers actively use AI coding tools at work every single day." },
+      { s: 62.92, e: 71.88, t: "The market for these tools is exploding, with platforms like Cursor reaching two billion dollars in annual recurring revenue and over one million paying customers in a very short time." },
+      { s: 72.90, e: 76.89, t: "However, the real revolution is happening among non-technical business teams." },
+      { s: 77.98, e: 85.64, t: "Using browser-based app builders, business lines can launch new services and prototypes without waiting for overburdened IT departments." },
+      { s: 85.70, e: 88.40, t: "The business impact is staggering." },
+      { s: 88.46, e: 93.20, t: "In one case, a product team cut their prototyping timeline from six weeks down to mere hours." },
+      { s: 94.22, e: 102.28, t: "In another example, a head of finance built a fully functional CRM in just three hours, successfully replacing a forty-thousand dollar Salesforce contract." },
+      { s: 103.26, e: 107.66, t: "But beneath this incredible speed lies a foundation of hidden risks and technical debt." },
+      { s: 108.58, e: 113.30, t: "Data reveals that sixty-three percent of vibe coders have never written a line of code manually." },
+      { s: 114.24, e: 120.06, t: "They are building software without a foundational understanding of architectural principles or security protocols." },
+      { s: 121.06, e: 129.18, t: "Because of this, developer confidence in AI-generated code is actually collapsing, dropping from forty-three percent down to twenty-nine percent in a recent cycle." },
+      { s: 130.16, e: 135.74, t: "Developers are frustrated because the AI code often looks correct visually but fails in real-world edge cases." },
+      { s: 136.80, e: 143.92, t: "In fact, recent application security studies show that twenty-five percent of AI-generated code samples contain confirmed security flaws." },
+      { s: 144.94, e: 154.90, t: "This leads to massive production incidents, such as one AI-built platform that accidentally exposed one point five million API tokens due to a simple database misconfiguration." },
+      { s: 154.98, e: 160.24, t: "When non-technical users build complex systems, companies inevitably hit the ninety-day black box." },
+      { s: 161.26, e: 166.30, t: "About two to three months after deployment, no one remembers how the application logic actually works." },
+      { s: 167.32, e: 172.80, t: "The original creator forgot, the AI has lost its context window, and the entire system stalls." },
+      { s: 173.84, e: 178.38, t: "This crisis has created a brand-new, high-growth tech specialty known as rescue engineering." },
+      { s: 179.38, e: 184.76, t: "Currently, an estimated eight thousand startups need full or partial rebuilds of their AI-generated apps." },
+      { s: 185.80, e: 192.94, t: "These companies are forced to spend anywhere from fifty thousand dollars to over two million dollars just to refactor their platforms and fix the shoddy code." },
+      { s: 194.00, e: 195.82, t: "So, what should business leaders do?" },
+      { s: 196.84, e: 201.36, t: "First, understand that vibe coding is a permanent structural change, not a passing trend." },
+      { s: 202.40, e: 209.43, t: "It is quickly evolving into vibe working, where every knowledge worker will eventually use natural language tools to create software solutions." },
+      { s: 210.42, e: 215.90, t: "To survive and capture the real value, your company must treat AI-generated code with rigorous governance." },
+      { s: 216.94, e: 228.10, t: "You must select platforms with built-in security and penetration testing, maintain strict context management for auditing, and create hybrid teams that pair non-technical builders with technical oversight." },
+      { s: 228.18, e: 236.98, t: "By treating vibe coding as a core business process rather than just a quick technical shortcut, you can avoid costly rescue engineering and secure a lasting competitive advantage." }
+    ];
+
+    const audio = document.getElementById("audio");
+    const linesEl = document.getElementById("lines");
+    const speed = document.getElementById("speed");
+    const followBtn = document.getElementById("follow");
+
+    let follow = true;
+    let current = -1;
+
+    const fmt = (sec) => {
+      const m = Math.floor(sec / 60);
+      const s = Math.floor(sec % 60);
+      return `${m}:${String(s).padStart(2, "0")}`;
+    };
+
+    function render() {
+      linesEl.innerHTML = "";
+      segments.forEach((seg, i) => {
+        const row = document.createElement("button");
+        row.type = "button";
+        row.className = "line";
+        row.dataset.i = i;
+        row.innerHTML = `
+          <div class="time">${fmt(seg.s)}</div>
+          <div class="txt">${seg.t}</div>
+        `;
+        row.addEventListener("click", () => {
+          audio.currentTime = Math.max(0, seg.s + 0.01);
+          audio.play().catch(() => {});
+        });
+        linesEl.appendChild(row);
+      });
+    }
+
+    function findIndex(t) {
+      for (let i = 0; i < segments.length; i++) {
+        if (t >= segments[i].s && t < segments[i].e) return i;
+      }
+      for (let i = segments.length - 1; i >= 0; i--) {
+        if (t >= segments[i].s) return i;
+      }
+      return 0;
+    }
+
+    function effectiveBottom() {
+      const c = linesEl.getBoundingClientRect();
+      if (window.visualViewport) {
+        const vvBottom = window.visualViewport.offsetTop + window.visualViewport.height;
+        return Math.min(c.bottom, vvBottom);
+      }
+      return c.bottom;
+    }
+
+    function setCurrent(i) {
+      if (i === current) return;
+      const prev = linesEl.querySelector(".line.current");
+      if (prev) prev.classList.remove("current");
+      current = i;
+      const cur = linesEl.querySelector(`.line[data-i="${i}"]`);
+      if (!cur) return;
+      cur.classList.add("current");
+
+      if (follow) {
+        const pad = 28;
+        const c = linesEl.getBoundingClientRect();
+        const r = cur.getBoundingClientRect();
+        const topLimit = c.top + pad;
+        const bottomLimit = effectiveBottom() - pad;
+
+        if (r.top < topLimit) {
+          linesEl.scrollBy({ top: r.top - topLimit, behavior: "smooth" });
+        } else if (r.bottom > bottomLimit) {
+          linesEl.scrollBy({ top: r.bottom - bottomLimit, behavior: "smooth" });
+        }
+      }
+    }
+
+    render();
+
+    speed.addEventListener("change", () => {
+      audio.playbackRate = Number(speed.value);
+    });
+
+    followBtn.addEventListener("click", () => {
+      follow = !follow;
+      followBtn.textContent = `Auto-follow: ${follow ? "ON" : "OFF"}`;
+    });
+
+    audio.addEventListener("timeupdate", () => {
+      setCurrent(findIndex(audio.currentTime));
+    });
+
+    audio.addEventListener("loadedmetadata", () => {
+      setCurrent(findIndex(0));
+    });
+
+    window.addEventListener("resize", () => {
+      if (current >= 0) setCurrent(current);
+    });
+
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", () => {
+        if (current >= 0) setCurrent(current);
+      });
+      window.visualViewport.addEventListener("scroll", () => {
+        if (current >= 0) setCurrent(current);
+      });
+    }
+  </script>
+</body>
+</html>
