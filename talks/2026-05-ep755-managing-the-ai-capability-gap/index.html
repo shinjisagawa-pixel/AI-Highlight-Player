@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Ep 755: Managing the AI Capability Gap: AI Is More than Ready. Most Companies are Not (Start Here Series Vol 19)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <style>
+    :root{
+      --bg:#0b1020;--panel:#121a2b;--panel2:#182338;--text:#eaf1ff;--muted:#9fb0d1;
+      --line:#263350;--accent:#7cc4ff;--accent2:#c8e6ff;--current:#1d3b63;--chip:#16233a;
+      --shadow:0 10px 30px rgba(0,0,0,.28);--radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;padding:0;
+      background:linear-gradient(180deg,#0a0f1c 0%,#0b1020 100%);
+      color:var(--text);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    }
+    body{
+      min-height:100vh;min-height:100dvh;
+      padding:max(16px,env(safe-area-inset-top)) 16px calc(16px + env(safe-area-inset-bottom)) 16px;
+    }
+    a{color:var(--accent)}
+    .wrap{max-width:980px;margin:0 auto}
+    .hero{
+      background:linear-gradient(180deg,rgba(124,196,255,.14),rgba(124,196,255,.05));
+      border:1px solid rgba(124,196,255,.18);
+      border-radius:24px;padding:20px 20px 16px;
+      box-shadow:var(--shadow);backdrop-filter:blur(10px);
+    }
+    .eyebrow{
+      color:var(--accent2);font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+      margin-bottom:8px;font-weight:700;
+    }
+    h1{
+      margin:0;font-size:clamp(28px,4vw,42px);line-height:1.12;letter-spacing:-.02em;
+    }
+    .sub{
+      margin-top:10px;color:var(--muted);font-size:15px;line-height:1.6;
+    }
+    .player{
+      margin-top:16px;background:var(--panel);border:1px solid var(--line);
+      border-radius:20px;padding:16px;box-shadow:var(--shadow);
+    }
+    audio{width:100%;display:block;}
+    .controls{
+      display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px;
+    }
+    .chip,.btn,select{
+      border:1px solid var(--line);background:var(--chip);color:var(--text);
+      border-radius:999px;padding:10px 14px;font-size:14px;
+    }
+    .btn{cursor:pointer}
+    .btn:hover{border-color:#44679a}
+    .grid{
+      margin-top:16px;display:grid;grid-template-columns:1fr;gap:16px;
+    }
+    .card{
+      background:var(--panel);border:1px solid var(--line);border-radius:20px;
+      box-shadow:var(--shadow);overflow:hidden;
+    }
+    .card-h{
+      padding:14px 16px;border-bottom:1px solid var(--line);font-weight:700;
+      color:var(--accent2);background:rgba(255,255,255,.02);position:sticky;top:0;z-index:2;
+    }
+    #lines{
+      padding:8px;overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
+      height:calc(100vh - 290px);height:calc(100dvh - 290px);
+      min-height:300px;max-height:70vh;
+    }
+    .line{
+      display:grid;grid-template-columns:64px 1fr;gap:12px;align-items:start;width:100%;
+      border:0;background:transparent;color:var(--text);text-align:left;padding:12px;
+      border-radius:14px;cursor:pointer;transition:background .18s ease;
+    }
+    .line:hover{background:rgba(255,255,255,.04)}
+    .line.current{background:var(--current);outline:1px solid rgba(124,196,255,.28)}
+    .time{
+      color:var(--accent2);font-variant-numeric:tabular-nums;font-size:13px;
+      padding-top:2px;white-space:nowrap;
+    }
+    .txt{line-height:1.6;font-size:16px}
+    .footer-note{
+      margin-top:14px;color:var(--muted);font-size:13px;line-height:1.6;
+    }
+    @media (max-width:640px){
+      body{padding-left:12px;padding-right:12px}
+      .hero,.player,.card{border-radius:18px}
+      .line{grid-template-columns:56px 1fr;gap:10px;padding:11px}
+      .txt{font-size:15px}
+      #lines{
+        height:calc(100vh - 300px);height:calc(100dvh - 300px);
+        min-height:280px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="eyebrow">AI Highlight Player</div>
+      <h1>Ep 755: Managing the AI Capability Gap: AI Is More than Ready. Most Companies are Not (Start Here Series Vol 19)</h1>
+      <div class="sub">
+        Modern AI capability is accelerating faster than enterprise redesign. The firms that win will be the ones that rebuild workflows, track accepted AI output monthly, and close the capability gap before competitors do.
+      </div>
+    </section>
+
+    <section class="player">
+      <audio id="audio" controls preload="metadata" playsinline>
+        <source src="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.c94f27cf.mp3" type="audio/mpeg">
+      </audio>
+      <div class="controls">
+        <a class="chip" href="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.c94f27cf.mp3" target="_blank" rel="noreferrer noopener">Audio</a>
+        <label class="chip">Speed
+          <select id="speed">
+            <option value="0.8">0.8×</option>
+            <option value="0.9">0.9×</option>
+            <option value="1" selected>1.0×</option>
+            <option value="1.1">1.1×</option>
+            <option value="1.2">1.2×</option>
+            <option value="1.25">1.25×</option>
+          </select>
+        </label>
+        <button id="follow" class="btn" type="button">Auto-follow: ON</button>
+      </div>
+      <div class="footer-note">
+        Tap any line to jump playback. iPhone Safari bottom-bar overlap is handled with safe-area padding and visualViewport-aware scrolling.
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <div class="card-h">Transcript</div>
+        <div id="lines"></div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const segments = [
+      { s: 0.22, e: 1.50, t: "Good morning, everyone." },
+      { s: 2.50, e: 8.44, t: "Today, I want to explain the AI capability gap and why it may be the defining management problem of the next two years." },
+      { s: 9.48, e: 16.62, t: "The core issue is simple. Modern AI is increasingly ready for business. Most companies are not." },
+      { s: 17.66, e: 26.32, t: "For years, leaders asked whether the models were good enough. That was a reasonable question when AI was inconsistent, expensive, and hard to trust." },
+      { s: 27.30, e: 37.54, t: "But in 2026, the more urgent question is different. If the technology is now capable, why are so few organizations turning that capability into real business results?" },
+      { s: 38.58, e: 49.26, t: "One benchmark makes the shift very clear. In the OpenAI GDP Val benchmark, the latest AI models matched or exceeded human professionals in 83 percent of head-to-head tests." },
+      { s: 50.30, e: 61.08, t: "Just five months earlier, that figure was 47 percent. That is not incremental progress. That is a major capability jump in a very short time." },
+      { s: 61.14, e: 72.46, t: "Now compare that with the organizational reality. McKinsey reports that 88 percent of organizations say they are using AI, yet only 6 percent achieve significant profit or operational gains from it." },
+      { s: 73.52, e: 84.12, t: "In other words, most companies have already crossed the line from experimentation to nominal adoption, but almost none have crossed the line into real transformation. That is the capability gap." },
+      { s: 85.14, e: 105.36, t: "Anthropic's labor study shows how wide that gap has become. In computer and math roles, the theoretical automation level is 94 percent, but observed usage is only 33 percent. In management, business, finance, and legal work, theoretical automation is above 80 percent, yet observed usage remains below 20 percent." },
+      { s: 106.42, e: 114.90, t: "So across many of the very functions where AI could matter most, actual use is still far below what current systems can support. Why is that happening?" },
+      { s: 115.84, e: 133.79, t: "Because most enterprises are still organized for a world where AI was weak. Their governance cycles are slow. Their knowledge workflows are fragmented. Their incentives reward caution without redesign. Their approval structures assume humans must manually rework almost everything." },
+      { s: 134.84, e: 141.12, t: "So even when the model output is good enough, the organization is not prepared to trust it, route it, measure it, or scale it." },
+      { s: 142.11, e: 155.20, t: "And the pace of change is accelerating. We are now seeing a recursive self-improvement shift. AI models can increasingly write code, review code, and improve the systems that help create the next generation of tools." },
+      { s: 156.24, e: 170.24, t: "That means capability is compounding on a monthly timeline while most companies still review operations on an annual one. If that mismatch continues, the average enterprise will fall further behind even while believing it is moving carefully." },
+      { s: 170.32, e: 181.76, t: "This is why the top performing 6 percent look different. McKinsey finds that the highest performing organizations allocate more than 20 percent of their digital budgets to rebuilding knowledge workflows from scratch." },
+      { s: 182.76, e: 194.36, t: "They do not simply add AI onto old processes. They rethink how information is collected, how judgments are made, how exceptions are handled, and where accepted AI output can move forward without human rework." },
+      { s: 195.40, e: 208.64, t: "That last point matters. If you want one practical operating metric, track the percentage of AI-assisted workflow steps that are accepted without human rework. That tells you where AI is already reliable enough to scale." },
+      { s: 209.66, e: 221.76, t: "In many low- and medium-risk tasks, companies can automate 30 to 60 percent of the workflow today, but only if they stop measuring vanity indicators like logins, prompts, or pilot counts and start measuring accepted output." },
+      { s: 222.73, e: 229.88, t: "And those metrics should be reviewed monthly, not annually. The technology is moving too quickly for slow governance rhythms." },
+      { s: 230.90, e: 250.28, t: "There is also a labor market signal here. AI-exposed workers are earning 47 percent more because productivity gains are already being captured where AI is genuinely embedded in the workflow. That means the upside is not theoretical. It is already visible in compensation, performance, and competitive advantage." },
+      { s: 251.36, e: 279.18, t: "So what should leaders do now? First, stop asking whether AI is ready. It is. Second, identify the workflows where low- and medium-risk steps can be automated today. Third, measure how much AI-generated work is accepted without rework. Fourth, review those metrics every month and expand only where quality is real. And fifth, rebuild the surrounding operating model because tools alone do not close the gap." },
+      { s: 280.15, e: 294.80, t: "The companies that win over the next two years will not necessarily be the ones with the most AI tools. They will be the ones that redesign work faster than everyone else. They will treat AI as an operating model transformation, not a software experiment." },
+      { s: 295.81, e: 310.04, t: "That is the challenge of 2026. AI capability is racing ahead. Enterprise readiness is not. The firms that close that gap first will define the next wave of productivity, profit, and market leadership." },
+      { s: 311.08, e: 322.72, t: "If your organization still thinks the main question is whether AI is good enough, you are asking yesterday's question. The real question is whether your company is prepared to use what AI can already do." },
+      { s: 322.82, e: 323.70, t: "Thank you." }
+    ];
+
+    const audio = document.getElementById("audio");
+    const linesEl = document.getElementById("lines");
+    const speed = document.getElementById("speed");
+    const followBtn = document.getElementById("follow");
+
+    let follow = true;
+    let current = -1;
+
+    const fmt = (sec) => {
+      const m = Math.floor(sec / 60);
+      const s = Math.floor(sec % 60);
+      return `${m}:${String(s).padStart(2, "0")}`;
+    };
+
+    function render() {
+      linesEl.innerHTML = "";
+      segments.forEach((seg, i) => {
+        const row = document.createElement("button");
+        row.type = "button";
+        row.className = "line";
+        row.dataset.i = i;
+        row.innerHTML = `<div class="time">${fmt(seg.s)}</div><div class="txt">${seg.t}</div>`;
+        row.addEventListener("click", () => {
+          audio.currentTime = Math.max(0, seg.s + 0.01);
+          audio.play().catch(() => {});
+        });
+        linesEl.appendChild(row);
+      });
+    }
+
+    function findIndex(t) {
+      for (let i = 0; i < segments.length; i++) {
+        if (t >= segments[i].s && t < segments[i].e) return i;
+      }
+      for (let i = segments.length - 1; i >= 0; i--) {
+        if (t >= segments[i].s) return i;
+      }
+      return 0;
+    }
+
+    function effectiveBottom() {
+      const c = linesEl.getBoundingClientRect();
+      if (window.visualViewport) {
+        const vvBottom = window.visualViewport.offsetTop + window.visualViewport.height;
+        return Math.min(c.bottom, vvBottom);
+      }
+      return c.bottom;
+    }
+
+    function setCurrent(i) {
+      if (i === current) return;
+      const prev = linesEl.querySelector(".line.current");
+      if (prev) prev.classList.remove("current");
+      current = i;
+      const cur = linesEl.querySelector(`.line[data-i="${i}"]`);
+      if (!cur) return;
+      cur.classList.add("current");
+
+      if (follow) {
+        const pad = 28;
+        const c = linesEl.getBoundingClientRect();
+        const r = cur.getBoundingClientRect();
+        const topLimit = c.top + pad;
+        const bottomLimit = effectiveBottom() - pad;
+
+        if (r.top < topLimit) {
+          linesEl.scrollBy({ top: r.top - topLimit, behavior: "smooth" });
+        } else if (r.bottom > bottomLimit) {
+          linesEl.scrollBy({ top: r.bottom - bottomLimit, behavior: "smooth" });
+        }
+      }
+    }
+
+    render();
+
+    speed.addEventListener("change", () => {
+      audio.playbackRate = Number(speed.value);
+    });
+
+    followBtn.addEventListener("click", () => {
+      follow = !follow;
+      followBtn.textContent = `Auto-follow: ${follow ? "ON" : "OFF"}`;
+    });
+
+    audio.addEventListener("timeupdate", () => {
+      setCurrent(findIndex(audio.currentTime));
+    });
+
+    audio.addEventListener("loadedmetadata", () => {
+      setCurrent(findIndex(0));
+    });
+
+    window.addEventListener("resize", () => {
+      if (current >= 0) setCurrent(current);
+    });
+
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", () => {
+        if (current >= 0) setCurrent(current);
+      });
+      window.visualViewport.addEventListener("scroll", () => {
+        if (current >= 0) setCurrent(current);
+      });
+    }
+  </script>
+</body>
+</html>
