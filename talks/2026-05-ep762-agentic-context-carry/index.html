@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Ep 762: Agentic Context Carry: 3 Steps to Improve Cowork and scheduled AI Workflows (Start Here Series Vol 22)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <style>
+    :root{
+      --bg:#0b1020;--panel:#121a2b;--panel2:#182338;--text:#eaf1ff;--muted:#9fb0d1;
+      --line:#263350;--accent:#7cc4ff;--accent2:#c8e6ff;--current:#1d3b63;--chip:#16233a;
+      --shadow:0 10px 30px rgba(0,0,0,.28);--radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;padding:0;
+      background:linear-gradient(180deg,#0a0f1c 0%,#0b1020 100%);
+      color:var(--text);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    }
+    body{
+      min-height:100vh;min-height:100dvh;
+      padding:max(16px,env(safe-area-inset-top)) 16px calc(16px + env(safe-area-inset-bottom)) 16px;
+    }
+    a{color:var(--accent)}
+    .wrap{max-width:980px;margin:0 auto}
+    .hero{
+      background:linear-gradient(180deg,rgba(124,196,255,.14),rgba(124,196,255,.05));
+      border:1px solid rgba(124,196,255,.18);
+      border-radius:24px;padding:20px 20px 16px;
+      box-shadow:var(--shadow);backdrop-filter:blur(10px);
+    }
+    .eyebrow{
+      color:var(--accent2);font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+      margin-bottom:8px;font-weight:700;
+    }
+    h1{
+      margin:0;font-size:clamp(28px,4vw,42px);line-height:1.12;letter-spacing:-.02em;
+    }
+    .sub{
+      margin-top:10px;color:var(--muted);font-size:15px;line-height:1.6;
+    }
+    .player{
+      margin-top:16px;background:var(--panel);border:1px solid var(--line);
+      border-radius:20px;padding:16px;box-shadow:var(--shadow);
+    }
+    audio{width:100%;display:block}
+    .controls{
+      display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px;
+    }
+    .chip,.btn,select{
+      border:1px solid var(--line);background:var(--chip);color:var(--text);
+      border-radius:999px;padding:10px 14px;font-size:14px;
+    }
+    .btn{cursor:pointer}
+    .btn:hover{border-color:#44679a}
+    .grid{
+      margin-top:16px;display:grid;grid-template-columns:1fr;gap:16px;
+    }
+    .card{
+      background:var(--panel);border:1px solid var(--line);border-radius:20px;
+      box-shadow:var(--shadow);overflow:hidden;
+    }
+    .card-h{
+      padding:14px 16px;border-bottom:1px solid var(--line);font-weight:700;
+      color:var(--accent2);background:rgba(255,255,255,.02);position:sticky;top:0;z-index:2;
+    }
+    #lines{
+      padding:8px;overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
+      height:calc(100vh - 290px);height:calc(100dvh - 290px);
+      min-height:300px;max-height:70vh;
+    }
+    .line{
+      display:grid;grid-template-columns:64px 1fr;gap:12px;align-items:start;width:100%;
+      border:0;background:transparent;color:var(--text);text-align:left;padding:12px;
+      border-radius:14px;cursor:pointer;transition:background .18s ease;
+    }
+    .line:hover{background:rgba(255,255,255,.04)}
+    .line.current{background:var(--current);outline:1px solid rgba(124,196,255,.28)}
+    .time{
+      color:var(--accent2);font-variant-numeric:tabular-nums;font-size:13px;
+      padding-top:2px;white-space:nowrap;
+    }
+    .txt{line-height:1.6;font-size:16px}
+    .footer-note{
+      margin-top:14px;color:var(--muted);font-size:13px;line-height:1.6;
+    }
+    @media (max-width:640px){
+      body{padding-left:12px;padding-right:12px}
+      .hero,.player,.card{border-radius:18px}
+      .line{grid-template-columns:56px 1fr;gap:10px;padding:11px}
+      .txt{font-size:15px}
+      #lines{
+        height:calc(100vh - 300px);height:calc(100dvh - 300px);
+        min-height:280px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="eyebrow">AI Highlight Player</div>
+      <h1>Ep 762: Agentic Context Carry: 3 Steps to Improve Cowork and scheduled AI Workflows (Start Here Series Vol 22)</h1>
+      <div class="sub">
+        Scheduled Agentic Context Carry turns AI from a reactive chatbot into a proactive cross-app routine that remembers, carries context, and eliminates the hidden human cost of software handoffs.
+      </div>
+    </section>
+
+    <section class="player">
+      <audio id="audio" controls preload="metadata" playsinline>
+        <source src="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.afed1962.mp3" type="audio/mpeg">
+      </audio>
+      <div class="controls">
+        <a class="chip" href="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.afed1962.mp3" target="_blank" rel="noreferrer noopener">Audio</a>
+        <label class="chip">Speed
+          <select id="speed">
+            <option value="0.8">0.8×</option>
+            <option value="0.9">0.9×</option>
+            <option value="1" selected>1.0×</option>
+            <option value="1.1">1.1×</option>
+            <option value="1.2">1.2×</option>
+            <option value="1.25">1.25×</option>
+          </select>
+        </label>
+        <button id="follow" class="btn" type="button">Auto-follow: ON</button>
+      </div>
+      <div class="footer-note">
+        Tap any line to jump playback. iPhone Safari bottom-bar overlap is handled with safe-area padding and visualViewport-aware scrolling.
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <div class="card-h">Transcript</div>
+        <div id="lines"></div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const segments = [
+      { s: 0.22, e: 1.50, t: "Good morning, everyone." },
+      { s: 2.50, e: 8.20, t: "Today, I want to talk about a hidden productivity killer in our daily work, the constant search for information." },
+      { s: 9.22, e: 16.38, t: "Think about how often you lose focus trying to find a specific email, a lost budget spreadsheet, or a buried message across different platforms." },
+      { s: 17.44, e: 25.82, t: "Up until now, humans have acted as the duct tape between different software apps, manually copying, pasting, and carrying information from one place to another." },
+      { s: 26.84, e: 36.80, t: "But today, a new breakthrough is eliminating this manual work. It is called Scheduled Agentic Context Carry, or SACC, and it will fundamentally change how we operate." },
+      { s: 37.78, e: 44.90, t: "For the past few years, we have used AI primarily as reactive chatbots. We ask a question and it gives an answer." },
+      { s: 45.92, e: 58.20, t: "But now, major providers like Anthropic, OpenAI, Google, and Microsoft have shifted the landscape. They have introduced agents that can operate on a schedule and actively connect with your workspace tools." },
+      { s: 58.28, e: 65.08, t: "We are moving from chatbots that wait for our instructions to automated routines that act proactively on our behalf." },
+      { s: 65.14, e: 76.16, t: "To understand why this is possible right now, we have to look at the technology, specifically something called the context window. The context window is essentially the working memory of an AI system." },
+      { s: 77.16, e: 86.52, t: "Just a short time ago, most models had a small memory limit of about 8,000 tokens. Because of this, the AI would quickly forget the rules and data you provided." },
+      { s: 87.54, e: 96.28, t: "Today, that memory has exploded. Enterprise-grade models now boast context windows of 258,000 or even 1,000,000 tokens." },
+      { s: 97.32, e: 105.56, t: "This massive upgrade means an AI agent can hold weeks or even months of ongoing conversations, industry reports, and company goals in its memory without forgetting." },
+      { s: 106.53, e: 117.42, t: "This brings us to the true benefit of SACC. Instead of a human manually carrying context between applications like Gmail, Google Drive, and Slack, the AI agent does it for you." },
+      { s: 118.44, e: 132.42, t: "You can schedule an agent to wake up and run routines automatically, reference multiple databases, and maintain the memory of previous runs. It learns your preferences and carries that context forward across your entire software stack without human intervention." },
+      { s: 133.46, e: 140.60, t: "So how do we actually deploy this powerful capability in our organizations? We must follow three disciplined steps." },
+      { s: 141.70, e: 158.18, t: "Step one is to connect your live data sources and preferences. You must securely authorize your AI agent to access your approved business systems, such as your email, calendar, and CRM. You cannot achieve cross-app automation if the AI is blocked from seeing the tools you use every day." },
+      { s: 159.10, e: 183.14, t: "Step two is context stuffing in a dedicated memory thread. Because we now have million-token context windows, you should place all your critical company documents, standard operating procedures, and recurring goals into one continuous AI conversation thread. This creates a persistent base of knowledge that the AI can continually reference for daily tasks, allowing it to recall information reliably and learn progressively over time." },
+      { s: 184.12, e: 207.68, t: "Step three is to iterate with chain of thought reasoning. You should never put a scheduled AI workflow directly into production without checking its logic first. Generative AI is unpredictable, so you must review the steps the agent took, inspect its decision chains, and refine its instructions. Only after you have tested the workflow and handled the edge cases should you put it on an automated schedule." },
+      { s: 207.76, e: 220.04, t: "Right now, we do not have fully autonomous AI that can run an entire company perfectly without human oversight. However, Scheduled Agentic Context Carry is the critical stepping stone to that future." },
+      { s: 220.08, e: 230.66, t: "The leaders who implement these three steps today will eliminate the hidden bottlenecks in their knowledge work, completely stop acting as human duct tape, and free their teams to focus on true innovation." },
+      { s: 230.76, e: 231.30, t: "Thank you." }
+    ];
+
+    const audio = document.getElementById("audio");
+    const linesEl = document.getElementById("lines");
+    const speed = document.getElementById("speed");
+    const followBtn = document.getElementById("follow");
+
+    let follow = true;
+    let current = -1;
+
+    const fmt = (sec) => {
+      const m = Math.floor(sec / 60);
+      const s = Math.floor(sec % 60);
+      return `${m}:${String(s).padStart(2, "0")}`;
+    };
+
+    function render() {
+      linesEl.innerHTML = "";
+      segments.forEach((seg, i) => {
+        const row = document.createElement("button");
+        row.type = "button";
+        row.className = "line";
+        row.dataset.i = i;
+        row.innerHTML = `<div class="time">${fmt(seg.s)}</div><div class="txt">${seg.t}</div>`;
+        row.addEventListener("click", () => {
+          audio.currentTime = Math.max(0, seg.s + 0.01);
+          audio.play().catch(() => {});
+        });
+        linesEl.appendChild(row);
+      });
+    }
+
+    function findIndex(t) {
+      for (let i = 0; i < segments.length; i++) {
+        if (t >= segments[i].s && t < segments[i].e) return i;
+      }
+      for (let i = segments.length - 1; i >= 0; i--) {
+        if (t >= segments[i].s) return i;
+      }
+      return 0;
+    }
+
+    function effectiveBottom() {
+      const c = linesEl.getBoundingClientRect();
+      if (window.visualViewport) {
+        const vvBottom = window.visualViewport.offsetTop + window.visualViewport.height;
+        return Math.min(c.bottom, vvBottom);
+      }
+      return c.bottom;
+    }
+
+    function setCurrent(i) {
+      if (i === current) return;
+      const prev = linesEl.querySelector(".line.current");
+      if (prev) prev.classList.remove("current");
+      current = i;
+      const cur = linesEl.querySelector(`.line[data-i="${i}"]`);
+      if (!cur) return;
+      cur.classList.add("current");
+
+      if (follow) {
+        const pad = 28;
+        const c = linesEl.getBoundingClientRect();
+        const r = cur.getBoundingClientRect();
+        const topLimit = c.top + pad;
+        const bottomLimit = effectiveBottom() - pad;
+
+        if (r.top < topLimit) {
+          linesEl.scrollBy({ top: r.top - topLimit, behavior: "smooth" });
+        } else if (r.bottom > bottomLimit) {
+          linesEl.scrollBy({ top: r.bottom - bottomLimit, behavior: "smooth" });
+        }
+      }
+    }
+
+    render();
+
+    speed.addEventListener("change", () => {
+      audio.playbackRate = Number(speed.value);
+    });
+
+    followBtn.addEventListener("click", () => {
+      follow = !follow;
+      followBtn.textContent = `Auto-follow: ${follow ? "ON" : "OFF"}`;
+    });
+
+    audio.addEventListener("timeupdate", () => {
+      setCurrent(findIndex(audio.currentTime));
+    });
+
+    audio.addEventListener("loadedmetadata", () => {
+      setCurrent(findIndex(0));
+    });
+
+    window.addEventListener("resize", () => {
+      if (current >= 0) setCurrent(current);
+    });
+
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", () => {
+        if (current >= 0) setCurrent(current);
+      });
+      window.visualViewport.addEventListener("scroll", () => {
+        if (current >= 0) setCurrent(current);
+      });
+    }
+  </script>
+</body>
+</html>
