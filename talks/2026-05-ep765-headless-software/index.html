@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Ep 765: Headless Software: Why Companies Are Building Software for AI Agents, Not Humans and what it means (Start Here Series Vol 23)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <style>
+    :root{
+      --bg:#0b1020;--panel:#121a2b;--panel2:#182338;--text:#eaf1ff;--muted:#9fb0d1;
+      --line:#263350;--accent:#7cc4ff;--accent2:#c8e6ff;--current:#1d3b63;--chip:#16233a;
+      --shadow:0 10px 30px rgba(0,0,0,.28);--radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;padding:0;
+      background:linear-gradient(180deg,#0a0f1c 0%,#0b1020 100%);
+      color:var(--text);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    }
+    body{
+      min-height:100vh;min-height:100dvh;
+      padding:max(16px,env(safe-area-inset-top)) 16px calc(16px + env(safe-area-inset-bottom)) 16px;
+    }
+    a{color:var(--accent)}
+    .wrap{max-width:980px;margin:0 auto}
+    .hero{
+      background:linear-gradient(180deg,rgba(124,196,255,.14),rgba(124,196,255,.05));
+      border:1px solid rgba(124,196,255,.18);
+      border-radius:24px;padding:20px 20px 16px;
+      box-shadow:var(--shadow);backdrop-filter:blur(10px);
+    }
+    .eyebrow{
+      color:var(--accent2);font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+      margin-bottom:8px;font-weight:700;
+    }
+    h1{
+      margin:0;font-size:clamp(28px,4vw,42px);line-height:1.12;letter-spacing:-.02em;
+    }
+    .sub{
+      margin-top:10px;color:var(--muted);font-size:15px;line-height:1.6;
+    }
+    .player{
+      margin-top:16px;background:var(--panel);border:1px solid var(--line);
+      border-radius:20px;padding:16px;box-shadow:var(--shadow);
+    }
+    audio{width:100%;display:block}
+    .controls{
+      display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px;
+    }
+    .chip,.btn,select{
+      border:1px solid var(--line);background:var(--chip);color:var(--text);
+      border-radius:999px;padding:10px 14px;font-size:14px;
+    }
+    .btn{cursor:pointer}
+    .btn:hover{border-color:#44679a}
+    .grid{
+      margin-top:16px;display:grid;grid-template-columns:1fr;gap:16px;
+    }
+    .card{
+      background:var(--panel);border:1px solid var(--line);border-radius:20px;
+      box-shadow:var(--shadow);overflow:hidden;
+    }
+    .card-h{
+      padding:14px 16px;border-bottom:1px solid var(--line);font-weight:700;
+      color:var(--accent2);background:rgba(255,255,255,.02);position:sticky;top:0;z-index:2;
+    }
+    #lines{
+      padding:8px;overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
+      height:calc(100vh - 290px);height:calc(100dvh - 290px);
+      min-height:300px;max-height:70vh;
+    }
+    .line{
+      display:grid;grid-template-columns:64px 1fr;gap:12px;align-items:start;width:100%;
+      border:0;background:transparent;color:var(--text);text-align:left;padding:12px;
+      border-radius:14px;cursor:pointer;transition:background .18s ease;
+    }
+    .line:hover{background:rgba(255,255,255,.04)}
+    .line.current{background:var(--current);outline:1px solid rgba(124,196,255,.28)}
+    .time{
+      color:var(--accent2);font-variant-numeric:tabular-nums;font-size:13px;
+      padding-top:2px;white-space:nowrap;
+    }
+    .txt{line-height:1.6;font-size:16px}
+    .footer-note{
+      margin-top:14px;color:var(--muted);font-size:13px;line-height:1.6;
+    }
+    @media (max-width:640px){
+      body{padding-left:12px;padding-right:12px}
+      .hero,.player,.card{border-radius:18px}
+      .line{grid-template-columns:56px 1fr;gap:10px;padding:11px}
+      .txt{font-size:15px}
+      #lines{
+        height:calc(100vh - 300px);height:calc(100dvh - 300px);
+        min-height:280px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="eyebrow">AI Highlight Player</div>
+      <h1>Ep 765: Headless Software: Why Companies Are Building Software for AI Agents, Not Humans and what it means (Start Here Series Vol 23)</h1>
+      <div class="sub">
+        Enterprise software is shifting from dashboards for people to backends for AI agents. That changes pricing, procurement, workflows, and the role humans play inside the software stack.
+      </div>
+    </section>
+
+    <section class="player">
+      <audio id="audio" controls preload="metadata" playsinline>
+        <source src="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.5ded9253.mp3" type="audio/mpeg">
+      </audio>
+      <div class="controls">
+        <a class="chip" href="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.5ded9253.mp3" target="_blank" rel="noreferrer noopener">Audio</a>
+        <label class="chip">Speed
+          <select id="speed">
+            <option value="0.8">0.8×</option>
+            <option value="0.9">0.9×</option>
+            <option value="1" selected>1.0×</option>
+            <option value="1.1">1.1×</option>
+            <option value="1.2">1.2×</option>
+            <option value="1.25">1.25×</option>
+          </select>
+        </label>
+        <button id="follow" class="btn" type="button">Auto-follow: ON</button>
+      </div>
+      <div class="footer-note">
+        Tap any line to jump playback. iPhone Safari bottom-bar overlap is handled with safe-area padding and visualViewport-aware scrolling.
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <div class="card-h">Transcript</div>
+        <div id="lines"></div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const segments = [
+      { s: 0.24, e: 1.48, t: "Good morning, everyone." },
+      { s: 2.52, e: 10.74, t: "Imagine getting into a car with no steering wheel, no gas pedal, and no dashboard. You simply state your destination, and the car takes you there." },
+      { s: 11.76, e: 19.04, t: "This is exactly what is happening right now in the world of enterprise technology. We are entering the era of headless software." },
+      { s: 20.12, e: 25.80, t: "Software is no longer being built for human eyes and human clicks; it is being built entirely for AI agents." },
+      { s: 26.82, e: 39.82, t: "To understand the magnitude of this shift, consider what happened over just eight days recently. Industry giants like Salesforce, OpenAI, and Google all launched platforms designed primarily for AI agents rather than human users." },
+      { s: 40.86, e: 57.70, t: "Salesforce introduced Headless 360, essentially questioning why any human should ever need to manually log in to a CRM dashboard again. Instead of a human spending hours clicking through filters and updating records, an AI agent can instantly access the backend and complete the work at an unimaginable scale." },
+      { s: 58.72, e: 69.65, t: "This transition fundamentally destroys how software has been bought and sold for the last thirty years. Traditionally, companies bought software by the seat, paying a license fee for every human employee." },
+      { s: 70.61, e: 81.22, t: "But today, one AI agent can perform the routine work of ten, twenty, or even one hundred human employees. Because of this, the traditional per-seat pricing model is collapsing." },
+      { s: 82.22, e: 99.76, t: "In fact, a recent report showed that software stocks lost nearly one trillion dollars in market capitalization as AI agents disrupted their core business models. Furthermore, the International Data Corporation projects that seventy percent of software providers will completely abandon seat-based pricing by twenty twenty-eight." },
+      { s: 100.78, e: 112.62, t: "How are these agents communicating with our software if there are no screens? They use new universal connectors like the Model Context Protocol, or MCP, and agent-to-agent, or A2A, protocols." },
+      { s: 113.68, e: 126.58, t: "Think of these as the USB-C cables of artificial intelligence. They allow different AI models to directly plug into your company's proprietary data and hand off complex workloads seamlessly across different platforms." },
+      { s: 126.68, e: 140.14, t: "As a result, the Internet itself is changing. Cloudflare predicts that by twenty twenty-seven, automated bot and agent traffic will significantly surpass human traffic online as agents browse thousands of times more sites than human shoppers." },
+      { s: 141.19, e: 144.01, t: "So, what does this mean for our business strategy today?" },
+      { s: 145.06, e: 159.28, t: "First, we must unlearn our old habits. Simply upskilling your employees to use old software faster is a trap. You must completely tear down your legacy standard operating procedures and rebuild them from the ground up for an agent-first world." },
+      { s: 160.38, e: 177.48, t: "Second, you must audit your top software vendors immediately. Do they support MCP? Do they have strong API access for your agents? If an expensive piece of software relies solely on humans logging into a dashboard, it is becoming a liability." },
+      { s: 177.58, e: 188.20, t: "Finally, you must begin renegotiating your software contracts. Stop paying for human seats that you no longer need. Shift toward outcome-based billing and action counts." },
+      { s: 189.28, e: 194.10, t: "Headless software is not a passing trend; it is the new foundation of enterprise productivity." },
+      { s: 195.09, e: 209.32, t: "The companies that adapt their procurement and redesign their workflows around AI agents today will secure a massive competitive advantage. Let us stop acting as the manual operators of our software and start becoming the strategic orchestrators of our AI workforce." },
+      { s: 210.46, e: 210.82, t: "Thank you." }
+    ];
+
+    const audio = document.getElementById("audio");
+    const linesEl = document.getElementById("lines");
+    const speed = document.getElementById("speed");
+    const followBtn = document.getElementById("follow");
+
+    let follow = true;
+    let current = -1;
+
+    const fmt = (sec) => {
+      const m = Math.floor(sec / 60);
+      const s = Math.floor(sec % 60);
+      return `${m}:${String(s).padStart(2, "0")}`;
+    };
+
+    function render() {
+      linesEl.innerHTML = "";
+      segments.forEach((seg, i) => {
+        const row = document.createElement("button");
+        row.type = "button";
+        row.className = "line";
+        row.dataset.i = i;
+        row.innerHTML = `<div class="time">${fmt(seg.s)}</div><div class="txt">${seg.t}</div>`;
+        row.addEventListener("click", () => {
+          audio.currentTime = Math.max(0, seg.s + 0.01);
+          audio.play().catch(() => {});
+        });
+        linesEl.appendChild(row);
+      });
+    }
+
+    function findIndex(t) {
+      for (let i = 0; i < segments.length; i++) {
+        if (t >= segments[i].s && t < segments[i].e) return i;
+      }
+      for (let i = segments.length - 1; i >= 0; i--) {
+        if (t >= segments[i].s) return i;
+      }
+      return 0;
+    }
+
+    function effectiveBottom() {
+      const c = linesEl.getBoundingClientRect();
+      if (window.visualViewport) {
+        const vvBottom = window.visualViewport.offsetTop + window.visualViewport.height;
+        return Math.min(c.bottom, vvBottom);
+      }
+      return c.bottom;
+    }
+
+    function setCurrent(i) {
+      if (i === current) return;
+      const prev = linesEl.querySelector(".line.current");
+      if (prev) prev.classList.remove("current");
+      current = i;
+      const cur = linesEl.querySelector(`.line[data-i="${i}"]`);
+      if (!cur) return;
+      cur.classList.add("current");
+
+      if (follow) {
+        const pad = 28;
+        const c = linesEl.getBoundingClientRect();
+        const r = cur.getBoundingClientRect();
+        const topLimit = c.top + pad;
+        const bottomLimit = effectiveBottom() - pad;
+
+        if (r.top < topLimit) {
+          linesEl.scrollBy({ top: r.top - topLimit, behavior: "smooth" });
+        } else if (r.bottom > bottomLimit) {
+          linesEl.scrollBy({ top: r.bottom - bottomLimit, behavior: "smooth" });
+        }
+      }
+    }
+
+    render();
+
+    speed.addEventListener("change", () => {
+      audio.playbackRate = Number(speed.value);
+    });
+
+    followBtn.addEventListener("click", () => {
+      follow = !follow;
+      followBtn.textContent = `Auto-follow: ${follow ? "ON" : "OFF"}`;
+    });
+
+    audio.addEventListener("timeupdate", () => {
+      setCurrent(findIndex(audio.currentTime));
+    });
+
+    audio.addEventListener("loadedmetadata", () => {
+      setCurrent(findIndex(0));
+    });
+
+    window.addEventListener("resize", () => {
+      if (current >= 0) setCurrent(current);
+    });
+
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", () => {
+        if (current >= 0) setCurrent(current);
+      });
+      window.visualViewport.addEventListener("scroll", () => {
+        if (current >= 0) setCurrent(current);
+      });
+    }
+  </script>
+</body>
+</html>
