@@ -1,1 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Ep 780: Build, Buy, Partner, or Wait: The 4-Layer AI Stack Decision Framework for 2026</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <style>
+    :root{
+      --bg:#0b1020;--panel:#121a2b;--panel2:#182338;--text:#eaf1ff;--muted:#9fb0d1;
+      --line:#263350;--accent:#7cc4ff;--accent2:#c8e6ff;--current:#1d3b63;--chip:#16233a;
+      --shadow:0 10px 30px rgba(0,0,0,.28);--radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;padding:0;
+      background:linear-gradient(180deg,#0a0f1c 0%,#0b1020 100%);
+      color:var(--text);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    }
+    body{
+      min-height:100vh;min-height:100dvh;
+      padding:max(16px,env(safe-area-inset-top)) 16px calc(16px + env(safe-area-inset-bottom)) 16px;
+    }
+    a{color:var(--accent)}
+    .wrap{max-width:980px;margin:0 auto}
+    .hero{
+      background:linear-gradient(180deg,rgba(124,196,255,.14),rgba(124,196,255,.05));
+      border:1px solid rgba(124,196,255,.18);
+      border-radius:24px;padding:20px 20px 16px;
+      box-shadow:var(--shadow);backdrop-filter:blur(10px);
+    }
+    .eyebrow{
+      color:var(--accent2);font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+      margin-bottom:8px;font-weight:700;
+    }
+    h1{
+      margin:0;font-size:clamp(28px,4vw,42px);line-height:1.12;letter-spacing:-.02em;
+    }
+    .sub{
+      margin-top:10px;color:var(--muted);font-size:15px;line-height:1.6;
+    }
+    .player{
+      margin-top:16px;background:var(--panel);border:1px solid var(--line);
+      border-radius:20px;padding:16px;box-shadow:var(--shadow);
+    }
+    audio{width:100%;display:block}
+    .controls{
+      display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px;
+    }
+    .chip,.btn,select{
+      border:1px solid var(--line);background:var(--chip);color:var(--text);
+      border-radius:999px;padding:10px 14px;font-size:14px;
+    }
+    .btn{cursor:pointer}
+    .btn:hover{border-color:#44679a}
+    .grid{
+      margin-top:16px;display:grid;grid-template-columns:1fr;gap:16px;
+    }
+    .card{
+      background:var(--panel);border:1px solid var(--line);border-radius:20px;
+      box-shadow:var(--shadow);overflow:hidden;
+    }
+    .card-h{
+      padding:14px 16px;border-bottom:1px solid var(--line);font-weight:700;
+      color:var(--accent2);background:rgba(255,255,255,.02);position:sticky;top:0;z-index:2;
+    }
+    #lines{
+      padding:8px;overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
+      height:calc(100vh - 290px);height:calc(100dvh - 290px);
+      min-height:300px;max-height:70vh;
+    }
+    .line{
+      display:grid;grid-template-columns:64px 1fr;gap:12px;align-items:start;width:100%;
+      border:0;background:transparent;color:var(--text);text-align:left;padding:12px;
+      border-radius:14px;cursor:pointer;transition:background .18s ease;
+    }
+    .line:hover{background:rgba(255,255,255,.04)}
+    .line.current{background:var(--current);outline:1px solid rgba(124,196,255,.28)}
+    .time{
+      color:var(--accent2);font-variant-numeric:tabular-nums;font-size:13px;
+      padding-top:2px;white-space:nowrap;
+    }
+    .txt{line-height:1.6;font-size:16px}
+    .footer-note{
+      margin-top:14px;color:var(--muted);font-size:13px;line-height:1.6;
+    }
+    @media (max-width:640px){
+      body{padding-left:12px;padding-right:12px}
+      .hero,.player,.card{border-radius:18px}
+      .line{grid-template-columns:56px 1fr;gap:10px;padding:11px}
+      .txt{font-size:15px}
+      #lines{
+        height:calc(100vh - 300px);height:calc(100dvh - 300px);
+        min-height:280px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="eyebrow">AI Highlight Player</div>
+      <h1>Ep 780: Build, Buy, Partner, or Wait: The 4-Layer AI Stack Decision Framework for 2026</h1>
+      <div class="sub">
+        AI strategy is no longer a single build-or-buy choice. It is a four-layer decision framework across models, workflows, data, and business software, with different moments to build, buy, partner, or wait.
+      </div>
+    </section>
 
+    <section class="player">
+      <audio id="audio" controls preload="metadata" playsinline>
+        <source src="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.fe2c4462.mp3" type="audio/mpeg">
+      </audio>
+      <div class="controls">
+        <a class="chip" href="https://cdn1.genspark.ai/user-upload-image/audio_merge/results/merged_audio.fe2c4462.mp3" target="_blank" rel="noreferrer noopener">Audio</a>
+        <label class="chip">Speed
+          <select id="speed">
+            <option value="0.8">0.8×</option>
+            <option value="0.9">0.9×</option>
+            <option value="1" selected>1.0×</option>
+            <option value="1.1">1.1×</option>
+            <option value="1.2">1.2×</option>
+            <option value="1.25">1.25×</option>
+          </select>
+        </label>
+        <button id="follow" class="btn" type="button">Auto-follow: ON</button>
+      </div>
+      <div class="footer-note">
+        Tap any line to jump playback. iPhone Safari bottom-bar overlap is handled with safe-area padding and visualViewport-aware scrolling.
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <div class="card-h">Transcript</div>
+        <div id="lines"></div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const segments = [
+      { s: 0.20, e: 5.46, t: "The most expensive AI mistake your company will make in 2026 will not appear on today's invoice." },
+      { s: 6.50, e: 14.86, t: "Instead, it will show up two years from now as technical debt or vendor lock-in that prevents you from accessing your own data while your competitors pull ahead." },
+      { s: 14.94, e: 22.56, t: "In the early days of generative AI, back in 2023, the decision was simple: do we use a consumer chatbot or build a custom setup?" },
+      { s: 23.52, e: 25.98, t: "But today, that binary choice is obsolete." },
+      { s: 26.98, e: 42.64, t: "A recent study shows that 88 percent of organizations now use AI regularly in their business operations. We have moved from simple chatbots to autonomous agents that execute real work inside our software, often performing at or above the level of 85 percent of human experts." },
+      { s: 43.62, e: 56.96, t: "Because AI is now deeply integrated, your strategy can no longer be a single choice. It must be a framework applied to four distinct layers of your organization: the model layer, the workflow layer, the data layer, and the business software layer." },
+      { s: 58.04, e: 62.66, t: "At each layer, you have four strategic options: build, buy, partner, or wait." },
+      { s: 63.72, e: 65.58, t: "Let us look at when to use each option." },
+      { s: 66.56, e: 89.16, t: "You should choose to build when the solution relies on your proprietary data and internal expertise, the unique first-company data that is not available off the shelf. This includes your internal procedures, meeting notes, and specialized knowledge. Ownership here creates a durable competitive advantage, which is why 35 percent of AI builders have already replaced purchased tools with custom internal solutions." },
+      { s: 90.16, e: 103.34, t: "The buy option is best for common, regulated, or audit-heavy workflows, such as finance or HR tasks. Buying allows you to lean on established vendors who handle compliance and reliability, protecting your operational continuity." },
+      { s: 104.34, e: 118.46, t: "Partnering is reserved for high-stakes areas where the cost of failure is too high to go alone, such as cybersecurity or complex infrastructure. By partnering with specialists, you share the execution risk and stay current with rapid technological changes." },
+      { s: 119.56, e: 126.96, t: "Finally, waiting is a strategic delay. You should wait when a category is unstable or when a vendor's offerings change every month." },
+      { s: 128.02, e: 140.38, t: "For example, many companies that waited for more stable, enterprise-ready tools like Codex or Workspace agents avoided the steep learning curves and technical debt associated with early open-source frameworks. However, be careful." },
+      { s: 141.44, e: 147.44, t: "Waiting too long while competitors redesign their workflows can lead to a dangerous capability gap." },
+      { s: 147.50, e: 150.69, t: "To implement this framework, I recommend a three-week blueprint." },
+      { s: 151.76, e: 157.20, t: "In week one, you must audit and score at least ten current or desired workflows and assign a human owner to each." },
+      { s: 158.24, e: 164.25, t: "In week two, you pilot the extremes, build one high-differentiation workflow, and buy one packaged option from a vendor." },
+      { s: 165.36, e: 172.88, t: "In week three, you evaluate the performance of both, renegotiate contracts to ensure data portability, and establish a weekly review cycle." },
+      { s: 173.94, e: 179.80, t: "In conclusion, a successful 2026 AI strategy requires moving beyond simple build or buy questions." },
+      { s: 180.80, e: 190.18, t: "By using this four-layer matrix, you can own what makes your company unique, protect what is common, and ensure you are never locked into a technology that holds you back." },
+      { s: 190.22, e: 190.66, t: "Thank you." }
+    ];
+
+    const audio = document.getElementById("audio");
+    const linesEl = document.getElementById("lines");
+    const speed = document.getElementById("speed");
+    const followBtn = document.getElementById("follow");
+
+    let follow = true;
+    let current = -1;
+
+    const fmt = (sec) => {
+      const m = Math.floor(sec / 60);
+      const s = Math.floor(sec % 60);
+      return `${m}:${String(s).padStart(2, "0")}`;
+    };
+
+    function render() {
+      linesEl.innerHTML = "";
+      segments.forEach((seg, i) => {
+        const row = document.createElement("button");
+        row.type = "button";
+        row.className = "line";
+        row.dataset.i = i;
+        row.innerHTML = `<div class="time">${fmt(seg.s)}</div><div class="txt">${seg.t}</div>`;
+        row.addEventListener("click", () => {
+          audio.currentTime = Math.max(0, seg.s + 0.01);
+          audio.play().catch(() => {});
+        });
+        linesEl.appendChild(row);
+      });
+    }
+
+    function findIndex(t) {
+      for (let i = 0; i < segments.length; i++) {
+        if (t >= segments[i].s && t < segments[i].e) return i;
+      }
+      for (let i = segments.length - 1; i >= 0; i--) {
+        if (t >= segments[i].s) return i;
+      }
+      return 0;
+    }
+
+    function effectiveBottom() {
+      const c = linesEl.getBoundingClientRect();
+      if (window.visualViewport) {
+        const vvBottom = window.visualViewport.offsetTop + window.visualViewport.height;
+        return Math.min(c.bottom, vvBottom);
+      }
+      return c.bottom;
+    }
+
+    function setCurrent(i) {
+      if (i === current) return;
+      const prev = linesEl.querySelector(".line.current");
+      if (prev) prev.classList.remove("current");
+      current = i;
+      const cur = linesEl.querySelector(`.line[data-i="${i}"]`);
+      if (!cur) return;
+      cur.classList.add("current");
+
+      if (follow) {
+        const pad = 28;
+        const c = linesEl.getBoundingClientRect();
+        const r = cur.getBoundingClientRect();
+        const topLimit = c.top + pad;
+        const bottomLimit = effectiveBottom() - pad;
+
+        if (r.top < topLimit) {
+          linesEl.scrollBy({ top: r.top - topLimit, behavior: "smooth" });
+        } else if (r.bottom > bottomLimit) {
+          linesEl.scrollBy({ top: r.bottom - bottomLimit, behavior: "smooth" });
+        }
+      }
+    }
+
+    render();
+
+    speed.addEventListener("change", () => {
+      audio.playbackRate = Number(speed.value);
+    });
+
+    followBtn.addEventListener("click", () => {
+      follow = !follow;
+      followBtn.textContent = `Auto-follow: ${follow ? "ON" : "OFF"}`;
+    });
+
+    audio.addEventListener("timeupdate", () => {
+      setCurrent(findIndex(audio.currentTime));
+    });
+
+    audio.addEventListener("loadedmetadata", () => {
+      setCurrent(findIndex(0));
+    });
+
+    window.addEventListener("resize", () => {
+      if (current >= 0) setCurrent(current);
+    });
+
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", () => {
+        if (current >= 0) setCurrent(current);
+      });
+      window.visualViewport.addEventListener("scroll", () => {
+        if (current >= 0) setCurrent(current);
+      });
+    }
+  </script>
+</body>
+</html>
