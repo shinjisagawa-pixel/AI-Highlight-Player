@@ -10,7 +10,7 @@ Audio + transcript player with **line-level highlighting** (mobile-friendly).
 <!-- TALKS_TABLE_START -->
 | # | Title | URL |
 |---:|---|---|
-| 1 | Untitled Talk | https://shinjisagawa-pixel.github.io/AI-Highlight-Player/talks/2026-05-ep780-build-buy-partner-or-wait/ |
+| 1 | Ep 780: Build, Buy, Partner, or Wait: The 4-Layer AI Stack Decision Framework for 2026 | https://shinjisagawa-pixel.github.io/AI-Highlight-Player/talks/2026-05-ep780-build-buy-partner-or-wait/ |
 | 2 | Ep 775: Open Source AI 101: Why Local Models, Cheap APIs, and AI Agents Change Everything (Start Here Series Vol 24) | https://shinjisagawa-pixel.github.io/AI-Highlight-Player/talks/2026-05-ep775-open-source-ai-101/ |
 | 3 | Ep 765: Headless Software: Why Companies Are Building Software for AI Agents, Not Humans and what it means (Start Here Series Vol 23) | https://shinjisagawa-pixel.github.io/AI-Highlight-Player/talks/2026-05-ep765-headless-software/ |
 | 4 | Ep 762: Agentic Context Carry: 3 Steps to Improve Cowork and scheduled AI Workflows (Start Here Series Vol 22) | https://shinjisagawa-pixel.github.io/AI-Highlight-Player/talks/2026-05-ep762-agentic-context-carry/ |
